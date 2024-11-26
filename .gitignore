@@ -1,0 +1,29 @@
+# Ignore files for Visual Studio
+# Build results
+bin/
+obj/
+*.log
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.userprefs
+
+# Visual Studio files
+.vs/
+.vscode/
+
+# Packages
+packages/
+
+# Backup files
+*.bak
+*.swp
+*.tmp
+*.cache
+
+# NuGet
+project.lock.json
+*.nuget.props
+*.nuget.targets
