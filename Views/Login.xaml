@@ -14,9 +14,6 @@
         <ViewModel:LoginViewModel />
     </Window.DataContext>
 
-    <Window.Resources>
-        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>

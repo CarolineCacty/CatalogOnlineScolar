@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Xaml.Behaviors.Media;
 using System.Security;
 using System.Linq;
+using CatalogScolarOnline.Model;
 
 namespace CatalogScolarOnline.ViewModel
 {
@@ -17,9 +18,11 @@ namespace CatalogScolarOnline.ViewModel
         private string _emailError;
         private string _loginError;
 
+
+        private UserRepository userRepository = new UserRepository();
         public string Email
         {
-            get { return _email;  }
+            get { return _email; }
             set
             {
                 if (_email != value)
@@ -32,7 +35,7 @@ namespace CatalogScolarOnline.ViewModel
         }
         public string EmailError
         {
-            get { return _emailError;  }
+            get { return _emailError; }
 
             set
             {
@@ -47,18 +50,15 @@ namespace CatalogScolarOnline.ViewModel
 
             set
             {
-                //if (_loginError != value)
-                //{
-                    _loginError = value;
-                    OnPropertyChanged(nameof(LoginError));
-                //}
+                _loginError = value;
+                OnPropertyChanged(nameof(LoginError));
             }
         }
         private void ValidateEmail()
         {
             if (string.IsNullOrEmpty(_email))
             {
-                EmailError = string.Empty; 
+                EmailError = string.Empty;
             }
             else if (!IsValidEmail(_email))
             {
@@ -66,7 +66,7 @@ namespace CatalogScolarOnline.ViewModel
             }
             else
             {
-                EmailError = string.Empty; 
+                EmailError = string.Empty;
             }
         }
         public string Password
@@ -97,24 +97,26 @@ namespace CatalogScolarOnline.ViewModel
             CloseCommand = new RelayCommand(CloseApplication);
             OpenRegisterWindow = new RelayCommand(OpenRegister);
             SignInCommand = new RelayCommand(ExecuteSignIn);
-    
+
         }
 
         private void ExecuteSignIn(object parameter)
         {
-            using (OnlineSchoolCatalogDataContext context = new OnlineSchoolCatalogDataContext())
+            if (string.IsNullOrEmpty(_email) || string.IsNullOrEmpty(_password))
             {
-                var user = context.Utilizatoris.FirstOrDefault(u => u.Email == Email && u.Parola == Password);
+                LoginError = "Email and password are required.";
+                return;
+            }
 
-                if (user == null)
-                {
-                    LoginError = "Invalid email or password.";
-                }
-                else
-                {
-                    LoginError = string.Empty;
-                    Application.Current.Shutdown();
-                }
+            bool isValidUser = userRepository.ValidateUser(_email, _password);
+            if (isValidUser == false)
+            {
+                LoginError = "Invalid email or password.";
+            }
+            else
+            {
+                LoginError = string.Empty;
+                Application.Current.Shutdown();
             }
         }
 

@@ -62,13 +62,14 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\UserRepository.cs" />
     <Compile Include="OnlineSchoolCatalog.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OnlineSchoolCatalog.dbml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CommandBehavior.cs" />
-    <Compile Include="Utilities\Converters.cs" />
     <Compile Include="Utilities\RelayCommand.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
@@ -122,9 +123,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\close.png" />
     <Resource Include="Images\close1.png" />
