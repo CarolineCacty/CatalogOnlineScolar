@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,6 +61,11 @@
     </ApplicationDefinition>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OnlineSchoolCatalog.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnlineSchoolCatalog.dbml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CommandBehavior.cs" />
     <Compile Include="Utilities\Converters.cs" />
@@ -99,6 +105,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="OnlineSchoolCatalog.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>OnlineSchoolCatalog.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OnlineSchoolCatalog.dbml.layout">
+      <DependentUpon>OnlineSchoolCatalog.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -122,6 +136,9 @@
     <Resource Include="Images\scholar.png" />
     <Resource Include="Images\user.png" />
     <Resource Include="Images\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

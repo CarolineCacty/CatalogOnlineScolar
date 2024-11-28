@@ -11,7 +11,7 @@
         Title="Login" Height="450" Width="800">
 
     <Window.DataContext>
-        <ViewModel:LoginViewModel/>
+        <ViewModel:LoginViewModel />
     </Window.DataContext>
 
     <Window.Resources>
@@ -80,21 +80,48 @@
 
                         <Image Source="/Images/email.png" Height="20"/>
 
-                        <TextBlock x:Name="textEmail" 
-                           Text="Email" 
-                           Style="{StaticResource textHint}" 
-                           MouseDown="textEmail_MouseDown"
-                                   />
+                        <TextBlock x:Name="textEmail" MouseDown="textEmail_MouseDown" Text="Email" Style="{StaticResource textHint}" />
 
                         <TextBox x:Name="txtEmail" 
-                             Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" 
+                             Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                             TextChanged="txtEmail_TextChanged"
                              Style="{StaticResource textBox}" 
                              Focusable="True"/>
                     </Grid>
                 </Border>
 
-                <TextBlock x:Name="EmailErrorText" Text="Invalid email!" Visibility="{Binding IsEmailInvalid, Converter={StaticResource BoolToVisibilityConverter}}"  Foreground="Red" Style="{StaticResource textHint}" Margin="70 0 0 0" />
+                <TextBlock x:Name="EmailErrorText" Text="{Binding EmailError}" Foreground="Red" Style="{StaticResource textHint}" Margin="70 0 0 0" />
 
+                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="/Images/lock.png" Height="20" Grid.Column="0" VerticalAlignment="Center"/>
+
+                        <TextBlock x:Name="textPassword" Grid.Column="1" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource textHint}" VerticalAlignment="Center"/>
+
+                        <TextBox x:Name="txtPasswordVisible" Style="{StaticResource textBox}" Visibility="Collapsed" Grid.Column="1" VerticalAlignment="Center"/>
+
+                        <PasswordBox x:Name="txtPassword" PasswordChanged="txtPassword_PasswordChanged"  Style="{StaticResource textBox}" Grid.Column="1" VerticalAlignment="Center"/>
+
+                        <Image Source="../Images/no_read.png" Height="20" Grid.Column="2" VerticalAlignment="Center" Cursor="Hand" MouseDown="TogglePasswordVisibility"/>
+                    </Grid>
+                </Border>
+
+                <TextBlock x:Name="ConnectionErrorText" 
+                   Text="{Binding Path=LoginError, Mode=TwoWay}" 
+                   Foreground="Red"  
+                   Style="{StaticResource textHint}" 
+                   Margin="70 0 0 0" />
+
+                <Button Content="Sign In" 
+                    Command="{Binding SignInCommand}" 
+                    CommandParameter="{Binding ElementName=PasswordBox, Path=Password}" 
+                    Style="{StaticResource mainButton}" />
             </StackPanel>
         </Border>
         

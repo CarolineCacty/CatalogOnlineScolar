@@ -32,17 +32,63 @@ namespace CatalogScolarOnline.Views
         }
 
         private void textEmail_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtEmail.Text) && txtEmail.Text.Length > 0)
-            {
-                textEmail.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                textEmail.Visibility = Visibility.Collapsed;
-            }
+        { 
             txtEmail.Focus();
         }
 
-    }
+        private void textPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtPassword.Focus();
+        }
+        private void TogglePasswordVisibility(object sender, MouseButtonEventArgs e)
+        {
+            if (txtPasswordVisible.Visibility == Visibility.Collapsed)
+            {
+                txtPasswordVisible.Text = txtPassword.Password;
+                txtPasswordVisible.Visibility = Visibility.Visible;
+                txtPassword.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                txtPassword.Password = txtPasswordVisible.Text;
+                txtPasswordVisible.Visibility = Visibility.Collapsed;
+                txtPassword.Visibility = Visibility.Visible;
+            }
+        }
+
+
+        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtEmail.Text) && txtEmail.Text.Length > 0)
+            {
+                textEmail.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textEmail.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPassword.Password) && txtPassword.Password.Length > 0)
+            {
+                textPassword.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                textPassword.Visibility = Visibility.Visible;
+            }
+
+            var passwordBox = sender as PasswordBox;
+            if (passwordBox != null)
+            {
+                var viewModel = DataContext as LoginViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.Password = passwordBox.Password;
+                }
+            }
+        }
+}
 }
