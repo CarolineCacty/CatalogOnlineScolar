@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CatalogScolarOnline
+namespace CatalogScolarOnline.Model
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;

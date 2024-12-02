@@ -21,14 +21,14 @@
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="../Images/close.png" Grid.Column="1" Panel.ZIndex="1" Style="{StaticResource imgClose}">
+        <Image Source="../Images/close.png" Grid.Column="1" Panel.ZIndex="1" Style="{StaticResource imgClose}" HorizontalAlignment="Stretch" Margin="457,13,13,0" Width="NaN">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDown">
                     <i:InvokeCommandAction Command="{Binding CloseCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Image>
-        
+
         <Border CornerRadius="10 0 0 10">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -36,7 +36,7 @@
                     <GradientStop Color="#6A5ACD" Offset="0" />
                 </LinearGradientBrush>
             </Border.Background>
-         </Border>
+        </Border>
 
         <Grid>
             <Canvas>
@@ -121,6 +121,6 @@
                     Style="{StaticResource mainButton}" />
             </StackPanel>
         </Border>
-        
+
     </Grid>
 </Window>

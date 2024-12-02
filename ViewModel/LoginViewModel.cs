@@ -8,6 +8,7 @@ using Microsoft.Xaml.Behaviors.Media;
 using System.Security;
 using System.Linq;
 using CatalogScolarOnline.Model;
+using CatalogScolarOnline.Views;
 
 namespace CatalogScolarOnline.ViewModel
 {
@@ -92,12 +93,12 @@ namespace CatalogScolarOnline.ViewModel
         public ICommand OpenRegisterWindow { get; }
         public ICommand SignInCommand { get; }
 
+
         public LoginViewModel()
         {
             CloseCommand = new RelayCommand(CloseApplication);
             OpenRegisterWindow = new RelayCommand(OpenRegister);
             SignInCommand = new RelayCommand(ExecuteSignIn);
-
         }
 
         private void ExecuteSignIn(object parameter)
@@ -120,6 +121,7 @@ namespace CatalogScolarOnline.ViewModel
             }
         }
 
+
         private void CloseApplication()
         {
             Application.Current.Shutdown();
@@ -127,7 +129,9 @@ namespace CatalogScolarOnline.ViewModel
 
         private void OpenRegister()
         {
-            Application.Current.Shutdown();
+            Register registerWindow = new Register();
+            registerWindow.Show();
+            Application.Current.Windows[0]?.Close();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
