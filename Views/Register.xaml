@@ -9,7 +9,7 @@
         xmlns:util="clr-namespace:CatalogScolarOnline.Utilities"
         AllowsTransparency="True"
         ResizeMode="CanResize"
-        WindowStartupLocation="CenterScreen" WindowStyle="None" Background="White" Title="Register" Height="700" Width="900">
+        WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#6A5ACD" Title="Register" Height="700" Width="900">
 
 
     <Window.DataContext>
@@ -39,9 +39,9 @@
         </Grid.ColumnDefinitions>
 
         <!--left section-->
-        <Border Background="MediumPurple" Padding="0" CornerRadius="25 25 25 25" MouseLeftButtonDown="grid_register_MouseLeftButtonDown">
+        <Border Background="MediumPurple" Padding="0" MouseLeftButtonDown="grid_register_MouseLeftButtonDown">
             <StackPanel VerticalAlignment="Center" Height="400" >
-                <Image x:Name="profileImage" Source="./../Images/user.png" Width="160" Height="160" Margin="0 0 0 40" />
+                <Image x:Name="profileImage" Source="./../Images/user2.png" Width="160" Height="160" Margin="0 0 0 40" />
 
                 <TextBlock Text="ÎNREGISTREAZĂ-TE" TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Foreground="#363636"/>
                 <TextBlock TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Foreground="#363636" Margin="0 20 0 20" Text="Catalog Școlar Electronic"/>
@@ -61,21 +61,21 @@
 
 
         <!--close si minimize-->
-        <Grid Grid.Column="2" Background="OrangeRed">
-            <!--<Image Name="close" Source="/Images/close1.png" Width="25" Margin="0 0 0 0" Style="{StaticResource iconApp}"/>-->
-            <Button Command="{Binding CloseCommand}" Background="OrangeRed" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top"
+        <Grid Grid.Column="2" Background="#6A5ACD">
+            <!--<Image Name="close" Source="/Images/close.png" Width="25" Margin="0 0 0 0" Style="{StaticResource iconApp}"/>-->
+            <Button Command="{Binding CloseCommand}" Background="#6A5ACD" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top"
                     Width="28" Margin="0 0 0 0">
-                <Image Name="close" Source="/Images/close1.png" Width="25" Margin="0 0 0 0" Style="{StaticResource iconApp}"/>
+                <Image Name="close" Source="/Images/close.png" Width="25" Margin="0 0 0 0" Style="{StaticResource iconApp}"/>
             </Button>
             <!--<Image Name="minimize" Source="/Images/minimize.png" Width="25" Margin="0 0 30 0" Style="{StaticResource iconApp}" />-->
-            <Button Command="{Binding MinimizeCommand}" Background="OrangeRed" BorderThickness="0" HorizontalAlignment="Left"  VerticalAlignment="Top"
+            <Button Command="{Binding MinimizeCommand}" Background="#6A5ACD" BorderThickness="0" HorizontalAlignment="Left"  VerticalAlignment="Top"
         Width="28" Margin="0 0 0 0">
                 <Image Name="minimize" Source="/Images/minimize.png" Width="25" Margin="0 0 0 0" Style="{StaticResource iconApp}"/>
             </Button>
         </Grid>
 
 
-        <Border Grid.Column="1" Padding="20" Background="OrangeRed" MouseLeftButtonDown="grid_register_MouseLeftButtonDown">
+        <Border Grid.Column="1" Padding="20" Background="#6A5ACD" MouseLeftButtonDown="grid_register_MouseLeftButtonDown">
             <Grid Name="grid_register" Visibility="{Binding GridVisibility}">
                 
                 <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 10 0 0">

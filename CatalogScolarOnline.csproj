@@ -258,7 +258,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\user2.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\close.png" />
     <Resource Include="Images\close1.png" />

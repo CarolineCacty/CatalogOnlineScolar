@@ -122,16 +122,26 @@ namespace CatalogScolarOnline.ViewModel
         }
 
 
-        private void CloseApplication()
+        private void CloseApplication(object parameter)
         {
-            Application.Current.Shutdown();
+            var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+            if (currentWindow != null)
+            {
+                currentWindow.Close();
+            }
         }
 
-        private void OpenRegister()
+        private void OpenRegister(object parameter)
         {
+            var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
             Register registerWindow = new Register();
             registerWindow.Show();
-            Application.Current.Windows[0]?.Close();
+
+            if (currentWindow != null)
+            {
+                currentWindow.Close();
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
