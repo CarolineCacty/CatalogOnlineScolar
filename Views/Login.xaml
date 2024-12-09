@@ -13,8 +13,7 @@
     <Window.DataContext>
         <ViewModel:LoginViewModel />
     </Window.DataContext>
-
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

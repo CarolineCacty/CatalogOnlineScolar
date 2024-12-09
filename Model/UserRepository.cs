@@ -55,8 +55,6 @@ namespace CatalogScolarOnline.Model
                 return true;
             }
         }
-
-
         public void InsertProfesor(OnlineSchoolCatalogDataContext context, int userId, string LastName, string FirstName, string GradDidactic)
         {
             var profesor = new Profesori

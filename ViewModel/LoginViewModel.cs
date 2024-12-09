@@ -117,11 +117,18 @@ namespace CatalogScolarOnline.ViewModel
             else
             {
                 LoginError = string.Empty;
-                Application.Current.Shutdown();
+                var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.ReceiveEmail(_email);
+                mainWindow.Show();
+
+                if (currentWindow != null)
+                {
+                    currentWindow.Close();
+                }
             }
-        }
-
-
+        }   
         private void CloseApplication(object parameter)
         {
             var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
