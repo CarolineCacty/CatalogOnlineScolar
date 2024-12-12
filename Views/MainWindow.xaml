@@ -16,25 +16,11 @@
 
     <Border Background="#EFF2F7" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown" >
 
-    
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
-            <Image Source="../Images/close.png" Grid.ColumnSpan="2" HorizontalAlignment="Right" 
-           Margin="0,10,10,0" Width="15" Height="15" Cursor="Hand">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDown">
-                        <i:InvokeCommandAction Command="{Binding CloseCommand}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Image>
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -42,11 +28,15 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
+                <Button Margin="20 10 0 20" Style="{StaticResource topButon}">
+                    <iconPacks:PackIconMaterial Kind="Menu" Width="16" Height="15" />
+                </Button>
 
-                <Border Grid.Row="1" Background="#6A5ACD" CornerRadius="0 50 0 0">
+
+                <Border Grid.Row="1" Background="#6A5ACD" CornerRadius="0 50 0 0" >
                     <DockPanel>
                         <Border Width="70" Height="70" Padding="3" Background="White" CornerRadius="30"
-                                DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="30 -30 0 10">
+                                DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="30 -20 0 10">
                             <Ellipse>
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/Images/user1.png"/>
@@ -54,7 +44,7 @@
                             </Ellipse>
                         </Border>
 
-                        <TextBlock x:Name="textBoxName" Text="{Binding Name}" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="0 5 0 10" Style="{StaticResource text}" />
+                        <TextBlock x:Name="textBoxName" Text="{Binding Name}" Foreground="White" DockPanel.Dock="Top" TextAlignment="Center" Margin="-25 5 0 10" Style="{StaticResource text}" />
 
                         <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#7E5FDC"/>
 
@@ -81,12 +71,13 @@
                             </Button>
 
 
-                            <Button Style="{StaticResource menuButon}" >
+                            <Button Style="{StaticResource menuButon}" Command="{Binding NavigateToNotesCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="School" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Note"/>
                                 </StackPanel>
                             </Button>
+
 
                             <Button Style="{StaticResource menuButon}">
                                 <StackPanel Orientation="Horizontal">
@@ -116,8 +107,7 @@
                 </Border>
             </Grid>
 
-            <!--<Frame x:Name="MainFrame" Grid.Column="1" Background="Transparent" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated"/>-->
-
+            <Frame x:Name="MainFrame" Grid.Column="1" Background="Transparent" NavigationUIVisibility="Hidden"/>
         </Grid>
 
     </Border>
