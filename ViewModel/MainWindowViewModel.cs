@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -45,14 +46,32 @@ namespace CatalogScolarOnline.ViewModel
             }
         }
 
+        private ObservableCollection<Grades> _grades;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand CloseCommand { get; }
         public ICommand LoginWindow { get; }
+
+        public ICommand NavigateToNotesCommand { get; }
         public MainWindowViewModel()
         {
             CloseCommand = new RelayCommand(CloseApplication);
             LoginWindow = new RelayCommand(LoginWindowShow);
+            NavigateToNotesCommand = new RelayCommand(NavigateToNotes);
+
+        }
+        private void NavigateToNotes(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                // Navighează la pagina Note
+                var notePage = new Views.Note();
+                notePage.ReceiveEmail(_email);
+                
+                mainWindow.MainFrame.Navigate(notePage);
+            }
         }
         public void SetEmail(string email)
         {
@@ -62,11 +81,8 @@ namespace CatalogScolarOnline.ViewModel
         }
         private void CloseApplication(object parameter)
         {
-            var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
-            if (currentWindow != null)
-            {
-                currentWindow.Close();
-            }
+            var currentWindow = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive);
+            currentWindow?.Close();
         }
 
         private void LoginWindowShow(object parameter)
