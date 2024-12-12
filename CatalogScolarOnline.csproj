@@ -185,7 +185,6 @@
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\UserRepository.cs" />
     <Compile Include="Model\OnlineSchoolCatalog.designer.cs">
       <AutoGen>True</AutoGen>

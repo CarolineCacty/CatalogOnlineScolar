@@ -21,7 +21,6 @@ namespace CatalogScolarOnline.Model
         public Users()
         {
             _context = new OnlineSchoolCatalogDataContext();
-
         }
         public int getUserID(string _email)
         {

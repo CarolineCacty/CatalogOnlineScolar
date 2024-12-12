@@ -36,12 +36,12 @@ namespace CatalogScolarOnline.Model
             {
                 if (context.Utilizatoris.Any(u => u.Email == email))
                 {
-                    return false; // Utilizator deja existent
+                    return false; 
                 }
 
                 if(!(context.Conturis.Any(u => u.Email == email) && context.Conturis.Any(u => u.Rol == rol)))
                 {
-                    return false; // Utilizator neeexistent in tabela Conturi
+                    return false; 
                 }
 
                 var newUser = new Utilizatori
