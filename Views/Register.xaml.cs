@@ -32,7 +32,7 @@ namespace CatalogScolarOnline.Views
             {
                 if (this.DataContext is RegisterViewModel viewModel)
                 {
-                    viewModel.Password = passwordBox.Password;  // Actualizează parola în ViewModel
+                    viewModel.Password = passwordBox.Password;  
                 }
             }
         }
