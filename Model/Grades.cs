@@ -14,7 +14,7 @@ namespace CatalogScolarOnline.Model
         public decimal Grade {  get; set; }
         public DateTime Date { get; set; }
         public int StudentID { get; set; }
-        public int SubjectID {  get; set; }
+        public string Subject {  get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -34,19 +34,38 @@ namespace CatalogScolarOnline.Model
 
             foreach (var item in studentGrades)
             {
+                string materie =
+                    (from n in _context.Notes
+                    join p in _context.Predares on n.PredareID equals p.PredareID
+                    join m in _context.Materiis on p.MaterieID equals m.MaterieID
+                     where p.PredareID == item.PredareID
+                     select m.Nume_materie).FirstOrDefault();
+
+
                 grades.Add(new Grades
                 {
                     GradeID = item.NotaID,
                     Grade = item.Nota,
                     Date = item.DataNota,
                     StudentID = item.ElevID,
-                    SubjectID = item.PredareID,
+                    Subject = materie
                 });
             }
 
             return grades;
         }
 
+        public int GetElevID(string email)
+        {
+            var elevID =
+                (from user in _context.Utilizatoris
+                 join e in _context.Elevis on user.UtilizatorID equals e.UtilizatorID
+                 where user.Email == email
+                 select e.ElevID).FirstOrDefault();
 
+            StudentID = Convert.ToInt32(elevID);
+            return StudentID;
+
+        }
     }
 }

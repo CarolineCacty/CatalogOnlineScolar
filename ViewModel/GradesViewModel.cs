@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using CatalogScolarOnline.Utilities;
 
 namespace CatalogScolarOnline.ViewModel
 {
@@ -36,7 +37,7 @@ namespace CatalogScolarOnline.ViewModel
 
         public GradesViewModel()
         {
-            int studentID=7;  // = students.GetType(_email);
+            int studentID = (new Grades()).GetElevID(Session.Email);
             
             _grades = (new Grades()).getGrades(studentID);
         }

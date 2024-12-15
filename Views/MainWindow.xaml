@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:CatalogScolarOnline.Utilities" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:viewmodel="clr-namespace:CatalogScolarOnline.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
   
-        Height="650" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="False" Background="Transparent">
+        Height="650" Width="1500" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="False" Background="Transparent">
   
     <Window.DataContext>
         <ViewModel:MainWindowViewModel/>
@@ -18,8 +18,9 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="250" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="27" />
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="1">
@@ -49,21 +50,21 @@
                         <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#7E5FDC"/>
 
                         <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButon}">
+                            <Button Style="{StaticResource menuButon}" Click="Note_Button_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Acasa"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButon}">
+                            <Button Style="{StaticResource menuButon}" Command="{Binding ShowMyProfileCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="AccountCircle" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Profilul meu"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButon}">
+                            <Button Style="{StaticResource menuButon}" Command="{Binding ShowOrarCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="Calendar" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Orar"/>
@@ -79,7 +80,7 @@
                             </Button>
 
 
-                            <Button Style="{StaticResource menuButon}">
+                            <Button Style="{StaticResource menuButon}" Command="{Binding ShowAbsenteCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="CalendarAlert" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Absențe"/>
@@ -107,7 +108,18 @@
                 </Border>
             </Grid>
 
-            <Frame x:Name="MainFrame" Grid.Column="1" Background="Transparent" NavigationUIVisibility="Hidden"/>
+            <Frame x:Name="MainFrame" Grid.Column="1" Background="Transparent" NavigationUIVisibility="Visible"
+                   Margin="0 0 50 0">
+            </Frame>
+
+            <Image Source="../Images/close.png" Grid.Column="2" Panel.ZIndex="1" 
+                   Style="{StaticResource imgClose}" HorizontalAlignment="Stretch" Width="30">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding CloseCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>   
+            </Image>
         </Grid>
 
     </Border>

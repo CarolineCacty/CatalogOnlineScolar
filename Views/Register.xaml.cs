@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace CatalogScolarOnline.Views
 {
-    /// <summary>
-    /// Interaction logic for Register.xaml
-    /// </summary>
     public partial class Register : Window
     {
         public Register()
@@ -32,7 +29,7 @@ namespace CatalogScolarOnline.Views
             {
                 if (this.DataContext is RegisterViewModel viewModel)
                 {
-                    viewModel.Password = passwordBox.Password;  // Actualizează parola în ViewModel
+                    viewModel.Password = passwordBox.Password;  
                 }
             }
         }

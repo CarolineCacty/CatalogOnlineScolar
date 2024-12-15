@@ -178,16 +178,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\AbsenteModel.cs" />
     <Compile Include="Model\Grades.cs" />
+    <Compile Include="Model\Orar.cs" />
+    <Compile Include="Model\OrarRow.cs" />
+    <Compile Include="Model\ProfilulMeuModel.cs" />
     <Compile Include="Model\Students.cs" />
     <Compile Include="Model\Accounts.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="Utilities\Session.cs" />
+    <Compile Include="ViewModel\AbsenteViewModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\GradesViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\OrarViewModel.cs" />
+    <Compile Include="ViewModel\ProfilulMeuViewModel.cs" />
+    <Compile Include="Views\Absente.xaml.cs">
+      <DependentUpon>Absente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Acasa.xaml.cs">
+      <DependentUpon>Acasa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\UserRepository.cs" />
     <Compile Include="Model\OnlineSchoolCatalog.designer.cs">
       <AutoGen>True</AutoGen>
@@ -212,9 +226,23 @@
     <Compile Include="Views\Note.xaml.cs">
       <DependentUpon>Note.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\OrarPage.xaml.cs">
+      <DependentUpon>OrarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfilulMeu.xaml.cs">
+      <DependentUpon>ProfilulMeu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Absente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Acasa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -228,6 +256,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Note.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OrarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProfilulMeu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -288,6 +324,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\noteincatalog.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

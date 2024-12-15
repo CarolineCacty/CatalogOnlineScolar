@@ -1,43 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Online_School_Catalog" Class="OnlineSchoolCatalogDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Online_School_Catalog;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="CatalogScolarOnline.Properties.Settings" SettingsPropertyName="Online_School_CatalogConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Absente" Member="Absentes">
-    <Type Name="Absente">
-      <Column Name="AbsentaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Data_absenta" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Motivata" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ElevID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Elevi_Absente" Member="Elevi" ThisKey="ElevID" OtherKey="ElevID" Type="Elevi" IsForeignKey="true" />
-      <Association Name="Predare_Absente" Member="Predare" ThisKey="PredareID" OtherKey="PredareID" Type="Predare" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Absente" Member="Absente1s">
-    <Type Name="Absente1">
-      <Column Name="AbsentaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Data_absenta" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Motivata" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ElevID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Elevi_Absente1" Member="Elevi" ThisKey="ElevID" OtherKey="ElevID" Type="Elevi" IsForeignKey="true" />
-      <Association Name="Predare_Absente1" Member="Predare" ThisKey="PredareID" OtherKey="PredareID" Type="Predare" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Clase" Member="Clases">
-    <Type Name="Clase">
-      <Column Name="ClasaID" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="An_scolar" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Specializare" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Diriginte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Clase_Elevi" Member="Elevis" ThisKey="ClasaID" OtherKey="ClasaID" Type="Elevi" />
-      <Association Name="Clase_Predare" Member="Predares" ThisKey="ClasaID" OtherKey="ClasaID" Type="Predare" />
-      <Association Name="Profesori_Clase" Member="Profesori" ThisKey="Diriginte" OtherKey="ProfesorID" Type="Profesori" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Conturi" Member="Conturis">
-    <Type Name="Conturi">
-      <Column Name="ContID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.Utilizatori" Member="Utilizatoris">
+    <Type Name="Utilizatori">
+      <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Parola" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Rol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImagineProfil" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="Utilizatori_Profesori" Member="Profesoris" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Profesori" />
+      <Association Name="Utilizatori_Parinti" Member="Parintis" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Parinti" />
+      <Association Name="Utilizatori_Elevi" Member="Elevis" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Elevi" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Profesori" Member="Profesoris">
+    <Type Name="Profesori">
+      <Column Name="ProfesorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Prenume" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Grad" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Vechime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Profesori_Predare" Member="Predares" ThisKey="ProfesorID" OtherKey="ProfesorID" Type="Predare" />
+      <Association Name="Profesori_Clase" Member="Clases" ThisKey="ProfesorID" OtherKey="Diriginte" Type="Clase" />
+      <Association Name="Utilizatori_Profesori" Member="Utilizatori" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Predare" Member="Predares">
+    <Type Name="Predare">
+      <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProfesorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaterieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClasaID" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Predare_OrarClase" Member="OrarClases" ThisKey="PredareID" OtherKey="PredareID" Type="OrarClase" />
+      <Association Name="Predare_Note" Member="Notes" ThisKey="PredareID" OtherKey="PredareID" Type="Note" />
+      <Association Name="Predare_Absente" Member="Absentes" ThisKey="PredareID" OtherKey="PredareID" Type="Absente" />
+      <Association Name="Profesori_Predare" Member="Profesori" ThisKey="ProfesorID" OtherKey="ProfesorID" Type="Profesori" IsForeignKey="true" />
+      <Association Name="Materii_Predare" Member="Materii" ThisKey="MaterieID" OtherKey="MaterieID" Type="Materii" IsForeignKey="true" />
+      <Association Name="Clase_Predare" Member="Clase" ThisKey="ClasaID" OtherKey="ClasaID" Type="Clase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Parinti" Member="Parintis">
+    <Type Name="Parinti">
+      <Column Name="ParinteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume_parinte" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Prenume_parinte" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Numar_telefon" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Parinti_Notificari" Member="Notificaris" ThisKey="ParinteID" OtherKey="ParinteID" Type="Notificari" />
+      <Association Name="Parinti_Elevi" Member="Elevis" ThisKey="ParinteID" OtherKey="ParinteID" Type="Elevi" />
+      <Association Name="Utilizatori_Parinti" Member="Utilizatori" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrarClase" Member="OrarClases">
+    <Type Name="OrarClase">
+      <Column Name="ClasaID" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Zi_saptamana" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IntervalID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Predare_OrarClase" Member="Predare" ThisKey="PredareID" OtherKey="PredareID" Type="Predare" IsForeignKey="true" />
+      <Association Name="IntervaleOre_OrarClase" Member="IntervaleOre" ThisKey="IntervalID" OtherKey="IntervalID" Type="IntervaleOre" IsForeignKey="true" />
+      <Association Name="Clase_OrarClase" Member="Clase" ThisKey="ClasaID" OtherKey="ClasaID" Type="Clase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Notificari" Member="Notificaris">
+    <Type Name="Notificari">
+      <Column Name="NotificareID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Data_Notificare" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Mesaj" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ParinteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Parinti_Notificari" Member="Parinti" ThisKey="ParinteID" OtherKey="ParinteID" Type="Parinti" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Note" Member="Notes">
+    <Type Name="Note">
+      <Column Name="NotaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nota" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DataNota" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ElevID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Predare_Note" Member="Predare" ThisKey="PredareID" OtherKey="PredareID" Type="Predare" IsForeignKey="true" />
+      <Association Name="Elevi_Note" Member="Elevi" ThisKey="ElevID" OtherKey="ElevID" Type="Elevi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Materii" Member="Materiis">
+    <Type Name="Materii">
+      <Column Name="MaterieID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume_materie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Materii_Predare" Member="Predares" ThisKey="MaterieID" OtherKey="MaterieID" Type="Predare" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntervaleOre" Member="IntervaleOres">
+    <Type Name="IntervaleOre">
+      <Column Name="IntervalID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ora_inceput" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="Ora_sfarsit" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Association Name="IntervaleOre_OrarClase" Member="OrarClases" ThisKey="IntervalID" OtherKey="IntervalID" Type="OrarClase" />
     </Type>
   </Table>
   <Table Name="dbo.Elevi" Member="Elevis">
@@ -50,90 +107,41 @@
       <Column Name="ClasaID" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="ParinteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Elevi_Absente" Member="Absentes" ThisKey="ElevID" OtherKey="ElevID" Type="Absente" />
-      <Association Name="Elevi_Absente1" Member="Absente1s" ThisKey="ElevID" OtherKey="ElevID" Type="Absente1" />
       <Association Name="Elevi_Note" Member="Notes" ThisKey="ElevID" OtherKey="ElevID" Type="Note" />
-      <Association Name="Clase_Elevi" Member="Clase" ThisKey="ClasaID" OtherKey="ClasaID" Type="Clase" IsForeignKey="true" />
+      <Association Name="Elevi_Absente" Member="Absentes" ThisKey="ElevID" OtherKey="ElevID" Type="Absente" />
       <Association Name="Parinti_Elevi" Member="Parinti" ThisKey="ParinteID" OtherKey="ParinteID" Type="Parinti" IsForeignKey="true" />
       <Association Name="Utilizatori_Elevi" Member="Utilizatori" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
+      <Association Name="Clase_Elevi" Member="Clase" ThisKey="ClasaID" OtherKey="ClasaID" Type="Clase" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Materii" Member="Materiis">
-    <Type Name="Materii">
-      <Column Name="MaterieID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nume_materie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Materii_Predare" Member="Predares" ThisKey="MaterieID" OtherKey="MaterieID" Type="Predare" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Note" Member="Notes">
-    <Type Name="Note">
-      <Column Name="NotaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nota" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
-      <Column Name="DataNota" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="ElevID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Elevi_Note" Member="Elevi" ThisKey="ElevID" OtherKey="ElevID" Type="Elevi" IsForeignKey="true" />
-      <Association Name="Predare_Note" Member="Predare" ThisKey="PredareID" OtherKey="PredareID" Type="Predare" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Notificari" Member="Notificaris">
-    <Type Name="Notificari">
-      <Column Name="NotificareID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Data_Notificare" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Mesaj" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="ParinteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Parinti_Notificari" Member="Parinti" ThisKey="ParinteID" OtherKey="ParinteID" Type="Parinti" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Parinti" Member="Parintis">
-    <Type Name="Parinti">
-      <Column Name="ParinteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nume_parinte" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Prenume_parinte" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Numar_telefon" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Parinti_Elevi" Member="Elevis" ThisKey="ParinteID" OtherKey="ParinteID" Type="Elevi" />
-      <Association Name="Parinti_Notificari" Member="Notificaris" ThisKey="ParinteID" OtherKey="ParinteID" Type="Notificari" />
-      <Association Name="Utilizatori_Parinti" Member="Utilizatori" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Predare" Member="Predares">
-    <Type Name="Predare">
-      <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ProfesorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MaterieID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ClasaID" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
-      <Association Name="Predare_Absente" Member="Absentes" ThisKey="PredareID" OtherKey="PredareID" Type="Absente" />
-      <Association Name="Predare_Absente1" Member="Absente1s" ThisKey="PredareID" OtherKey="PredareID" Type="Absente1" />
-      <Association Name="Predare_Note" Member="Notes" ThisKey="PredareID" OtherKey="PredareID" Type="Note" />
-      <Association Name="Clase_Predare" Member="Clase" ThisKey="ClasaID" OtherKey="ClasaID" Type="Clase" IsForeignKey="true" />
-      <Association Name="Materii_Predare" Member="Materii" ThisKey="MaterieID" OtherKey="MaterieID" Type="Materii" IsForeignKey="true" />
-      <Association Name="Profesori_Predare" Member="Profesori" ThisKey="ProfesorID" OtherKey="ProfesorID" Type="Profesori" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Profesori" Member="Profesoris">
-    <Type Name="Profesori">
-      <Column Name="ProfesorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nume" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Prenume" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Grad" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Vechime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Profesori_Clase" Member="Clases" ThisKey="ProfesorID" OtherKey="Diriginte" Type="Clase" />
-      <Association Name="Profesori_Predare" Member="Predares" ThisKey="ProfesorID" OtherKey="ProfesorID" Type="Predare" />
-      <Association Name="Utilizatori_Profesori" Member="Utilizatori" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Utilizatori" Member="Utilizatoris">
-    <Type Name="Utilizatori">
-      <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Parola" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.Conturi" Member="Conturis">
+    <Type Name="Conturi">
+      <Column Name="ContID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="Rol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ImagineProfil" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Association Name="Utilizatori_Elevi" Member="Elevis" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Elevi" />
-      <Association Name="Utilizatori_Parinti" Member="Parintis" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Parinti" />
-      <Association Name="Utilizatori_Profesori" Member="Profesoris" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Profesori" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clase" Member="Clases">
+    <Type Name="Clase">
+      <Column Name="ClasaID" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="An_scolar" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Specializare" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Diriginte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Clase_Predare" Member="Predares" ThisKey="ClasaID" OtherKey="ClasaID" Type="Predare" />
+      <Association Name="Clase_OrarClase" Member="OrarClases" ThisKey="ClasaID" OtherKey="ClasaID" Type="OrarClase" />
+      <Association Name="Clase_Elevi" Member="Elevis" ThisKey="ClasaID" OtherKey="ClasaID" Type="Elevi" />
+      <Association Name="Profesori_Clase" Member="Profesori" ThisKey="Diriginte" OtherKey="ProfesorID" Type="Profesori" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Absente" Member="Absentes">
+    <Type Name="Absente">
+      <Column Name="AbsentaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Data_absenta" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Motivata" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ElevID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Elevi_Absente" Member="Elevi" ThisKey="ElevID" OtherKey="ElevID" Type="Elevi" IsForeignKey="true" />
+      <Association Name="Predare_Absente" Member="Predare" ThisKey="PredareID" OtherKey="PredareID" Type="Predare" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

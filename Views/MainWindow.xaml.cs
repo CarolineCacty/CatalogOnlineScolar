@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CatalogScolarOnline.Model;
 using CatalogScolarOnline.ViewModel;
+using CatalogScolarOnline.Views;
 
 namespace CatalogScolarOnline
 {
@@ -26,12 +27,16 @@ namespace CatalogScolarOnline
             InitializeComponent();
             ViewModel = new MainWindowViewModel();
             this.DataContext = ViewModel;
-
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var acasaPage = new Views.Acasa();
+                mainWindow.MainFrame.Navigate(acasaPage);
+            }
         }
 
         public void ReceiveEmail(string email)
         {
-            // Transmiți email-ul la ViewModel
             ViewModel.SetEmail(email);
         }
 
@@ -56,6 +61,10 @@ namespace CatalogScolarOnline
 
                 }
             }
+        }
+        private void Note_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Acasa());
         }
         private void Note_Button_Click(object sender, RoutedEventArgs e)
         {
