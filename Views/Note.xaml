@@ -43,7 +43,7 @@
 
                 <!-- Coloanele din DataGrid -->
                 <DataGrid.Columns>
-                <DataGridTextColumn Header="Materie" Binding="{Binding SubjectID}" Width="*" FontSize="14"/>
+                <DataGridTextColumn Header="Materie" Binding="{Binding Subject}" Width="*" FontSize="14"/>
                     <DataGridTextColumn Header="Nota" Binding="{Binding Grade}" Width="*" FontSize="14" />
                     <DataGridTextColumn Header="Data" Binding="{Binding Date}" Width="*" FontSize="14"/>
                 </DataGrid.Columns>

@@ -16,24 +16,15 @@ using System.Windows.Shapes;
 
 namespace CatalogScolarOnline.Views
 {
-    /// <summary>
-    /// Interaction logic for Note.xaml
-    /// </summary>
-    public partial class Note : Page
-    {
 
-        public GradesViewModel ViewModel { get; private set; }
-        public Note()
+    public partial class ProfilulMeu : Page
+    {
+        public ProfilulMeuViewModel ProfilulMeuViewModel { get; set; }
+        public ProfilulMeu()
         {
             InitializeComponent();
-            ViewModel = new GradesViewModel(); 
-            this.DataContext = ViewModel;
+            ProfilulMeuViewModel = new ProfilulMeuViewModel();
+            this.DataContext = ProfilulMeuViewModel;
         }
-
-        public void ReceiveEmail(string email)
-        {
-            ViewModel.SetEmail(email);
-        }
-
     }
 }

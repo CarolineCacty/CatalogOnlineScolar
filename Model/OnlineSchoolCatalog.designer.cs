@@ -30,42 +30,45 @@ namespace CatalogScolarOnline.Model
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAbsente(Absente instance);
-    partial void UpdateAbsente(Absente instance);
-    partial void DeleteAbsente(Absente instance);
-    partial void InsertAbsente1(Absente1 instance);
-    partial void UpdateAbsente1(Absente1 instance);
-    partial void DeleteAbsente1(Absente1 instance);
-    partial void InsertClase(Clase instance);
-    partial void UpdateClase(Clase instance);
-    partial void DeleteClase(Clase instance);
-    partial void InsertConturi(Conturi instance);
-    partial void UpdateConturi(Conturi instance);
-    partial void DeleteConturi(Conturi instance);
-    partial void InsertElevi(Elevi instance);
-    partial void UpdateElevi(Elevi instance);
-    partial void DeleteElevi(Elevi instance);
-    partial void InsertMaterii(Materii instance);
-    partial void UpdateMaterii(Materii instance);
-    partial void DeleteMaterii(Materii instance);
-    partial void InsertNote(Note instance);
-    partial void UpdateNote(Note instance);
-    partial void DeleteNote(Note instance);
-    partial void InsertNotificari(Notificari instance);
-    partial void UpdateNotificari(Notificari instance);
-    partial void DeleteNotificari(Notificari instance);
-    partial void InsertParinti(Parinti instance);
-    partial void UpdateParinti(Parinti instance);
-    partial void DeleteParinti(Parinti instance);
-    partial void InsertPredare(Predare instance);
-    partial void UpdatePredare(Predare instance);
-    partial void DeletePredare(Predare instance);
-    partial void InsertProfesori(Profesori instance);
-    partial void UpdateProfesori(Profesori instance);
-    partial void DeleteProfesori(Profesori instance);
     partial void InsertUtilizatori(Utilizatori instance);
     partial void UpdateUtilizatori(Utilizatori instance);
     partial void DeleteUtilizatori(Utilizatori instance);
+    partial void InsertProfesori(Profesori instance);
+    partial void UpdateProfesori(Profesori instance);
+    partial void DeleteProfesori(Profesori instance);
+    partial void InsertPredare(Predare instance);
+    partial void UpdatePredare(Predare instance);
+    partial void DeletePredare(Predare instance);
+    partial void InsertParinti(Parinti instance);
+    partial void UpdateParinti(Parinti instance);
+    partial void DeleteParinti(Parinti instance);
+    partial void InsertOrarClase(OrarClase instance);
+    partial void UpdateOrarClase(OrarClase instance);
+    partial void DeleteOrarClase(OrarClase instance);
+    partial void InsertNotificari(Notificari instance);
+    partial void UpdateNotificari(Notificari instance);
+    partial void DeleteNotificari(Notificari instance);
+    partial void InsertNote(Note instance);
+    partial void UpdateNote(Note instance);
+    partial void DeleteNote(Note instance);
+    partial void InsertMaterii(Materii instance);
+    partial void UpdateMaterii(Materii instance);
+    partial void DeleteMaterii(Materii instance);
+    partial void InsertIntervaleOre(IntervaleOre instance);
+    partial void UpdateIntervaleOre(IntervaleOre instance);
+    partial void DeleteIntervaleOre(IntervaleOre instance);
+    partial void InsertElevi(Elevi instance);
+    partial void UpdateElevi(Elevi instance);
+    partial void DeleteElevi(Elevi instance);
+    partial void InsertConturi(Conturi instance);
+    partial void UpdateConturi(Conturi instance);
+    partial void DeleteConturi(Conturi instance);
+    partial void InsertClase(Clase instance);
+    partial void UpdateClase(Clase instance);
+    partial void DeleteClase(Clase instance);
+    partial void InsertAbsente(Absente instance);
+    partial void UpdateAbsente(Absente instance);
+    partial void DeleteAbsente(Absente instance);
     #endregion
 		
 		public OnlineSchoolCatalogDataContext() : 
@@ -98,83 +101,11 @@ namespace CatalogScolarOnline.Model
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Absente> Absentes
+		public System.Data.Linq.Table<Utilizatori> Utilizatoris
 		{
 			get
 			{
-				return this.GetTable<Absente>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Absente1> Absente1s
-		{
-			get
-			{
-				return this.GetTable<Absente1>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Clase> Clases
-		{
-			get
-			{
-				return this.GetTable<Clase>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Conturi> Conturis
-		{
-			get
-			{
-				return this.GetTable<Conturi>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Elevi> Elevis
-		{
-			get
-			{
-				return this.GetTable<Elevi>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Materii> Materiis
-		{
-			get
-			{
-				return this.GetTable<Materii>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Note> Notes
-		{
-			get
-			{
-				return this.GetTable<Note>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Notificari> Notificaris
-		{
-			get
-			{
-				return this.GetTable<Notificari>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Parinti> Parintis
-		{
-			get
-			{
-				return this.GetTable<Parinti>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Predare> Predares
-		{
-			get
-			{
-				return this.GetTable<Predare>();
+				return this.GetTable<Utilizatori>();
 			}
 		}
 		
@@ -186,12 +117,2911 @@ namespace CatalogScolarOnline.Model
 			}
 		}
 		
-		public System.Data.Linq.Table<Utilizatori> Utilizatoris
+		public System.Data.Linq.Table<Predare> Predares
 		{
 			get
 			{
-				return this.GetTable<Utilizatori>();
+				return this.GetTable<Predare>();
 			}
+		}
+		
+		public System.Data.Linq.Table<Parinti> Parintis
+		{
+			get
+			{
+				return this.GetTable<Parinti>();
+			}
+		}
+		
+		public System.Data.Linq.Table<OrarClase> OrarClases
+		{
+			get
+			{
+				return this.GetTable<OrarClase>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Notificari> Notificaris
+		{
+			get
+			{
+				return this.GetTable<Notificari>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Note> Notes
+		{
+			get
+			{
+				return this.GetTable<Note>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Materii> Materiis
+		{
+			get
+			{
+				return this.GetTable<Materii>();
+			}
+		}
+		
+		public System.Data.Linq.Table<IntervaleOre> IntervaleOres
+		{
+			get
+			{
+				return this.GetTable<IntervaleOre>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Elevi> Elevis
+		{
+			get
+			{
+				return this.GetTable<Elevi>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Conturi> Conturis
+		{
+			get
+			{
+				return this.GetTable<Conturi>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Clase> Clases
+		{
+			get
+			{
+				return this.GetTable<Clase>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Absente> Absentes
+		{
+			get
+			{
+				return this.GetTable<Absente>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Utilizatori")]
+	public partial class Utilizatori : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UtilizatorID;
+		
+		private string _Parola;
+		
+		private string _Email;
+		
+		private int _Rol;
+		
+		private string _ImagineProfil;
+		
+		private EntitySet<Profesori> _Profesoris;
+		
+		private EntitySet<Parinti> _Parintis;
+		
+		private EntitySet<Elevi> _Elevis;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUtilizatorIDChanging(int value);
+    partial void OnUtilizatorIDChanged();
+    partial void OnParolaChanging(string value);
+    partial void OnParolaChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnRolChanging(int value);
+    partial void OnRolChanged();
+    partial void OnImagineProfilChanging(string value);
+    partial void OnImagineProfilChanged();
+    #endregion
+		
+		public Utilizatori()
+		{
+			this._Profesoris = new EntitySet<Profesori>(new Action<Profesori>(this.attach_Profesoris), new Action<Profesori>(this.detach_Profesoris));
+			this._Parintis = new EntitySet<Parinti>(new Action<Parinti>(this.attach_Parintis), new Action<Parinti>(this.detach_Parintis));
+			this._Elevis = new EntitySet<Elevi>(new Action<Elevi>(this.attach_Elevis), new Action<Elevi>(this.detach_Elevis));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UtilizatorID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UtilizatorID
+		{
+			get
+			{
+				return this._UtilizatorID;
+			}
+			set
+			{
+				if ((this._UtilizatorID != value))
+				{
+					this.OnUtilizatorIDChanging(value);
+					this.SendPropertyChanging();
+					this._UtilizatorID = value;
+					this.SendPropertyChanged("UtilizatorID");
+					this.OnUtilizatorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parola", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string Parola
+		{
+			get
+			{
+				return this._Parola;
+			}
+			set
+			{
+				if ((this._Parola != value))
+				{
+					this.OnParolaChanging(value);
+					this.SendPropertyChanging();
+					this._Parola = value;
+					this.SendPropertyChanged("Parola");
+					this.OnParolaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="Int NOT NULL")]
+		public int Rol
+		{
+			get
+			{
+				return this._Rol;
+			}
+			set
+			{
+				if ((this._Rol != value))
+				{
+					this.OnRolChanging(value);
+					this.SendPropertyChanging();
+					this._Rol = value;
+					this.SendPropertyChanged("Rol");
+					this.OnRolChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagineProfil", DbType="NVarChar(30)")]
+		public string ImagineProfil
+		{
+			get
+			{
+				return this._ImagineProfil;
+			}
+			set
+			{
+				if ((this._ImagineProfil != value))
+				{
+					this.OnImagineProfilChanging(value);
+					this.SendPropertyChanging();
+					this._ImagineProfil = value;
+					this.SendPropertyChanged("ImagineProfil");
+					this.OnImagineProfilChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Profesori", Storage="_Profesoris", ThisKey="UtilizatorID", OtherKey="UtilizatorID")]
+		public EntitySet<Profesori> Profesoris
+		{
+			get
+			{
+				return this._Profesoris;
+			}
+			set
+			{
+				this._Profesoris.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Parinti", Storage="_Parintis", ThisKey="UtilizatorID", OtherKey="UtilizatorID")]
+		public EntitySet<Parinti> Parintis
+		{
+			get
+			{
+				return this._Parintis;
+			}
+			set
+			{
+				this._Parintis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Elevi", Storage="_Elevis", ThisKey="UtilizatorID", OtherKey="UtilizatorID")]
+		public EntitySet<Elevi> Elevis
+		{
+			get
+			{
+				return this._Elevis;
+			}
+			set
+			{
+				this._Elevis.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Profesoris(Profesori entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori = this;
+		}
+		
+		private void detach_Profesoris(Profesori entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori = null;
+		}
+		
+		private void attach_Parintis(Parinti entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori = this;
+		}
+		
+		private void detach_Parintis(Parinti entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori = null;
+		}
+		
+		private void attach_Elevis(Elevi entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori = this;
+		}
+		
+		private void detach_Elevis(Elevi entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Profesori")]
+	public partial class Profesori : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ProfesorID;
+		
+		private string _Nume;
+		
+		private string _Prenume;
+		
+		private string _Grad;
+		
+		private System.Nullable<int> _Vechime;
+		
+		private int _UtilizatorID;
+		
+		private EntitySet<Predare> _Predares;
+		
+		private EntitySet<Clase> _Clases;
+		
+		private EntityRef<Utilizatori> _Utilizatori;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProfesorIDChanging(int value);
+    partial void OnProfesorIDChanged();
+    partial void OnNumeChanging(string value);
+    partial void OnNumeChanged();
+    partial void OnPrenumeChanging(string value);
+    partial void OnPrenumeChanged();
+    partial void OnGradChanging(string value);
+    partial void OnGradChanged();
+    partial void OnVechimeChanging(System.Nullable<int> value);
+    partial void OnVechimeChanged();
+    partial void OnUtilizatorIDChanging(int value);
+    partial void OnUtilizatorIDChanged();
+    #endregion
+		
+		public Profesori()
+		{
+			this._Predares = new EntitySet<Predare>(new Action<Predare>(this.attach_Predares), new Action<Predare>(this.detach_Predares));
+			this._Clases = new EntitySet<Clase>(new Action<Clase>(this.attach_Clases), new Action<Clase>(this.detach_Clases));
+			this._Utilizatori = default(EntityRef<Utilizatori>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfesorID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ProfesorID
+		{
+			get
+			{
+				return this._ProfesorID;
+			}
+			set
+			{
+				if ((this._ProfesorID != value))
+				{
+					this.OnProfesorIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProfesorID = value;
+					this.SendPropertyChanged("ProfesorID");
+					this.OnProfesorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nume
+		{
+			get
+			{
+				return this._Nume;
+			}
+			set
+			{
+				if ((this._Nume != value))
+				{
+					this.OnNumeChanging(value);
+					this.SendPropertyChanging();
+					this._Nume = value;
+					this.SendPropertyChanged("Nume");
+					this.OnNumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenume", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Prenume
+		{
+			get
+			{
+				return this._Prenume;
+			}
+			set
+			{
+				if ((this._Prenume != value))
+				{
+					this.OnPrenumeChanging(value);
+					this.SendPropertyChanging();
+					this._Prenume = value;
+					this.SendPropertyChanged("Prenume");
+					this.OnPrenumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Grad", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Grad
+		{
+			get
+			{
+				return this._Grad;
+			}
+			set
+			{
+				if ((this._Grad != value))
+				{
+					this.OnGradChanging(value);
+					this.SendPropertyChanging();
+					this._Grad = value;
+					this.SendPropertyChanged("Grad");
+					this.OnGradChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Vechime", DbType="Int")]
+		public System.Nullable<int> Vechime
+		{
+			get
+			{
+				return this._Vechime;
+			}
+			set
+			{
+				if ((this._Vechime != value))
+				{
+					this.OnVechimeChanging(value);
+					this.SendPropertyChanging();
+					this._Vechime = value;
+					this.SendPropertyChanged("Vechime");
+					this.OnVechimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UtilizatorID", DbType="Int NOT NULL")]
+		public int UtilizatorID
+		{
+			get
+			{
+				return this._UtilizatorID;
+			}
+			set
+			{
+				if ((this._UtilizatorID != value))
+				{
+					if (this._Utilizatori.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUtilizatorIDChanging(value);
+					this.SendPropertyChanging();
+					this._UtilizatorID = value;
+					this.SendPropertyChanged("UtilizatorID");
+					this.OnUtilizatorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesori_Predare", Storage="_Predares", ThisKey="ProfesorID", OtherKey="ProfesorID")]
+		public EntitySet<Predare> Predares
+		{
+			get
+			{
+				return this._Predares;
+			}
+			set
+			{
+				this._Predares.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesori_Clase", Storage="_Clases", ThisKey="ProfesorID", OtherKey="Diriginte")]
+		public EntitySet<Clase> Clases
+		{
+			get
+			{
+				return this._Clases;
+			}
+			set
+			{
+				this._Clases.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Profesori", Storage="_Utilizatori", ThisKey="UtilizatorID", OtherKey="UtilizatorID", IsForeignKey=true)]
+		public Utilizatori Utilizatori
+		{
+			get
+			{
+				return this._Utilizatori.Entity;
+			}
+			set
+			{
+				Utilizatori previousValue = this._Utilizatori.Entity;
+				if (((previousValue != value) 
+							|| (this._Utilizatori.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Utilizatori.Entity = null;
+						previousValue.Profesoris.Remove(this);
+					}
+					this._Utilizatori.Entity = value;
+					if ((value != null))
+					{
+						value.Profesoris.Add(this);
+						this._UtilizatorID = value.UtilizatorID;
+					}
+					else
+					{
+						this._UtilizatorID = default(int);
+					}
+					this.SendPropertyChanged("Utilizatori");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Predares(Predare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Profesori = this;
+		}
+		
+		private void detach_Predares(Predare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Profesori = null;
+		}
+		
+		private void attach_Clases(Clase entity)
+		{
+			this.SendPropertyChanging();
+			entity.Profesori = this;
+		}
+		
+		private void detach_Clases(Clase entity)
+		{
+			this.SendPropertyChanging();
+			entity.Profesori = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Predare")]
+	public partial class Predare : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PredareID;
+		
+		private int _ProfesorID;
+		
+		private int _MaterieID;
+		
+		private string _ClasaID;
+		
+		private EntitySet<OrarClase> _OrarClases;
+		
+		private EntitySet<Note> _Notes;
+		
+		private EntitySet<Absente> _Absentes;
+		
+		private EntityRef<Profesori> _Profesori;
+		
+		private EntityRef<Materii> _Materii;
+		
+		private EntityRef<Clase> _Clase;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPredareIDChanging(int value);
+    partial void OnPredareIDChanged();
+    partial void OnProfesorIDChanging(int value);
+    partial void OnProfesorIDChanged();
+    partial void OnMaterieIDChanging(int value);
+    partial void OnMaterieIDChanged();
+    partial void OnClasaIDChanging(string value);
+    partial void OnClasaIDChanged();
+    #endregion
+		
+		public Predare()
+		{
+			this._OrarClases = new EntitySet<OrarClase>(new Action<OrarClase>(this.attach_OrarClases), new Action<OrarClase>(this.detach_OrarClases));
+			this._Notes = new EntitySet<Note>(new Action<Note>(this.attach_Notes), new Action<Note>(this.detach_Notes));
+			this._Absentes = new EntitySet<Absente>(new Action<Absente>(this.attach_Absentes), new Action<Absente>(this.detach_Absentes));
+			this._Profesori = default(EntityRef<Profesori>);
+			this._Materii = default(EntityRef<Materii>);
+			this._Clase = default(EntityRef<Clase>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PredareID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PredareID
+		{
+			get
+			{
+				return this._PredareID;
+			}
+			set
+			{
+				if ((this._PredareID != value))
+				{
+					this.OnPredareIDChanging(value);
+					this.SendPropertyChanging();
+					this._PredareID = value;
+					this.SendPropertyChanged("PredareID");
+					this.OnPredareIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfesorID", DbType="Int NOT NULL")]
+		public int ProfesorID
+		{
+			get
+			{
+				return this._ProfesorID;
+			}
+			set
+			{
+				if ((this._ProfesorID != value))
+				{
+					if (this._Profesori.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProfesorIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProfesorID = value;
+					this.SendPropertyChanged("ProfesorID");
+					this.OnProfesorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaterieID", DbType="Int NOT NULL")]
+		public int MaterieID
+		{
+			get
+			{
+				return this._MaterieID;
+			}
+			set
+			{
+				if ((this._MaterieID != value))
+				{
+					if (this._Materii.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaterieIDChanging(value);
+					this.SendPropertyChanging();
+					this._MaterieID = value;
+					this.SendPropertyChanged("MaterieID");
+					this.OnMaterieIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClasaID", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string ClasaID
+		{
+			get
+			{
+				return this._ClasaID;
+			}
+			set
+			{
+				if ((this._ClasaID != value))
+				{
+					if (this._Clase.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnClasaIDChanging(value);
+					this.SendPropertyChanging();
+					this._ClasaID = value;
+					this.SendPropertyChanged("ClasaID");
+					this.OnClasaIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_OrarClase", Storage="_OrarClases", ThisKey="PredareID", OtherKey="PredareID")]
+		public EntitySet<OrarClase> OrarClases
+		{
+			get
+			{
+				return this._OrarClases;
+			}
+			set
+			{
+				this._OrarClases.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_Note", Storage="_Notes", ThisKey="PredareID", OtherKey="PredareID")]
+		public EntitySet<Note> Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				this._Notes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_Absente", Storage="_Absentes", ThisKey="PredareID", OtherKey="PredareID")]
+		public EntitySet<Absente> Absentes
+		{
+			get
+			{
+				return this._Absentes;
+			}
+			set
+			{
+				this._Absentes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesori_Predare", Storage="_Profesori", ThisKey="ProfesorID", OtherKey="ProfesorID", IsForeignKey=true)]
+		public Profesori Profesori
+		{
+			get
+			{
+				return this._Profesori.Entity;
+			}
+			set
+			{
+				Profesori previousValue = this._Profesori.Entity;
+				if (((previousValue != value) 
+							|| (this._Profesori.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Profesori.Entity = null;
+						previousValue.Predares.Remove(this);
+					}
+					this._Profesori.Entity = value;
+					if ((value != null))
+					{
+						value.Predares.Add(this);
+						this._ProfesorID = value.ProfesorID;
+					}
+					else
+					{
+						this._ProfesorID = default(int);
+					}
+					this.SendPropertyChanged("Profesori");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Materii_Predare", Storage="_Materii", ThisKey="MaterieID", OtherKey="MaterieID", IsForeignKey=true)]
+		public Materii Materii
+		{
+			get
+			{
+				return this._Materii.Entity;
+			}
+			set
+			{
+				Materii previousValue = this._Materii.Entity;
+				if (((previousValue != value) 
+							|| (this._Materii.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Materii.Entity = null;
+						previousValue.Predares.Remove(this);
+					}
+					this._Materii.Entity = value;
+					if ((value != null))
+					{
+						value.Predares.Add(this);
+						this._MaterieID = value.MaterieID;
+					}
+					else
+					{
+						this._MaterieID = default(int);
+					}
+					this.SendPropertyChanged("Materii");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_Predare", Storage="_Clase", ThisKey="ClasaID", OtherKey="ClasaID", IsForeignKey=true)]
+		public Clase Clase
+		{
+			get
+			{
+				return this._Clase.Entity;
+			}
+			set
+			{
+				Clase previousValue = this._Clase.Entity;
+				if (((previousValue != value) 
+							|| (this._Clase.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Clase.Entity = null;
+						previousValue.Predares.Remove(this);
+					}
+					this._Clase.Entity = value;
+					if ((value != null))
+					{
+						value.Predares.Add(this);
+						this._ClasaID = value.ClasaID;
+					}
+					else
+					{
+						this._ClasaID = default(string);
+					}
+					this.SendPropertyChanged("Clase");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_OrarClases(OrarClase entity)
+		{
+			this.SendPropertyChanging();
+			entity.Predare = this;
+		}
+		
+		private void detach_OrarClases(OrarClase entity)
+		{
+			this.SendPropertyChanging();
+			entity.Predare = null;
+		}
+		
+		private void attach_Notes(Note entity)
+		{
+			this.SendPropertyChanging();
+			entity.Predare = this;
+		}
+		
+		private void detach_Notes(Note entity)
+		{
+			this.SendPropertyChanging();
+			entity.Predare = null;
+		}
+		
+		private void attach_Absentes(Absente entity)
+		{
+			this.SendPropertyChanging();
+			entity.Predare = this;
+		}
+		
+		private void detach_Absentes(Absente entity)
+		{
+			this.SendPropertyChanging();
+			entity.Predare = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Parinti")]
+	public partial class Parinti : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ParinteID;
+		
+		private string _Nume_parinte;
+		
+		private string _Prenume_parinte;
+		
+		private string _Numar_telefon;
+		
+		private int _UtilizatorID;
+		
+		private EntitySet<Notificari> _Notificaris;
+		
+		private EntitySet<Elevi> _Elevis;
+		
+		private EntityRef<Utilizatori> _Utilizatori;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnParinteIDChanging(int value);
+    partial void OnParinteIDChanged();
+    partial void OnNume_parinteChanging(string value);
+    partial void OnNume_parinteChanged();
+    partial void OnPrenume_parinteChanging(string value);
+    partial void OnPrenume_parinteChanged();
+    partial void OnNumar_telefonChanging(string value);
+    partial void OnNumar_telefonChanged();
+    partial void OnUtilizatorIDChanging(int value);
+    partial void OnUtilizatorIDChanged();
+    #endregion
+		
+		public Parinti()
+		{
+			this._Notificaris = new EntitySet<Notificari>(new Action<Notificari>(this.attach_Notificaris), new Action<Notificari>(this.detach_Notificaris));
+			this._Elevis = new EntitySet<Elevi>(new Action<Elevi>(this.attach_Elevis), new Action<Elevi>(this.detach_Elevis));
+			this._Utilizatori = default(EntityRef<Utilizatori>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParinteID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ParinteID
+		{
+			get
+			{
+				return this._ParinteID;
+			}
+			set
+			{
+				if ((this._ParinteID != value))
+				{
+					this.OnParinteIDChanging(value);
+					this.SendPropertyChanging();
+					this._ParinteID = value;
+					this.SendPropertyChanged("ParinteID");
+					this.OnParinteIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume_parinte", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nume_parinte
+		{
+			get
+			{
+				return this._Nume_parinte;
+			}
+			set
+			{
+				if ((this._Nume_parinte != value))
+				{
+					this.OnNume_parinteChanging(value);
+					this.SendPropertyChanging();
+					this._Nume_parinte = value;
+					this.SendPropertyChanged("Nume_parinte");
+					this.OnNume_parinteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenume_parinte", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Prenume_parinte
+		{
+			get
+			{
+				return this._Prenume_parinte;
+			}
+			set
+			{
+				if ((this._Prenume_parinte != value))
+				{
+					this.OnPrenume_parinteChanging(value);
+					this.SendPropertyChanging();
+					this._Prenume_parinte = value;
+					this.SendPropertyChanged("Prenume_parinte");
+					this.OnPrenume_parinteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Numar_telefon", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string Numar_telefon
+		{
+			get
+			{
+				return this._Numar_telefon;
+			}
+			set
+			{
+				if ((this._Numar_telefon != value))
+				{
+					this.OnNumar_telefonChanging(value);
+					this.SendPropertyChanging();
+					this._Numar_telefon = value;
+					this.SendPropertyChanged("Numar_telefon");
+					this.OnNumar_telefonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UtilizatorID", DbType="Int NOT NULL")]
+		public int UtilizatorID
+		{
+			get
+			{
+				return this._UtilizatorID;
+			}
+			set
+			{
+				if ((this._UtilizatorID != value))
+				{
+					if (this._Utilizatori.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUtilizatorIDChanging(value);
+					this.SendPropertyChanging();
+					this._UtilizatorID = value;
+					this.SendPropertyChanged("UtilizatorID");
+					this.OnUtilizatorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Notificari", Storage="_Notificaris", ThisKey="ParinteID", OtherKey="ParinteID")]
+		public EntitySet<Notificari> Notificaris
+		{
+			get
+			{
+				return this._Notificaris;
+			}
+			set
+			{
+				this._Notificaris.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Elevi", Storage="_Elevis", ThisKey="ParinteID", OtherKey="ParinteID")]
+		public EntitySet<Elevi> Elevis
+		{
+			get
+			{
+				return this._Elevis;
+			}
+			set
+			{
+				this._Elevis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Parinti", Storage="_Utilizatori", ThisKey="UtilizatorID", OtherKey="UtilizatorID", IsForeignKey=true)]
+		public Utilizatori Utilizatori
+		{
+			get
+			{
+				return this._Utilizatori.Entity;
+			}
+			set
+			{
+				Utilizatori previousValue = this._Utilizatori.Entity;
+				if (((previousValue != value) 
+							|| (this._Utilizatori.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Utilizatori.Entity = null;
+						previousValue.Parintis.Remove(this);
+					}
+					this._Utilizatori.Entity = value;
+					if ((value != null))
+					{
+						value.Parintis.Add(this);
+						this._UtilizatorID = value.UtilizatorID;
+					}
+					else
+					{
+						this._UtilizatorID = default(int);
+					}
+					this.SendPropertyChanged("Utilizatori");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Notificaris(Notificari entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parinti = this;
+		}
+		
+		private void detach_Notificaris(Notificari entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parinti = null;
+		}
+		
+		private void attach_Elevis(Elevi entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parinti = this;
+		}
+		
+		private void detach_Elevis(Elevi entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parinti = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OrarClase")]
+	public partial class OrarClase : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ClasaID;
+		
+		private string _Zi_saptamana;
+		
+		private int _IntervalID;
+		
+		private int _PredareID;
+		
+		private EntityRef<Predare> _Predare;
+		
+		private EntityRef<IntervaleOre> _IntervaleOre;
+		
+		private EntityRef<Clase> _Clase;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnClasaIDChanging(string value);
+    partial void OnClasaIDChanged();
+    partial void OnZi_saptamanaChanging(string value);
+    partial void OnZi_saptamanaChanged();
+    partial void OnIntervalIDChanging(int value);
+    partial void OnIntervalIDChanged();
+    partial void OnPredareIDChanging(int value);
+    partial void OnPredareIDChanged();
+    #endregion
+		
+		public OrarClase()
+		{
+			this._Predare = default(EntityRef<Predare>);
+			this._IntervaleOre = default(EntityRef<IntervaleOre>);
+			this._Clase = default(EntityRef<Clase>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClasaID", DbType="NVarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ClasaID
+		{
+			get
+			{
+				return this._ClasaID;
+			}
+			set
+			{
+				if ((this._ClasaID != value))
+				{
+					if (this._Clase.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnClasaIDChanging(value);
+					this.SendPropertyChanging();
+					this._ClasaID = value;
+					this.SendPropertyChanged("ClasaID");
+					this.OnClasaIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zi_saptamana", DbType="NVarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Zi_saptamana
+		{
+			get
+			{
+				return this._Zi_saptamana;
+			}
+			set
+			{
+				if ((this._Zi_saptamana != value))
+				{
+					this.OnZi_saptamanaChanging(value);
+					this.SendPropertyChanging();
+					this._Zi_saptamana = value;
+					this.SendPropertyChanged("Zi_saptamana");
+					this.OnZi_saptamanaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IntervalID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int IntervalID
+		{
+			get
+			{
+				return this._IntervalID;
+			}
+			set
+			{
+				if ((this._IntervalID != value))
+				{
+					if (this._IntervaleOre.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIntervalIDChanging(value);
+					this.SendPropertyChanging();
+					this._IntervalID = value;
+					this.SendPropertyChanged("IntervalID");
+					this.OnIntervalIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PredareID", DbType="Int NOT NULL")]
+		public int PredareID
+		{
+			get
+			{
+				return this._PredareID;
+			}
+			set
+			{
+				if ((this._PredareID != value))
+				{
+					if (this._Predare.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPredareIDChanging(value);
+					this.SendPropertyChanging();
+					this._PredareID = value;
+					this.SendPropertyChanged("PredareID");
+					this.OnPredareIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_OrarClase", Storage="_Predare", ThisKey="PredareID", OtherKey="PredareID", IsForeignKey=true)]
+		public Predare Predare
+		{
+			get
+			{
+				return this._Predare.Entity;
+			}
+			set
+			{
+				Predare previousValue = this._Predare.Entity;
+				if (((previousValue != value) 
+							|| (this._Predare.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Predare.Entity = null;
+						previousValue.OrarClases.Remove(this);
+					}
+					this._Predare.Entity = value;
+					if ((value != null))
+					{
+						value.OrarClases.Add(this);
+						this._PredareID = value.PredareID;
+					}
+					else
+					{
+						this._PredareID = default(int);
+					}
+					this.SendPropertyChanged("Predare");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IntervaleOre_OrarClase", Storage="_IntervaleOre", ThisKey="IntervalID", OtherKey="IntervalID", IsForeignKey=true)]
+		public IntervaleOre IntervaleOre
+		{
+			get
+			{
+				return this._IntervaleOre.Entity;
+			}
+			set
+			{
+				IntervaleOre previousValue = this._IntervaleOre.Entity;
+				if (((previousValue != value) 
+							|| (this._IntervaleOre.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._IntervaleOre.Entity = null;
+						previousValue.OrarClases.Remove(this);
+					}
+					this._IntervaleOre.Entity = value;
+					if ((value != null))
+					{
+						value.OrarClases.Add(this);
+						this._IntervalID = value.IntervalID;
+					}
+					else
+					{
+						this._IntervalID = default(int);
+					}
+					this.SendPropertyChanged("IntervaleOre");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_OrarClase", Storage="_Clase", ThisKey="ClasaID", OtherKey="ClasaID", IsForeignKey=true)]
+		public Clase Clase
+		{
+			get
+			{
+				return this._Clase.Entity;
+			}
+			set
+			{
+				Clase previousValue = this._Clase.Entity;
+				if (((previousValue != value) 
+							|| (this._Clase.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Clase.Entity = null;
+						previousValue.OrarClases.Remove(this);
+					}
+					this._Clase.Entity = value;
+					if ((value != null))
+					{
+						value.OrarClases.Add(this);
+						this._ClasaID = value.ClasaID;
+					}
+					else
+					{
+						this._ClasaID = default(string);
+					}
+					this.SendPropertyChanged("Clase");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Notificari")]
+	public partial class Notificari : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _NotificareID;
+		
+		private System.DateTime _Data_Notificare;
+		
+		private string _Mesaj;
+		
+		private int _ParinteID;
+		
+		private EntityRef<Parinti> _Parinti;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNotificareIDChanging(int value);
+    partial void OnNotificareIDChanged();
+    partial void OnData_NotificareChanging(System.DateTime value);
+    partial void OnData_NotificareChanged();
+    partial void OnMesajChanging(string value);
+    partial void OnMesajChanged();
+    partial void OnParinteIDChanging(int value);
+    partial void OnParinteIDChanged();
+    #endregion
+		
+		public Notificari()
+		{
+			this._Parinti = default(EntityRef<Parinti>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NotificareID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int NotificareID
+		{
+			get
+			{
+				return this._NotificareID;
+			}
+			set
+			{
+				if ((this._NotificareID != value))
+				{
+					this.OnNotificareIDChanging(value);
+					this.SendPropertyChanging();
+					this._NotificareID = value;
+					this.SendPropertyChanged("NotificareID");
+					this.OnNotificareIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_Notificare", DbType="Date NOT NULL")]
+		public System.DateTime Data_Notificare
+		{
+			get
+			{
+				return this._Data_Notificare;
+			}
+			set
+			{
+				if ((this._Data_Notificare != value))
+				{
+					this.OnData_NotificareChanging(value);
+					this.SendPropertyChanging();
+					this._Data_Notificare = value;
+					this.SendPropertyChanged("Data_Notificare");
+					this.OnData_NotificareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mesaj", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string Mesaj
+		{
+			get
+			{
+				return this._Mesaj;
+			}
+			set
+			{
+				if ((this._Mesaj != value))
+				{
+					this.OnMesajChanging(value);
+					this.SendPropertyChanging();
+					this._Mesaj = value;
+					this.SendPropertyChanged("Mesaj");
+					this.OnMesajChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParinteID", DbType="Int NOT NULL")]
+		public int ParinteID
+		{
+			get
+			{
+				return this._ParinteID;
+			}
+			set
+			{
+				if ((this._ParinteID != value))
+				{
+					if (this._Parinti.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnParinteIDChanging(value);
+					this.SendPropertyChanging();
+					this._ParinteID = value;
+					this.SendPropertyChanged("ParinteID");
+					this.OnParinteIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Notificari", Storage="_Parinti", ThisKey="ParinteID", OtherKey="ParinteID", IsForeignKey=true)]
+		public Parinti Parinti
+		{
+			get
+			{
+				return this._Parinti.Entity;
+			}
+			set
+			{
+				Parinti previousValue = this._Parinti.Entity;
+				if (((previousValue != value) 
+							|| (this._Parinti.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Parinti.Entity = null;
+						previousValue.Notificaris.Remove(this);
+					}
+					this._Parinti.Entity = value;
+					if ((value != null))
+					{
+						value.Notificaris.Add(this);
+						this._ParinteID = value.ParinteID;
+					}
+					else
+					{
+						this._ParinteID = default(int);
+					}
+					this.SendPropertyChanged("Parinti");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Note")]
+	public partial class Note : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _NotaID;
+		
+		private decimal _Nota;
+		
+		private System.DateTime _DataNota;
+		
+		private int _ElevID;
+		
+		private int _PredareID;
+		
+		private EntityRef<Predare> _Predare;
+		
+		private EntityRef<Elevi> _Elevi;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNotaIDChanging(int value);
+    partial void OnNotaIDChanged();
+    partial void OnNotaChanging(decimal value);
+    partial void OnNotaChanged();
+    partial void OnDataNotaChanging(System.DateTime value);
+    partial void OnDataNotaChanged();
+    partial void OnElevIDChanging(int value);
+    partial void OnElevIDChanged();
+    partial void OnPredareIDChanging(int value);
+    partial void OnPredareIDChanged();
+    #endregion
+		
+		public Note()
+		{
+			this._Predare = default(EntityRef<Predare>);
+			this._Elevi = default(EntityRef<Elevi>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NotaID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int NotaID
+		{
+			get
+			{
+				return this._NotaID;
+			}
+			set
+			{
+				if ((this._NotaID != value))
+				{
+					this.OnNotaIDChanging(value);
+					this.SendPropertyChanging();
+					this._NotaID = value;
+					this.SendPropertyChanged("NotaID");
+					this.OnNotaIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nota", DbType="Decimal(4,2) NOT NULL")]
+		public decimal Nota
+		{
+			get
+			{
+				return this._Nota;
+			}
+			set
+			{
+				if ((this._Nota != value))
+				{
+					this.OnNotaChanging(value);
+					this.SendPropertyChanging();
+					this._Nota = value;
+					this.SendPropertyChanged("Nota");
+					this.OnNotaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataNota", DbType="Date NOT NULL")]
+		public System.DateTime DataNota
+		{
+			get
+			{
+				return this._DataNota;
+			}
+			set
+			{
+				if ((this._DataNota != value))
+				{
+					this.OnDataNotaChanging(value);
+					this.SendPropertyChanging();
+					this._DataNota = value;
+					this.SendPropertyChanged("DataNota");
+					this.OnDataNotaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ElevID", DbType="Int NOT NULL")]
+		public int ElevID
+		{
+			get
+			{
+				return this._ElevID;
+			}
+			set
+			{
+				if ((this._ElevID != value))
+				{
+					if (this._Elevi.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnElevIDChanging(value);
+					this.SendPropertyChanging();
+					this._ElevID = value;
+					this.SendPropertyChanged("ElevID");
+					this.OnElevIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PredareID", DbType="Int NOT NULL")]
+		public int PredareID
+		{
+			get
+			{
+				return this._PredareID;
+			}
+			set
+			{
+				if ((this._PredareID != value))
+				{
+					if (this._Predare.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPredareIDChanging(value);
+					this.SendPropertyChanging();
+					this._PredareID = value;
+					this.SendPropertyChanged("PredareID");
+					this.OnPredareIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_Note", Storage="_Predare", ThisKey="PredareID", OtherKey="PredareID", IsForeignKey=true)]
+		public Predare Predare
+		{
+			get
+			{
+				return this._Predare.Entity;
+			}
+			set
+			{
+				Predare previousValue = this._Predare.Entity;
+				if (((previousValue != value) 
+							|| (this._Predare.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Predare.Entity = null;
+						previousValue.Notes.Remove(this);
+					}
+					this._Predare.Entity = value;
+					if ((value != null))
+					{
+						value.Notes.Add(this);
+						this._PredareID = value.PredareID;
+					}
+					else
+					{
+						this._PredareID = default(int);
+					}
+					this.SendPropertyChanged("Predare");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_Note", Storage="_Elevi", ThisKey="ElevID", OtherKey="ElevID", IsForeignKey=true)]
+		public Elevi Elevi
+		{
+			get
+			{
+				return this._Elevi.Entity;
+			}
+			set
+			{
+				Elevi previousValue = this._Elevi.Entity;
+				if (((previousValue != value) 
+							|| (this._Elevi.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Elevi.Entity = null;
+						previousValue.Notes.Remove(this);
+					}
+					this._Elevi.Entity = value;
+					if ((value != null))
+					{
+						value.Notes.Add(this);
+						this._ElevID = value.ElevID;
+					}
+					else
+					{
+						this._ElevID = default(int);
+					}
+					this.SendPropertyChanged("Elevi");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Materii")]
+	public partial class Materii : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaterieID;
+		
+		private string _Nume_materie;
+		
+		private EntitySet<Predare> _Predares;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaterieIDChanging(int value);
+    partial void OnMaterieIDChanged();
+    partial void OnNume_materieChanging(string value);
+    partial void OnNume_materieChanged();
+    #endregion
+		
+		public Materii()
+		{
+			this._Predares = new EntitySet<Predare>(new Action<Predare>(this.attach_Predares), new Action<Predare>(this.detach_Predares));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaterieID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaterieID
+		{
+			get
+			{
+				return this._MaterieID;
+			}
+			set
+			{
+				if ((this._MaterieID != value))
+				{
+					this.OnMaterieIDChanging(value);
+					this.SendPropertyChanging();
+					this._MaterieID = value;
+					this.SendPropertyChanged("MaterieID");
+					this.OnMaterieIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume_materie", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nume_materie
+		{
+			get
+			{
+				return this._Nume_materie;
+			}
+			set
+			{
+				if ((this._Nume_materie != value))
+				{
+					this.OnNume_materieChanging(value);
+					this.SendPropertyChanging();
+					this._Nume_materie = value;
+					this.SendPropertyChanged("Nume_materie");
+					this.OnNume_materieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Materii_Predare", Storage="_Predares", ThisKey="MaterieID", OtherKey="MaterieID")]
+		public EntitySet<Predare> Predares
+		{
+			get
+			{
+				return this._Predares;
+			}
+			set
+			{
+				this._Predares.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Predares(Predare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Materii = this;
+		}
+		
+		private void detach_Predares(Predare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Materii = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IntervaleOre")]
+	public partial class IntervaleOre : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IntervalID;
+		
+		private System.TimeSpan _Ora_inceput;
+		
+		private System.TimeSpan _Ora_sfarsit;
+		
+		private EntitySet<OrarClase> _OrarClases;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIntervalIDChanging(int value);
+    partial void OnIntervalIDChanged();
+    partial void OnOra_inceputChanging(System.TimeSpan value);
+    partial void OnOra_inceputChanged();
+    partial void OnOra_sfarsitChanging(System.TimeSpan value);
+    partial void OnOra_sfarsitChanged();
+    #endregion
+		
+		public IntervaleOre()
+		{
+			this._OrarClases = new EntitySet<OrarClase>(new Action<OrarClase>(this.attach_OrarClases), new Action<OrarClase>(this.detach_OrarClases));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IntervalID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IntervalID
+		{
+			get
+			{
+				return this._IntervalID;
+			}
+			set
+			{
+				if ((this._IntervalID != value))
+				{
+					this.OnIntervalIDChanging(value);
+					this.SendPropertyChanging();
+					this._IntervalID = value;
+					this.SendPropertyChanged("IntervalID");
+					this.OnIntervalIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ora_inceput", DbType="Time NOT NULL")]
+		public System.TimeSpan Ora_inceput
+		{
+			get
+			{
+				return this._Ora_inceput;
+			}
+			set
+			{
+				if ((this._Ora_inceput != value))
+				{
+					this.OnOra_inceputChanging(value);
+					this.SendPropertyChanging();
+					this._Ora_inceput = value;
+					this.SendPropertyChanged("Ora_inceput");
+					this.OnOra_inceputChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ora_sfarsit", DbType="Time NOT NULL")]
+		public System.TimeSpan Ora_sfarsit
+		{
+			get
+			{
+				return this._Ora_sfarsit;
+			}
+			set
+			{
+				if ((this._Ora_sfarsit != value))
+				{
+					this.OnOra_sfarsitChanging(value);
+					this.SendPropertyChanging();
+					this._Ora_sfarsit = value;
+					this.SendPropertyChanged("Ora_sfarsit");
+					this.OnOra_sfarsitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="IntervaleOre_OrarClase", Storage="_OrarClases", ThisKey="IntervalID", OtherKey="IntervalID")]
+		public EntitySet<OrarClase> OrarClases
+		{
+			get
+			{
+				return this._OrarClases;
+			}
+			set
+			{
+				this._OrarClases.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_OrarClases(OrarClase entity)
+		{
+			this.SendPropertyChanging();
+			entity.IntervaleOre = this;
+		}
+		
+		private void detach_OrarClases(OrarClase entity)
+		{
+			this.SendPropertyChanging();
+			entity.IntervaleOre = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Elevi")]
+	public partial class Elevi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ElevID;
+		
+		private string _Nume;
+		
+		private string _Prenume;
+		
+		private System.DateTime _Data_nasterii;
+		
+		private string _Adresa;
+		
+		private string _ClasaID;
+		
+		private int _ParinteID;
+		
+		private int _UtilizatorID;
+		
+		private EntitySet<Note> _Notes;
+		
+		private EntitySet<Absente> _Absentes;
+		
+		private EntityRef<Parinti> _Parinti;
+		
+		private EntityRef<Utilizatori> _Utilizatori;
+		
+		private EntityRef<Clase> _Clase;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnElevIDChanging(int value);
+    partial void OnElevIDChanged();
+    partial void OnNumeChanging(string value);
+    partial void OnNumeChanged();
+    partial void OnPrenumeChanging(string value);
+    partial void OnPrenumeChanged();
+    partial void OnData_nasteriiChanging(System.DateTime value);
+    partial void OnData_nasteriiChanged();
+    partial void OnAdresaChanging(string value);
+    partial void OnAdresaChanged();
+    partial void OnClasaIDChanging(string value);
+    partial void OnClasaIDChanged();
+    partial void OnParinteIDChanging(int value);
+    partial void OnParinteIDChanged();
+    partial void OnUtilizatorIDChanging(int value);
+    partial void OnUtilizatorIDChanged();
+    #endregion
+		
+		public Elevi()
+		{
+			this._Notes = new EntitySet<Note>(new Action<Note>(this.attach_Notes), new Action<Note>(this.detach_Notes));
+			this._Absentes = new EntitySet<Absente>(new Action<Absente>(this.attach_Absentes), new Action<Absente>(this.detach_Absentes));
+			this._Parinti = default(EntityRef<Parinti>);
+			this._Utilizatori = default(EntityRef<Utilizatori>);
+			this._Clase = default(EntityRef<Clase>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ElevID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ElevID
+		{
+			get
+			{
+				return this._ElevID;
+			}
+			set
+			{
+				if ((this._ElevID != value))
+				{
+					this.OnElevIDChanging(value);
+					this.SendPropertyChanging();
+					this._ElevID = value;
+					this.SendPropertyChanged("ElevID");
+					this.OnElevIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nume
+		{
+			get
+			{
+				return this._Nume;
+			}
+			set
+			{
+				if ((this._Nume != value))
+				{
+					this.OnNumeChanging(value);
+					this.SendPropertyChanging();
+					this._Nume = value;
+					this.SendPropertyChanged("Nume");
+					this.OnNumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenume", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Prenume
+		{
+			get
+			{
+				return this._Prenume;
+			}
+			set
+			{
+				if ((this._Prenume != value))
+				{
+					this.OnPrenumeChanging(value);
+					this.SendPropertyChanging();
+					this._Prenume = value;
+					this.SendPropertyChanged("Prenume");
+					this.OnPrenumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_nasterii", DbType="Date NOT NULL")]
+		public System.DateTime Data_nasterii
+		{
+			get
+			{
+				return this._Data_nasterii;
+			}
+			set
+			{
+				if ((this._Data_nasterii != value))
+				{
+					this.OnData_nasteriiChanging(value);
+					this.SendPropertyChanging();
+					this._Data_nasterii = value;
+					this.SendPropertyChanged("Data_nasterii");
+					this.OnData_nasteriiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresa", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Adresa
+		{
+			get
+			{
+				return this._Adresa;
+			}
+			set
+			{
+				if ((this._Adresa != value))
+				{
+					this.OnAdresaChanging(value);
+					this.SendPropertyChanging();
+					this._Adresa = value;
+					this.SendPropertyChanged("Adresa");
+					this.OnAdresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClasaID", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string ClasaID
+		{
+			get
+			{
+				return this._ClasaID;
+			}
+			set
+			{
+				if ((this._ClasaID != value))
+				{
+					if (this._Clase.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnClasaIDChanging(value);
+					this.SendPropertyChanging();
+					this._ClasaID = value;
+					this.SendPropertyChanged("ClasaID");
+					this.OnClasaIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParinteID", DbType="Int NOT NULL")]
+		public int ParinteID
+		{
+			get
+			{
+				return this._ParinteID;
+			}
+			set
+			{
+				if ((this._ParinteID != value))
+				{
+					if (this._Parinti.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnParinteIDChanging(value);
+					this.SendPropertyChanging();
+					this._ParinteID = value;
+					this.SendPropertyChanged("ParinteID");
+					this.OnParinteIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UtilizatorID", DbType="Int NOT NULL")]
+		public int UtilizatorID
+		{
+			get
+			{
+				return this._UtilizatorID;
+			}
+			set
+			{
+				if ((this._UtilizatorID != value))
+				{
+					if (this._Utilizatori.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUtilizatorIDChanging(value);
+					this.SendPropertyChanging();
+					this._UtilizatorID = value;
+					this.SendPropertyChanged("UtilizatorID");
+					this.OnUtilizatorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_Note", Storage="_Notes", ThisKey="ElevID", OtherKey="ElevID")]
+		public EntitySet<Note> Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				this._Notes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_Absente", Storage="_Absentes", ThisKey="ElevID", OtherKey="ElevID")]
+		public EntitySet<Absente> Absentes
+		{
+			get
+			{
+				return this._Absentes;
+			}
+			set
+			{
+				this._Absentes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Elevi", Storage="_Parinti", ThisKey="ParinteID", OtherKey="ParinteID", IsForeignKey=true)]
+		public Parinti Parinti
+		{
+			get
+			{
+				return this._Parinti.Entity;
+			}
+			set
+			{
+				Parinti previousValue = this._Parinti.Entity;
+				if (((previousValue != value) 
+							|| (this._Parinti.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Parinti.Entity = null;
+						previousValue.Elevis.Remove(this);
+					}
+					this._Parinti.Entity = value;
+					if ((value != null))
+					{
+						value.Elevis.Add(this);
+						this._ParinteID = value.ParinteID;
+					}
+					else
+					{
+						this._ParinteID = default(int);
+					}
+					this.SendPropertyChanged("Parinti");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Elevi", Storage="_Utilizatori", ThisKey="UtilizatorID", OtherKey="UtilizatorID", IsForeignKey=true)]
+		public Utilizatori Utilizatori
+		{
+			get
+			{
+				return this._Utilizatori.Entity;
+			}
+			set
+			{
+				Utilizatori previousValue = this._Utilizatori.Entity;
+				if (((previousValue != value) 
+							|| (this._Utilizatori.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Utilizatori.Entity = null;
+						previousValue.Elevis.Remove(this);
+					}
+					this._Utilizatori.Entity = value;
+					if ((value != null))
+					{
+						value.Elevis.Add(this);
+						this._UtilizatorID = value.UtilizatorID;
+					}
+					else
+					{
+						this._UtilizatorID = default(int);
+					}
+					this.SendPropertyChanged("Utilizatori");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_Elevi", Storage="_Clase", ThisKey="ClasaID", OtherKey="ClasaID", IsForeignKey=true)]
+		public Clase Clase
+		{
+			get
+			{
+				return this._Clase.Entity;
+			}
+			set
+			{
+				Clase previousValue = this._Clase.Entity;
+				if (((previousValue != value) 
+							|| (this._Clase.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Clase.Entity = null;
+						previousValue.Elevis.Remove(this);
+					}
+					this._Clase.Entity = value;
+					if ((value != null))
+					{
+						value.Elevis.Add(this);
+						this._ClasaID = value.ClasaID;
+					}
+					else
+					{
+						this._ClasaID = default(string);
+					}
+					this.SendPropertyChanged("Clase");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Notes(Note entity)
+		{
+			this.SendPropertyChanging();
+			entity.Elevi = this;
+		}
+		
+		private void detach_Notes(Note entity)
+		{
+			this.SendPropertyChanging();
+			entity.Elevi = null;
+		}
+		
+		private void attach_Absentes(Absente entity)
+		{
+			this.SendPropertyChanging();
+			entity.Elevi = this;
+		}
+		
+		private void detach_Absentes(Absente entity)
+		{
+			this.SendPropertyChanging();
+			entity.Elevi = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Conturi")]
+	public partial class Conturi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ContID;
+		
+		private string _Email;
+		
+		private int _Rol;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnContIDChanging(int value);
+    partial void OnContIDChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnRolChanging(int value);
+    partial void OnRolChanged();
+    #endregion
+		
+		public Conturi()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ContID
+		{
+			get
+			{
+				return this._ContID;
+			}
+			set
+			{
+				if ((this._ContID != value))
+				{
+					this.OnContIDChanging(value);
+					this.SendPropertyChanging();
+					this._ContID = value;
+					this.SendPropertyChanged("ContID");
+					this.OnContIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="Int NOT NULL")]
+		public int Rol
+		{
+			get
+			{
+				return this._Rol;
+			}
+			set
+			{
+				if ((this._Rol != value))
+				{
+					this.OnRolChanging(value);
+					this.SendPropertyChanging();
+					this._Rol = value;
+					this.SendPropertyChanged("Rol");
+					this.OnRolChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Clase")]
+	public partial class Clase : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ClasaID;
+		
+		private int _An_scolar;
+		
+		private string _Specializare;
+		
+		private int _Diriginte;
+		
+		private EntitySet<Predare> _Predares;
+		
+		private EntitySet<OrarClase> _OrarClases;
+		
+		private EntitySet<Elevi> _Elevis;
+		
+		private EntityRef<Profesori> _Profesori;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnClasaIDChanging(string value);
+    partial void OnClasaIDChanged();
+    partial void OnAn_scolarChanging(int value);
+    partial void OnAn_scolarChanged();
+    partial void OnSpecializareChanging(string value);
+    partial void OnSpecializareChanged();
+    partial void OnDiriginteChanging(int value);
+    partial void OnDiriginteChanged();
+    #endregion
+		
+		public Clase()
+		{
+			this._Predares = new EntitySet<Predare>(new Action<Predare>(this.attach_Predares), new Action<Predare>(this.detach_Predares));
+			this._OrarClases = new EntitySet<OrarClase>(new Action<OrarClase>(this.attach_OrarClases), new Action<OrarClase>(this.detach_OrarClases));
+			this._Elevis = new EntitySet<Elevi>(new Action<Elevi>(this.attach_Elevis), new Action<Elevi>(this.detach_Elevis));
+			this._Profesori = default(EntityRef<Profesori>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClasaID", DbType="NVarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ClasaID
+		{
+			get
+			{
+				return this._ClasaID;
+			}
+			set
+			{
+				if ((this._ClasaID != value))
+				{
+					this.OnClasaIDChanging(value);
+					this.SendPropertyChanging();
+					this._ClasaID = value;
+					this.SendPropertyChanged("ClasaID");
+					this.OnClasaIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_An_scolar", DbType="Int NOT NULL")]
+		public int An_scolar
+		{
+			get
+			{
+				return this._An_scolar;
+			}
+			set
+			{
+				if ((this._An_scolar != value))
+				{
+					this.OnAn_scolarChanging(value);
+					this.SendPropertyChanging();
+					this._An_scolar = value;
+					this.SendPropertyChanged("An_scolar");
+					this.OnAn_scolarChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Specializare", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Specializare
+		{
+			get
+			{
+				return this._Specializare;
+			}
+			set
+			{
+				if ((this._Specializare != value))
+				{
+					this.OnSpecializareChanging(value);
+					this.SendPropertyChanging();
+					this._Specializare = value;
+					this.SendPropertyChanged("Specializare");
+					this.OnSpecializareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diriginte", DbType="Int NOT NULL")]
+		public int Diriginte
+		{
+			get
+			{
+				return this._Diriginte;
+			}
+			set
+			{
+				if ((this._Diriginte != value))
+				{
+					if (this._Profesori.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDiriginteChanging(value);
+					this.SendPropertyChanging();
+					this._Diriginte = value;
+					this.SendPropertyChanged("Diriginte");
+					this.OnDiriginteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_Predare", Storage="_Predares", ThisKey="ClasaID", OtherKey="ClasaID")]
+		public EntitySet<Predare> Predares
+		{
+			get
+			{
+				return this._Predares;
+			}
+			set
+			{
+				this._Predares.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_OrarClase", Storage="_OrarClases", ThisKey="ClasaID", OtherKey="ClasaID")]
+		public EntitySet<OrarClase> OrarClases
+		{
+			get
+			{
+				return this._OrarClases;
+			}
+			set
+			{
+				this._OrarClases.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_Elevi", Storage="_Elevis", ThisKey="ClasaID", OtherKey="ClasaID")]
+		public EntitySet<Elevi> Elevis
+		{
+			get
+			{
+				return this._Elevis;
+			}
+			set
+			{
+				this._Elevis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesori_Clase", Storage="_Profesori", ThisKey="Diriginte", OtherKey="ProfesorID", IsForeignKey=true)]
+		public Profesori Profesori
+		{
+			get
+			{
+				return this._Profesori.Entity;
+			}
+			set
+			{
+				Profesori previousValue = this._Profesori.Entity;
+				if (((previousValue != value) 
+							|| (this._Profesori.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Profesori.Entity = null;
+						previousValue.Clases.Remove(this);
+					}
+					this._Profesori.Entity = value;
+					if ((value != null))
+					{
+						value.Clases.Add(this);
+						this._Diriginte = value.ProfesorID;
+					}
+					else
+					{
+						this._Diriginte = default(int);
+					}
+					this.SendPropertyChanged("Profesori");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Predares(Predare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clase = this;
+		}
+		
+		private void detach_Predares(Predare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clase = null;
+		}
+		
+		private void attach_OrarClases(OrarClase entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clase = this;
+		}
+		
+		private void detach_OrarClases(OrarClase entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clase = null;
+		}
+		
+		private void attach_Elevis(Elevi entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clase = this;
+		}
+		
+		private void detach_Elevis(Elevi entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clase = null;
 		}
 	}
 	
@@ -432,2670 +3262,6 @@ namespace CatalogScolarOnline.Model
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Absente")]
-	public partial class Absente1 : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _AbsentaID;
-		
-		private System.DateTime _Data_absenta;
-		
-		private bool _Motivata;
-		
-		private int _ElevID;
-		
-		private int _PredareID;
-		
-		private EntityRef<Elevi> _Elevi;
-		
-		private EntityRef<Predare> _Predare;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAbsentaIDChanging(int value);
-    partial void OnAbsentaIDChanged();
-    partial void OnData_absentaChanging(System.DateTime value);
-    partial void OnData_absentaChanged();
-    partial void OnMotivataChanging(bool value);
-    partial void OnMotivataChanged();
-    partial void OnElevIDChanging(int value);
-    partial void OnElevIDChanged();
-    partial void OnPredareIDChanging(int value);
-    partial void OnPredareIDChanged();
-    #endregion
-		
-		public Absente1()
-		{
-			this._Elevi = default(EntityRef<Elevi>);
-			this._Predare = default(EntityRef<Predare>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AbsentaID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int AbsentaID
-		{
-			get
-			{
-				return this._AbsentaID;
-			}
-			set
-			{
-				if ((this._AbsentaID != value))
-				{
-					this.OnAbsentaIDChanging(value);
-					this.SendPropertyChanging();
-					this._AbsentaID = value;
-					this.SendPropertyChanged("AbsentaID");
-					this.OnAbsentaIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_absenta", DbType="Date NOT NULL")]
-		public System.DateTime Data_absenta
-		{
-			get
-			{
-				return this._Data_absenta;
-			}
-			set
-			{
-				if ((this._Data_absenta != value))
-				{
-					this.OnData_absentaChanging(value);
-					this.SendPropertyChanging();
-					this._Data_absenta = value;
-					this.SendPropertyChanged("Data_absenta");
-					this.OnData_absentaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Motivata", DbType="Bit NOT NULL")]
-		public bool Motivata
-		{
-			get
-			{
-				return this._Motivata;
-			}
-			set
-			{
-				if ((this._Motivata != value))
-				{
-					this.OnMotivataChanging(value);
-					this.SendPropertyChanging();
-					this._Motivata = value;
-					this.SendPropertyChanged("Motivata");
-					this.OnMotivataChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ElevID", DbType="Int NOT NULL")]
-		public int ElevID
-		{
-			get
-			{
-				return this._ElevID;
-			}
-			set
-			{
-				if ((this._ElevID != value))
-				{
-					if (this._Elevi.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnElevIDChanging(value);
-					this.SendPropertyChanging();
-					this._ElevID = value;
-					this.SendPropertyChanged("ElevID");
-					this.OnElevIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PredareID", DbType="Int NOT NULL")]
-		public int PredareID
-		{
-			get
-			{
-				return this._PredareID;
-			}
-			set
-			{
-				if ((this._PredareID != value))
-				{
-					if (this._Predare.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPredareIDChanging(value);
-					this.SendPropertyChanging();
-					this._PredareID = value;
-					this.SendPropertyChanged("PredareID");
-					this.OnPredareIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_Absente1", Storage="_Elevi", ThisKey="ElevID", OtherKey="ElevID", IsForeignKey=true)]
-		public Elevi Elevi
-		{
-			get
-			{
-				return this._Elevi.Entity;
-			}
-			set
-			{
-				Elevi previousValue = this._Elevi.Entity;
-				if (((previousValue != value) 
-							|| (this._Elevi.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Elevi.Entity = null;
-						previousValue.Absente1s.Remove(this);
-					}
-					this._Elevi.Entity = value;
-					if ((value != null))
-					{
-						value.Absente1s.Add(this);
-						this._ElevID = value.ElevID;
-					}
-					else
-					{
-						this._ElevID = default(int);
-					}
-					this.SendPropertyChanged("Elevi");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_Absente1", Storage="_Predare", ThisKey="PredareID", OtherKey="PredareID", IsForeignKey=true)]
-		public Predare Predare
-		{
-			get
-			{
-				return this._Predare.Entity;
-			}
-			set
-			{
-				Predare previousValue = this._Predare.Entity;
-				if (((previousValue != value) 
-							|| (this._Predare.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Predare.Entity = null;
-						previousValue.Absente1s.Remove(this);
-					}
-					this._Predare.Entity = value;
-					if ((value != null))
-					{
-						value.Absente1s.Add(this);
-						this._PredareID = value.PredareID;
-					}
-					else
-					{
-						this._PredareID = default(int);
-					}
-					this.SendPropertyChanged("Predare");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Clase")]
-	public partial class Clase : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _ClasaID;
-		
-		private int _An_scolar;
-		
-		private string _Specializare;
-		
-		private int _Diriginte;
-		
-		private EntitySet<Elevi> _Elevis;
-		
-		private EntitySet<Predare> _Predares;
-		
-		private EntityRef<Profesori> _Profesori;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnClasaIDChanging(string value);
-    partial void OnClasaIDChanged();
-    partial void OnAn_scolarChanging(int value);
-    partial void OnAn_scolarChanged();
-    partial void OnSpecializareChanging(string value);
-    partial void OnSpecializareChanged();
-    partial void OnDiriginteChanging(int value);
-    partial void OnDiriginteChanged();
-    #endregion
-		
-		public Clase()
-		{
-			this._Elevis = new EntitySet<Elevi>(new Action<Elevi>(this.attach_Elevis), new Action<Elevi>(this.detach_Elevis));
-			this._Predares = new EntitySet<Predare>(new Action<Predare>(this.attach_Predares), new Action<Predare>(this.detach_Predares));
-			this._Profesori = default(EntityRef<Profesori>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClasaID", DbType="NVarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ClasaID
-		{
-			get
-			{
-				return this._ClasaID;
-			}
-			set
-			{
-				if ((this._ClasaID != value))
-				{
-					this.OnClasaIDChanging(value);
-					this.SendPropertyChanging();
-					this._ClasaID = value;
-					this.SendPropertyChanged("ClasaID");
-					this.OnClasaIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_An_scolar", DbType="Int NOT NULL")]
-		public int An_scolar
-		{
-			get
-			{
-				return this._An_scolar;
-			}
-			set
-			{
-				if ((this._An_scolar != value))
-				{
-					this.OnAn_scolarChanging(value);
-					this.SendPropertyChanging();
-					this._An_scolar = value;
-					this.SendPropertyChanged("An_scolar");
-					this.OnAn_scolarChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Specializare", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Specializare
-		{
-			get
-			{
-				return this._Specializare;
-			}
-			set
-			{
-				if ((this._Specializare != value))
-				{
-					this.OnSpecializareChanging(value);
-					this.SendPropertyChanging();
-					this._Specializare = value;
-					this.SendPropertyChanged("Specializare");
-					this.OnSpecializareChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diriginte", DbType="Int NOT NULL")]
-		public int Diriginte
-		{
-			get
-			{
-				return this._Diriginte;
-			}
-			set
-			{
-				if ((this._Diriginte != value))
-				{
-					if (this._Profesori.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnDiriginteChanging(value);
-					this.SendPropertyChanging();
-					this._Diriginte = value;
-					this.SendPropertyChanged("Diriginte");
-					this.OnDiriginteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_Elevi", Storage="_Elevis", ThisKey="ClasaID", OtherKey="ClasaID")]
-		public EntitySet<Elevi> Elevis
-		{
-			get
-			{
-				return this._Elevis;
-			}
-			set
-			{
-				this._Elevis.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_Predare", Storage="_Predares", ThisKey="ClasaID", OtherKey="ClasaID")]
-		public EntitySet<Predare> Predares
-		{
-			get
-			{
-				return this._Predares;
-			}
-			set
-			{
-				this._Predares.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesori_Clase", Storage="_Profesori", ThisKey="Diriginte", OtherKey="ProfesorID", IsForeignKey=true)]
-		public Profesori Profesori
-		{
-			get
-			{
-				return this._Profesori.Entity;
-			}
-			set
-			{
-				Profesori previousValue = this._Profesori.Entity;
-				if (((previousValue != value) 
-							|| (this._Profesori.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Profesori.Entity = null;
-						previousValue.Clases.Remove(this);
-					}
-					this._Profesori.Entity = value;
-					if ((value != null))
-					{
-						value.Clases.Add(this);
-						this._Diriginte = value.ProfesorID;
-					}
-					else
-					{
-						this._Diriginte = default(int);
-					}
-					this.SendPropertyChanged("Profesori");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Elevis(Elevi entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clase = this;
-		}
-		
-		private void detach_Elevis(Elevi entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clase = null;
-		}
-		
-		private void attach_Predares(Predare entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clase = this;
-		}
-		
-		private void detach_Predares(Predare entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clase = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Conturi")]
-	public partial class Conturi : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ContID;
-		
-		private string _Email;
-		
-		private int _Rol;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnContIDChanging(int value);
-    partial void OnContIDChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnRolChanging(int value);
-    partial void OnRolChanged();
-    #endregion
-		
-		public Conturi()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ContID
-		{
-			get
-			{
-				return this._ContID;
-			}
-			set
-			{
-				if ((this._ContID != value))
-				{
-					this.OnContIDChanging(value);
-					this.SendPropertyChanging();
-					this._ContID = value;
-					this.SendPropertyChanged("ContID");
-					this.OnContIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="Int NOT NULL")]
-		public int Rol
-		{
-			get
-			{
-				return this._Rol;
-			}
-			set
-			{
-				if ((this._Rol != value))
-				{
-					this.OnRolChanging(value);
-					this.SendPropertyChanging();
-					this._Rol = value;
-					this.SendPropertyChanged("Rol");
-					this.OnRolChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Elevi")]
-	public partial class Elevi : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ElevID;
-		
-		private string _Nume;
-		
-		private string _Prenume;
-		
-		private System.DateTime _Data_nasterii;
-		
-		private string _Adresa;
-		
-		private string _ClasaID;
-		
-		private int _ParinteID;
-		
-		private int _UtilizatorID;
-		
-		private EntitySet<Absente> _Absentes;
-		
-		private EntitySet<Absente1> _Absente1s;
-		
-		private EntitySet<Note> _Notes;
-		
-		private EntityRef<Clase> _Clase;
-		
-		private EntityRef<Parinti> _Parinti;
-		
-		private EntityRef<Utilizatori> _Utilizatori;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnElevIDChanging(int value);
-    partial void OnElevIDChanged();
-    partial void OnNumeChanging(string value);
-    partial void OnNumeChanged();
-    partial void OnPrenumeChanging(string value);
-    partial void OnPrenumeChanged();
-    partial void OnData_nasteriiChanging(System.DateTime value);
-    partial void OnData_nasteriiChanged();
-    partial void OnAdresaChanging(string value);
-    partial void OnAdresaChanged();
-    partial void OnClasaIDChanging(string value);
-    partial void OnClasaIDChanged();
-    partial void OnParinteIDChanging(int value);
-    partial void OnParinteIDChanged();
-    partial void OnUtilizatorIDChanging(int value);
-    partial void OnUtilizatorIDChanged();
-    #endregion
-		
-		public Elevi()
-		{
-			this._Absentes = new EntitySet<Absente>(new Action<Absente>(this.attach_Absentes), new Action<Absente>(this.detach_Absentes));
-			this._Absente1s = new EntitySet<Absente1>(new Action<Absente1>(this.attach_Absente1s), new Action<Absente1>(this.detach_Absente1s));
-			this._Notes = new EntitySet<Note>(new Action<Note>(this.attach_Notes), new Action<Note>(this.detach_Notes));
-			this._Clase = default(EntityRef<Clase>);
-			this._Parinti = default(EntityRef<Parinti>);
-			this._Utilizatori = default(EntityRef<Utilizatori>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ElevID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ElevID
-		{
-			get
-			{
-				return this._ElevID;
-			}
-			set
-			{
-				if ((this._ElevID != value))
-				{
-					this.OnElevIDChanging(value);
-					this.SendPropertyChanging();
-					this._ElevID = value;
-					this.SendPropertyChanged("ElevID");
-					this.OnElevIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nume
-		{
-			get
-			{
-				return this._Nume;
-			}
-			set
-			{
-				if ((this._Nume != value))
-				{
-					this.OnNumeChanging(value);
-					this.SendPropertyChanging();
-					this._Nume = value;
-					this.SendPropertyChanged("Nume");
-					this.OnNumeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenume", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Prenume
-		{
-			get
-			{
-				return this._Prenume;
-			}
-			set
-			{
-				if ((this._Prenume != value))
-				{
-					this.OnPrenumeChanging(value);
-					this.SendPropertyChanging();
-					this._Prenume = value;
-					this.SendPropertyChanged("Prenume");
-					this.OnPrenumeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_nasterii", DbType="Date NOT NULL")]
-		public System.DateTime Data_nasterii
-		{
-			get
-			{
-				return this._Data_nasterii;
-			}
-			set
-			{
-				if ((this._Data_nasterii != value))
-				{
-					this.OnData_nasteriiChanging(value);
-					this.SendPropertyChanging();
-					this._Data_nasterii = value;
-					this.SendPropertyChanged("Data_nasterii");
-					this.OnData_nasteriiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresa", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string Adresa
-		{
-			get
-			{
-				return this._Adresa;
-			}
-			set
-			{
-				if ((this._Adresa != value))
-				{
-					this.OnAdresaChanging(value);
-					this.SendPropertyChanging();
-					this._Adresa = value;
-					this.SendPropertyChanged("Adresa");
-					this.OnAdresaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClasaID", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
-		public string ClasaID
-		{
-			get
-			{
-				return this._ClasaID;
-			}
-			set
-			{
-				if ((this._ClasaID != value))
-				{
-					if (this._Clase.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnClasaIDChanging(value);
-					this.SendPropertyChanging();
-					this._ClasaID = value;
-					this.SendPropertyChanged("ClasaID");
-					this.OnClasaIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParinteID", DbType="Int NOT NULL")]
-		public int ParinteID
-		{
-			get
-			{
-				return this._ParinteID;
-			}
-			set
-			{
-				if ((this._ParinteID != value))
-				{
-					if (this._Parinti.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnParinteIDChanging(value);
-					this.SendPropertyChanging();
-					this._ParinteID = value;
-					this.SendPropertyChanged("ParinteID");
-					this.OnParinteIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UtilizatorID", DbType="Int NOT NULL")]
-		public int UtilizatorID
-		{
-			get
-			{
-				return this._UtilizatorID;
-			}
-			set
-			{
-				if ((this._UtilizatorID != value))
-				{
-					if (this._Utilizatori.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUtilizatorIDChanging(value);
-					this.SendPropertyChanging();
-					this._UtilizatorID = value;
-					this.SendPropertyChanged("UtilizatorID");
-					this.OnUtilizatorIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_Absente", Storage="_Absentes", ThisKey="ElevID", OtherKey="ElevID")]
-		public EntitySet<Absente> Absentes
-		{
-			get
-			{
-				return this._Absentes;
-			}
-			set
-			{
-				this._Absentes.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_Absente1", Storage="_Absente1s", ThisKey="ElevID", OtherKey="ElevID")]
-		public EntitySet<Absente1> Absente1s
-		{
-			get
-			{
-				return this._Absente1s;
-			}
-			set
-			{
-				this._Absente1s.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_Note", Storage="_Notes", ThisKey="ElevID", OtherKey="ElevID")]
-		public EntitySet<Note> Notes
-		{
-			get
-			{
-				return this._Notes;
-			}
-			set
-			{
-				this._Notes.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_Elevi", Storage="_Clase", ThisKey="ClasaID", OtherKey="ClasaID", IsForeignKey=true)]
-		public Clase Clase
-		{
-			get
-			{
-				return this._Clase.Entity;
-			}
-			set
-			{
-				Clase previousValue = this._Clase.Entity;
-				if (((previousValue != value) 
-							|| (this._Clase.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Clase.Entity = null;
-						previousValue.Elevis.Remove(this);
-					}
-					this._Clase.Entity = value;
-					if ((value != null))
-					{
-						value.Elevis.Add(this);
-						this._ClasaID = value.ClasaID;
-					}
-					else
-					{
-						this._ClasaID = default(string);
-					}
-					this.SendPropertyChanged("Clase");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Elevi", Storage="_Parinti", ThisKey="ParinteID", OtherKey="ParinteID", IsForeignKey=true)]
-		public Parinti Parinti
-		{
-			get
-			{
-				return this._Parinti.Entity;
-			}
-			set
-			{
-				Parinti previousValue = this._Parinti.Entity;
-				if (((previousValue != value) 
-							|| (this._Parinti.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Parinti.Entity = null;
-						previousValue.Elevis.Remove(this);
-					}
-					this._Parinti.Entity = value;
-					if ((value != null))
-					{
-						value.Elevis.Add(this);
-						this._ParinteID = value.ParinteID;
-					}
-					else
-					{
-						this._ParinteID = default(int);
-					}
-					this.SendPropertyChanged("Parinti");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Elevi", Storage="_Utilizatori", ThisKey="UtilizatorID", OtherKey="UtilizatorID", IsForeignKey=true)]
-		public Utilizatori Utilizatori
-		{
-			get
-			{
-				return this._Utilizatori.Entity;
-			}
-			set
-			{
-				Utilizatori previousValue = this._Utilizatori.Entity;
-				if (((previousValue != value) 
-							|| (this._Utilizatori.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Utilizatori.Entity = null;
-						previousValue.Elevis.Remove(this);
-					}
-					this._Utilizatori.Entity = value;
-					if ((value != null))
-					{
-						value.Elevis.Add(this);
-						this._UtilizatorID = value.UtilizatorID;
-					}
-					else
-					{
-						this._UtilizatorID = default(int);
-					}
-					this.SendPropertyChanged("Utilizatori");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Absentes(Absente entity)
-		{
-			this.SendPropertyChanging();
-			entity.Elevi = this;
-		}
-		
-		private void detach_Absentes(Absente entity)
-		{
-			this.SendPropertyChanging();
-			entity.Elevi = null;
-		}
-		
-		private void attach_Absente1s(Absente1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Elevi = this;
-		}
-		
-		private void detach_Absente1s(Absente1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Elevi = null;
-		}
-		
-		private void attach_Notes(Note entity)
-		{
-			this.SendPropertyChanging();
-			entity.Elevi = this;
-		}
-		
-		private void detach_Notes(Note entity)
-		{
-			this.SendPropertyChanging();
-			entity.Elevi = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Materii")]
-	public partial class Materii : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaterieID;
-		
-		private string _Nume_materie;
-		
-		private EntitySet<Predare> _Predares;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaterieIDChanging(int value);
-    partial void OnMaterieIDChanged();
-    partial void OnNume_materieChanging(string value);
-    partial void OnNume_materieChanged();
-    #endregion
-		
-		public Materii()
-		{
-			this._Predares = new EntitySet<Predare>(new Action<Predare>(this.attach_Predares), new Action<Predare>(this.detach_Predares));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaterieID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaterieID
-		{
-			get
-			{
-				return this._MaterieID;
-			}
-			set
-			{
-				if ((this._MaterieID != value))
-				{
-					this.OnMaterieIDChanging(value);
-					this.SendPropertyChanging();
-					this._MaterieID = value;
-					this.SendPropertyChanged("MaterieID");
-					this.OnMaterieIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume_materie", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nume_materie
-		{
-			get
-			{
-				return this._Nume_materie;
-			}
-			set
-			{
-				if ((this._Nume_materie != value))
-				{
-					this.OnNume_materieChanging(value);
-					this.SendPropertyChanging();
-					this._Nume_materie = value;
-					this.SendPropertyChanged("Nume_materie");
-					this.OnNume_materieChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Materii_Predare", Storage="_Predares", ThisKey="MaterieID", OtherKey="MaterieID")]
-		public EntitySet<Predare> Predares
-		{
-			get
-			{
-				return this._Predares;
-			}
-			set
-			{
-				this._Predares.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Predares(Predare entity)
-		{
-			this.SendPropertyChanging();
-			entity.Materii = this;
-		}
-		
-		private void detach_Predares(Predare entity)
-		{
-			this.SendPropertyChanging();
-			entity.Materii = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Note")]
-	public partial class Note : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _NotaID;
-		
-		private decimal _Nota;
-		
-		private System.DateTime _DataNota;
-		
-		private int _ElevID;
-		
-		private int _PredareID;
-		
-		private EntityRef<Elevi> _Elevi;
-		
-		private EntityRef<Predare> _Predare;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnNotaIDChanging(int value);
-    partial void OnNotaIDChanged();
-    partial void OnNotaChanging(decimal value);
-    partial void OnNotaChanged();
-    partial void OnDataNotaChanging(System.DateTime value);
-    partial void OnDataNotaChanged();
-    partial void OnElevIDChanging(int value);
-    partial void OnElevIDChanged();
-    partial void OnPredareIDChanging(int value);
-    partial void OnPredareIDChanged();
-    #endregion
-		
-		public Note()
-		{
-			this._Elevi = default(EntityRef<Elevi>);
-			this._Predare = default(EntityRef<Predare>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NotaID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int NotaID
-		{
-			get
-			{
-				return this._NotaID;
-			}
-			set
-			{
-				if ((this._NotaID != value))
-				{
-					this.OnNotaIDChanging(value);
-					this.SendPropertyChanging();
-					this._NotaID = value;
-					this.SendPropertyChanged("NotaID");
-					this.OnNotaIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nota", DbType="Decimal(4,2) NOT NULL")]
-		public decimal Nota
-		{
-			get
-			{
-				return this._Nota;
-			}
-			set
-			{
-				if ((this._Nota != value))
-				{
-					this.OnNotaChanging(value);
-					this.SendPropertyChanging();
-					this._Nota = value;
-					this.SendPropertyChanged("Nota");
-					this.OnNotaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataNota", DbType="Date NOT NULL")]
-		public System.DateTime DataNota
-		{
-			get
-			{
-				return this._DataNota;
-			}
-			set
-			{
-				if ((this._DataNota != value))
-				{
-					this.OnDataNotaChanging(value);
-					this.SendPropertyChanging();
-					this._DataNota = value;
-					this.SendPropertyChanged("DataNota");
-					this.OnDataNotaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ElevID", DbType="Int NOT NULL")]
-		public int ElevID
-		{
-			get
-			{
-				return this._ElevID;
-			}
-			set
-			{
-				if ((this._ElevID != value))
-				{
-					if (this._Elevi.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnElevIDChanging(value);
-					this.SendPropertyChanging();
-					this._ElevID = value;
-					this.SendPropertyChanged("ElevID");
-					this.OnElevIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PredareID", DbType="Int NOT NULL")]
-		public int PredareID
-		{
-			get
-			{
-				return this._PredareID;
-			}
-			set
-			{
-				if ((this._PredareID != value))
-				{
-					if (this._Predare.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPredareIDChanging(value);
-					this.SendPropertyChanging();
-					this._PredareID = value;
-					this.SendPropertyChanged("PredareID");
-					this.OnPredareIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_Note", Storage="_Elevi", ThisKey="ElevID", OtherKey="ElevID", IsForeignKey=true)]
-		public Elevi Elevi
-		{
-			get
-			{
-				return this._Elevi.Entity;
-			}
-			set
-			{
-				Elevi previousValue = this._Elevi.Entity;
-				if (((previousValue != value) 
-							|| (this._Elevi.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Elevi.Entity = null;
-						previousValue.Notes.Remove(this);
-					}
-					this._Elevi.Entity = value;
-					if ((value != null))
-					{
-						value.Notes.Add(this);
-						this._ElevID = value.ElevID;
-					}
-					else
-					{
-						this._ElevID = default(int);
-					}
-					this.SendPropertyChanged("Elevi");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_Note", Storage="_Predare", ThisKey="PredareID", OtherKey="PredareID", IsForeignKey=true)]
-		public Predare Predare
-		{
-			get
-			{
-				return this._Predare.Entity;
-			}
-			set
-			{
-				Predare previousValue = this._Predare.Entity;
-				if (((previousValue != value) 
-							|| (this._Predare.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Predare.Entity = null;
-						previousValue.Notes.Remove(this);
-					}
-					this._Predare.Entity = value;
-					if ((value != null))
-					{
-						value.Notes.Add(this);
-						this._PredareID = value.PredareID;
-					}
-					else
-					{
-						this._PredareID = default(int);
-					}
-					this.SendPropertyChanged("Predare");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Notificari")]
-	public partial class Notificari : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _NotificareID;
-		
-		private System.DateTime _Data_Notificare;
-		
-		private string _Mesaj;
-		
-		private int _ParinteID;
-		
-		private EntityRef<Parinti> _Parinti;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnNotificareIDChanging(int value);
-    partial void OnNotificareIDChanged();
-    partial void OnData_NotificareChanging(System.DateTime value);
-    partial void OnData_NotificareChanged();
-    partial void OnMesajChanging(string value);
-    partial void OnMesajChanged();
-    partial void OnParinteIDChanging(int value);
-    partial void OnParinteIDChanged();
-    #endregion
-		
-		public Notificari()
-		{
-			this._Parinti = default(EntityRef<Parinti>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NotificareID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int NotificareID
-		{
-			get
-			{
-				return this._NotificareID;
-			}
-			set
-			{
-				if ((this._NotificareID != value))
-				{
-					this.OnNotificareIDChanging(value);
-					this.SendPropertyChanging();
-					this._NotificareID = value;
-					this.SendPropertyChanged("NotificareID");
-					this.OnNotificareIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_Notificare", DbType="Date NOT NULL")]
-		public System.DateTime Data_Notificare
-		{
-			get
-			{
-				return this._Data_Notificare;
-			}
-			set
-			{
-				if ((this._Data_Notificare != value))
-				{
-					this.OnData_NotificareChanging(value);
-					this.SendPropertyChanging();
-					this._Data_Notificare = value;
-					this.SendPropertyChanged("Data_Notificare");
-					this.OnData_NotificareChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mesaj", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string Mesaj
-		{
-			get
-			{
-				return this._Mesaj;
-			}
-			set
-			{
-				if ((this._Mesaj != value))
-				{
-					this.OnMesajChanging(value);
-					this.SendPropertyChanging();
-					this._Mesaj = value;
-					this.SendPropertyChanged("Mesaj");
-					this.OnMesajChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParinteID", DbType="Int NOT NULL")]
-		public int ParinteID
-		{
-			get
-			{
-				return this._ParinteID;
-			}
-			set
-			{
-				if ((this._ParinteID != value))
-				{
-					if (this._Parinti.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnParinteIDChanging(value);
-					this.SendPropertyChanging();
-					this._ParinteID = value;
-					this.SendPropertyChanged("ParinteID");
-					this.OnParinteIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Notificari", Storage="_Parinti", ThisKey="ParinteID", OtherKey="ParinteID", IsForeignKey=true)]
-		public Parinti Parinti
-		{
-			get
-			{
-				return this._Parinti.Entity;
-			}
-			set
-			{
-				Parinti previousValue = this._Parinti.Entity;
-				if (((previousValue != value) 
-							|| (this._Parinti.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Parinti.Entity = null;
-						previousValue.Notificaris.Remove(this);
-					}
-					this._Parinti.Entity = value;
-					if ((value != null))
-					{
-						value.Notificaris.Add(this);
-						this._ParinteID = value.ParinteID;
-					}
-					else
-					{
-						this._ParinteID = default(int);
-					}
-					this.SendPropertyChanged("Parinti");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Parinti")]
-	public partial class Parinti : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ParinteID;
-		
-		private string _Nume_parinte;
-		
-		private string _Prenume_parinte;
-		
-		private string _Numar_telefon;
-		
-		private int _UtilizatorID;
-		
-		private EntitySet<Elevi> _Elevis;
-		
-		private EntitySet<Notificari> _Notificaris;
-		
-		private EntityRef<Utilizatori> _Utilizatori;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnParinteIDChanging(int value);
-    partial void OnParinteIDChanged();
-    partial void OnNume_parinteChanging(string value);
-    partial void OnNume_parinteChanged();
-    partial void OnPrenume_parinteChanging(string value);
-    partial void OnPrenume_parinteChanged();
-    partial void OnNumar_telefonChanging(string value);
-    partial void OnNumar_telefonChanged();
-    partial void OnUtilizatorIDChanging(int value);
-    partial void OnUtilizatorIDChanged();
-    #endregion
-		
-		public Parinti()
-		{
-			this._Elevis = new EntitySet<Elevi>(new Action<Elevi>(this.attach_Elevis), new Action<Elevi>(this.detach_Elevis));
-			this._Notificaris = new EntitySet<Notificari>(new Action<Notificari>(this.attach_Notificaris), new Action<Notificari>(this.detach_Notificaris));
-			this._Utilizatori = default(EntityRef<Utilizatori>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParinteID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ParinteID
-		{
-			get
-			{
-				return this._ParinteID;
-			}
-			set
-			{
-				if ((this._ParinteID != value))
-				{
-					this.OnParinteIDChanging(value);
-					this.SendPropertyChanging();
-					this._ParinteID = value;
-					this.SendPropertyChanged("ParinteID");
-					this.OnParinteIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume_parinte", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nume_parinte
-		{
-			get
-			{
-				return this._Nume_parinte;
-			}
-			set
-			{
-				if ((this._Nume_parinte != value))
-				{
-					this.OnNume_parinteChanging(value);
-					this.SendPropertyChanging();
-					this._Nume_parinte = value;
-					this.SendPropertyChanged("Nume_parinte");
-					this.OnNume_parinteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenume_parinte", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Prenume_parinte
-		{
-			get
-			{
-				return this._Prenume_parinte;
-			}
-			set
-			{
-				if ((this._Prenume_parinte != value))
-				{
-					this.OnPrenume_parinteChanging(value);
-					this.SendPropertyChanging();
-					this._Prenume_parinte = value;
-					this.SendPropertyChanged("Prenume_parinte");
-					this.OnPrenume_parinteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Numar_telefon", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string Numar_telefon
-		{
-			get
-			{
-				return this._Numar_telefon;
-			}
-			set
-			{
-				if ((this._Numar_telefon != value))
-				{
-					this.OnNumar_telefonChanging(value);
-					this.SendPropertyChanging();
-					this._Numar_telefon = value;
-					this.SendPropertyChanged("Numar_telefon");
-					this.OnNumar_telefonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UtilizatorID", DbType="Int NOT NULL")]
-		public int UtilizatorID
-		{
-			get
-			{
-				return this._UtilizatorID;
-			}
-			set
-			{
-				if ((this._UtilizatorID != value))
-				{
-					if (this._Utilizatori.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUtilizatorIDChanging(value);
-					this.SendPropertyChanging();
-					this._UtilizatorID = value;
-					this.SendPropertyChanged("UtilizatorID");
-					this.OnUtilizatorIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Elevi", Storage="_Elevis", ThisKey="ParinteID", OtherKey="ParinteID")]
-		public EntitySet<Elevi> Elevis
-		{
-			get
-			{
-				return this._Elevis;
-			}
-			set
-			{
-				this._Elevis.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Notificari", Storage="_Notificaris", ThisKey="ParinteID", OtherKey="ParinteID")]
-		public EntitySet<Notificari> Notificaris
-		{
-			get
-			{
-				return this._Notificaris;
-			}
-			set
-			{
-				this._Notificaris.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Parinti", Storage="_Utilizatori", ThisKey="UtilizatorID", OtherKey="UtilizatorID", IsForeignKey=true)]
-		public Utilizatori Utilizatori
-		{
-			get
-			{
-				return this._Utilizatori.Entity;
-			}
-			set
-			{
-				Utilizatori previousValue = this._Utilizatori.Entity;
-				if (((previousValue != value) 
-							|| (this._Utilizatori.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Utilizatori.Entity = null;
-						previousValue.Parintis.Remove(this);
-					}
-					this._Utilizatori.Entity = value;
-					if ((value != null))
-					{
-						value.Parintis.Add(this);
-						this._UtilizatorID = value.UtilizatorID;
-					}
-					else
-					{
-						this._UtilizatorID = default(int);
-					}
-					this.SendPropertyChanged("Utilizatori");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Elevis(Elevi entity)
-		{
-			this.SendPropertyChanging();
-			entity.Parinti = this;
-		}
-		
-		private void detach_Elevis(Elevi entity)
-		{
-			this.SendPropertyChanging();
-			entity.Parinti = null;
-		}
-		
-		private void attach_Notificaris(Notificari entity)
-		{
-			this.SendPropertyChanging();
-			entity.Parinti = this;
-		}
-		
-		private void detach_Notificaris(Notificari entity)
-		{
-			this.SendPropertyChanging();
-			entity.Parinti = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Predare")]
-	public partial class Predare : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _PredareID;
-		
-		private int _ProfesorID;
-		
-		private int _MaterieID;
-		
-		private string _ClasaID;
-		
-		private EntitySet<Absente> _Absentes;
-		
-		private EntitySet<Absente1> _Absente1s;
-		
-		private EntitySet<Note> _Notes;
-		
-		private EntityRef<Clase> _Clase;
-		
-		private EntityRef<Materii> _Materii;
-		
-		private EntityRef<Profesori> _Profesori;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPredareIDChanging(int value);
-    partial void OnPredareIDChanged();
-    partial void OnProfesorIDChanging(int value);
-    partial void OnProfesorIDChanged();
-    partial void OnMaterieIDChanging(int value);
-    partial void OnMaterieIDChanged();
-    partial void OnClasaIDChanging(string value);
-    partial void OnClasaIDChanged();
-    #endregion
-		
-		public Predare()
-		{
-			this._Absentes = new EntitySet<Absente>(new Action<Absente>(this.attach_Absentes), new Action<Absente>(this.detach_Absentes));
-			this._Absente1s = new EntitySet<Absente1>(new Action<Absente1>(this.attach_Absente1s), new Action<Absente1>(this.detach_Absente1s));
-			this._Notes = new EntitySet<Note>(new Action<Note>(this.attach_Notes), new Action<Note>(this.detach_Notes));
-			this._Clase = default(EntityRef<Clase>);
-			this._Materii = default(EntityRef<Materii>);
-			this._Profesori = default(EntityRef<Profesori>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PredareID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int PredareID
-		{
-			get
-			{
-				return this._PredareID;
-			}
-			set
-			{
-				if ((this._PredareID != value))
-				{
-					this.OnPredareIDChanging(value);
-					this.SendPropertyChanging();
-					this._PredareID = value;
-					this.SendPropertyChanged("PredareID");
-					this.OnPredareIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfesorID", DbType="Int NOT NULL")]
-		public int ProfesorID
-		{
-			get
-			{
-				return this._ProfesorID;
-			}
-			set
-			{
-				if ((this._ProfesorID != value))
-				{
-					if (this._Profesori.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProfesorIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProfesorID = value;
-					this.SendPropertyChanged("ProfesorID");
-					this.OnProfesorIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaterieID", DbType="Int NOT NULL")]
-		public int MaterieID
-		{
-			get
-			{
-				return this._MaterieID;
-			}
-			set
-			{
-				if ((this._MaterieID != value))
-				{
-					if (this._Materii.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMaterieIDChanging(value);
-					this.SendPropertyChanging();
-					this._MaterieID = value;
-					this.SendPropertyChanged("MaterieID");
-					this.OnMaterieIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClasaID", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
-		public string ClasaID
-		{
-			get
-			{
-				return this._ClasaID;
-			}
-			set
-			{
-				if ((this._ClasaID != value))
-				{
-					if (this._Clase.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnClasaIDChanging(value);
-					this.SendPropertyChanging();
-					this._ClasaID = value;
-					this.SendPropertyChanged("ClasaID");
-					this.OnClasaIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_Absente", Storage="_Absentes", ThisKey="PredareID", OtherKey="PredareID")]
-		public EntitySet<Absente> Absentes
-		{
-			get
-			{
-				return this._Absentes;
-			}
-			set
-			{
-				this._Absentes.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_Absente1", Storage="_Absente1s", ThisKey="PredareID", OtherKey="PredareID")]
-		public EntitySet<Absente1> Absente1s
-		{
-			get
-			{
-				return this._Absente1s;
-			}
-			set
-			{
-				this._Absente1s.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Predare_Note", Storage="_Notes", ThisKey="PredareID", OtherKey="PredareID")]
-		public EntitySet<Note> Notes
-		{
-			get
-			{
-				return this._Notes;
-			}
-			set
-			{
-				this._Notes.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clase_Predare", Storage="_Clase", ThisKey="ClasaID", OtherKey="ClasaID", IsForeignKey=true)]
-		public Clase Clase
-		{
-			get
-			{
-				return this._Clase.Entity;
-			}
-			set
-			{
-				Clase previousValue = this._Clase.Entity;
-				if (((previousValue != value) 
-							|| (this._Clase.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Clase.Entity = null;
-						previousValue.Predares.Remove(this);
-					}
-					this._Clase.Entity = value;
-					if ((value != null))
-					{
-						value.Predares.Add(this);
-						this._ClasaID = value.ClasaID;
-					}
-					else
-					{
-						this._ClasaID = default(string);
-					}
-					this.SendPropertyChanged("Clase");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Materii_Predare", Storage="_Materii", ThisKey="MaterieID", OtherKey="MaterieID", IsForeignKey=true)]
-		public Materii Materii
-		{
-			get
-			{
-				return this._Materii.Entity;
-			}
-			set
-			{
-				Materii previousValue = this._Materii.Entity;
-				if (((previousValue != value) 
-							|| (this._Materii.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Materii.Entity = null;
-						previousValue.Predares.Remove(this);
-					}
-					this._Materii.Entity = value;
-					if ((value != null))
-					{
-						value.Predares.Add(this);
-						this._MaterieID = value.MaterieID;
-					}
-					else
-					{
-						this._MaterieID = default(int);
-					}
-					this.SendPropertyChanged("Materii");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesori_Predare", Storage="_Profesori", ThisKey="ProfesorID", OtherKey="ProfesorID", IsForeignKey=true)]
-		public Profesori Profesori
-		{
-			get
-			{
-				return this._Profesori.Entity;
-			}
-			set
-			{
-				Profesori previousValue = this._Profesori.Entity;
-				if (((previousValue != value) 
-							|| (this._Profesori.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Profesori.Entity = null;
-						previousValue.Predares.Remove(this);
-					}
-					this._Profesori.Entity = value;
-					if ((value != null))
-					{
-						value.Predares.Add(this);
-						this._ProfesorID = value.ProfesorID;
-					}
-					else
-					{
-						this._ProfesorID = default(int);
-					}
-					this.SendPropertyChanged("Profesori");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Absentes(Absente entity)
-		{
-			this.SendPropertyChanging();
-			entity.Predare = this;
-		}
-		
-		private void detach_Absentes(Absente entity)
-		{
-			this.SendPropertyChanging();
-			entity.Predare = null;
-		}
-		
-		private void attach_Absente1s(Absente1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Predare = this;
-		}
-		
-		private void detach_Absente1s(Absente1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Predare = null;
-		}
-		
-		private void attach_Notes(Note entity)
-		{
-			this.SendPropertyChanging();
-			entity.Predare = this;
-		}
-		
-		private void detach_Notes(Note entity)
-		{
-			this.SendPropertyChanging();
-			entity.Predare = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Profesori")]
-	public partial class Profesori : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ProfesorID;
-		
-		private string _Nume;
-		
-		private string _Prenume;
-		
-		private string _Grad;
-		
-		private int _Vechime;
-		
-		private int _UtilizatorID;
-		
-		private EntitySet<Clase> _Clases;
-		
-		private EntitySet<Predare> _Predares;
-		
-		private EntityRef<Utilizatori> _Utilizatori;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnProfesorIDChanging(int value);
-    partial void OnProfesorIDChanged();
-    partial void OnNumeChanging(string value);
-    partial void OnNumeChanged();
-    partial void OnPrenumeChanging(string value);
-    partial void OnPrenumeChanged();
-    partial void OnGradChanging(string value);
-    partial void OnGradChanged();
-    partial void OnVechimeChanging(int value);
-    partial void OnVechimeChanged();
-    partial void OnUtilizatorIDChanging(int value);
-    partial void OnUtilizatorIDChanged();
-    #endregion
-		
-		public Profesori()
-		{
-			this._Clases = new EntitySet<Clase>(new Action<Clase>(this.attach_Clases), new Action<Clase>(this.detach_Clases));
-			this._Predares = new EntitySet<Predare>(new Action<Predare>(this.attach_Predares), new Action<Predare>(this.detach_Predares));
-			this._Utilizatori = default(EntityRef<Utilizatori>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfesorID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ProfesorID
-		{
-			get
-			{
-				return this._ProfesorID;
-			}
-			set
-			{
-				if ((this._ProfesorID != value))
-				{
-					this.OnProfesorIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProfesorID = value;
-					this.SendPropertyChanged("ProfesorID");
-					this.OnProfesorIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nume
-		{
-			get
-			{
-				return this._Nume;
-			}
-			set
-			{
-				if ((this._Nume != value))
-				{
-					this.OnNumeChanging(value);
-					this.SendPropertyChanging();
-					this._Nume = value;
-					this.SendPropertyChanged("Nume");
-					this.OnNumeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prenume", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Prenume
-		{
-			get
-			{
-				return this._Prenume;
-			}
-			set
-			{
-				if ((this._Prenume != value))
-				{
-					this.OnPrenumeChanging(value);
-					this.SendPropertyChanging();
-					this._Prenume = value;
-					this.SendPropertyChanged("Prenume");
-					this.OnPrenumeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Grad", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string Grad
-		{
-			get
-			{
-				return this._Grad;
-			}
-			set
-			{
-				if ((this._Grad != value))
-				{
-					this.OnGradChanging(value);
-					this.SendPropertyChanging();
-					this._Grad = value;
-					this.SendPropertyChanged("Grad");
-					this.OnGradChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Vechime", DbType="Int NOT NULL")]
-		public int Vechime
-		{
-			get
-			{
-				return this._Vechime;
-			}
-			set
-			{
-				if ((this._Vechime != value))
-				{
-					this.OnVechimeChanging(value);
-					this.SendPropertyChanging();
-					this._Vechime = value;
-					this.SendPropertyChanged("Vechime");
-					this.OnVechimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UtilizatorID", DbType="Int NOT NULL")]
-		public int UtilizatorID
-		{
-			get
-			{
-				return this._UtilizatorID;
-			}
-			set
-			{
-				if ((this._UtilizatorID != value))
-				{
-					if (this._Utilizatori.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUtilizatorIDChanging(value);
-					this.SendPropertyChanging();
-					this._UtilizatorID = value;
-					this.SendPropertyChanged("UtilizatorID");
-					this.OnUtilizatorIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesori_Clase", Storage="_Clases", ThisKey="ProfesorID", OtherKey="Diriginte")]
-		public EntitySet<Clase> Clases
-		{
-			get
-			{
-				return this._Clases;
-			}
-			set
-			{
-				this._Clases.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Profesori_Predare", Storage="_Predares", ThisKey="ProfesorID", OtherKey="ProfesorID")]
-		public EntitySet<Predare> Predares
-		{
-			get
-			{
-				return this._Predares;
-			}
-			set
-			{
-				this._Predares.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Profesori", Storage="_Utilizatori", ThisKey="UtilizatorID", OtherKey="UtilizatorID", IsForeignKey=true)]
-		public Utilizatori Utilizatori
-		{
-			get
-			{
-				return this._Utilizatori.Entity;
-			}
-			set
-			{
-				Utilizatori previousValue = this._Utilizatori.Entity;
-				if (((previousValue != value) 
-							|| (this._Utilizatori.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Utilizatori.Entity = null;
-						previousValue.Profesoris.Remove(this);
-					}
-					this._Utilizatori.Entity = value;
-					if ((value != null))
-					{
-						value.Profesoris.Add(this);
-						this._UtilizatorID = value.UtilizatorID;
-					}
-					else
-					{
-						this._UtilizatorID = default(int);
-					}
-					this.SendPropertyChanged("Utilizatori");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Clases(Clase entity)
-		{
-			this.SendPropertyChanging();
-			entity.Profesori = this;
-		}
-		
-		private void detach_Clases(Clase entity)
-		{
-			this.SendPropertyChanging();
-			entity.Profesori = null;
-		}
-		
-		private void attach_Predares(Predare entity)
-		{
-			this.SendPropertyChanging();
-			entity.Profesori = this;
-		}
-		
-		private void detach_Predares(Predare entity)
-		{
-			this.SendPropertyChanging();
-			entity.Profesori = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Utilizatori")]
-	public partial class Utilizatori : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UtilizatorID;
-		
-		private string _Parola;
-		
-		private string _Email;
-		
-		private int _Rol;
-		
-		private string _ImagineProfil;
-		
-		private EntitySet<Elevi> _Elevis;
-		
-		private EntitySet<Parinti> _Parintis;
-		
-		private EntitySet<Profesori> _Profesoris;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUtilizatorIDChanging(int value);
-    partial void OnUtilizatorIDChanged();
-    partial void OnParolaChanging(string value);
-    partial void OnParolaChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnRolChanging(int value);
-    partial void OnRolChanged();
-    partial void OnImagineProfilChanging(string value);
-    partial void OnImagineProfilChanged();
-    #endregion
-		
-		public Utilizatori()
-		{
-			this._Elevis = new EntitySet<Elevi>(new Action<Elevi>(this.attach_Elevis), new Action<Elevi>(this.detach_Elevis));
-			this._Parintis = new EntitySet<Parinti>(new Action<Parinti>(this.attach_Parintis), new Action<Parinti>(this.detach_Parintis));
-			this._Profesoris = new EntitySet<Profesori>(new Action<Profesori>(this.attach_Profesoris), new Action<Profesori>(this.detach_Profesoris));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UtilizatorID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UtilizatorID
-		{
-			get
-			{
-				return this._UtilizatorID;
-			}
-			set
-			{
-				if ((this._UtilizatorID != value))
-				{
-					this.OnUtilizatorIDChanging(value);
-					this.SendPropertyChanging();
-					this._UtilizatorID = value;
-					this.SendPropertyChanged("UtilizatorID");
-					this.OnUtilizatorIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parola", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
-		public string Parola
-		{
-			get
-			{
-				return this._Parola;
-			}
-			set
-			{
-				if ((this._Parola != value))
-				{
-					this.OnParolaChanging(value);
-					this.SendPropertyChanging();
-					this._Parola = value;
-					this.SendPropertyChanged("Parola");
-					this.OnParolaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rol", DbType="Int NOT NULL")]
-		public int Rol
-		{
-			get
-			{
-				return this._Rol;
-			}
-			set
-			{
-				if ((this._Rol != value))
-				{
-					this.OnRolChanging(value);
-					this.SendPropertyChanging();
-					this._Rol = value;
-					this.SendPropertyChanged("Rol");
-					this.OnRolChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagineProfil", DbType="NVarChar(30)")]
-		public string ImagineProfil
-		{
-			get
-			{
-				return this._ImagineProfil;
-			}
-			set
-			{
-				if ((this._ImagineProfil != value))
-				{
-					this.OnImagineProfilChanging(value);
-					this.SendPropertyChanging();
-					this._ImagineProfil = value;
-					this.SendPropertyChanged("ImagineProfil");
-					this.OnImagineProfilChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Elevi", Storage="_Elevis", ThisKey="UtilizatorID", OtherKey="UtilizatorID")]
-		public EntitySet<Elevi> Elevis
-		{
-			get
-			{
-				return this._Elevis;
-			}
-			set
-			{
-				this._Elevis.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Parinti", Storage="_Parintis", ThisKey="UtilizatorID", OtherKey="UtilizatorID")]
-		public EntitySet<Parinti> Parintis
-		{
-			get
-			{
-				return this._Parintis;
-			}
-			set
-			{
-				this._Parintis.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Profesori", Storage="_Profesoris", ThisKey="UtilizatorID", OtherKey="UtilizatorID")]
-		public EntitySet<Profesori> Profesoris
-		{
-			get
-			{
-				return this._Profesoris;
-			}
-			set
-			{
-				this._Profesoris.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Elevis(Elevi entity)
-		{
-			this.SendPropertyChanging();
-			entity.Utilizatori = this;
-		}
-		
-		private void detach_Elevis(Elevi entity)
-		{
-			this.SendPropertyChanging();
-			entity.Utilizatori = null;
-		}
-		
-		private void attach_Parintis(Parinti entity)
-		{
-			this.SendPropertyChanging();
-			entity.Utilizatori = this;
-		}
-		
-		private void detach_Parintis(Parinti entity)
-		{
-			this.SendPropertyChanging();
-			entity.Utilizatori = null;
-		}
-		
-		private void attach_Profesoris(Profesori entity)
-		{
-			this.SendPropertyChanging();
-			entity.Utilizatori = this;
-		}
-		
-		private void detach_Profesoris(Profesori entity)
-		{
-			this.SendPropertyChanging();
-			entity.Utilizatori = null;
 		}
 	}
 }

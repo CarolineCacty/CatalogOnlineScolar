@@ -1,5 +1,4 @@
-﻿using CatalogScolarOnline.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,23 +16,13 @@ using System.Windows.Shapes;
 namespace CatalogScolarOnline.Views
 {
     /// <summary>
-    /// Interaction logic for Note.xaml
+    /// Interaction logic for Acasa.xaml
     /// </summary>
-    public partial class Note : Page
+    public partial class Acasa : Page
     {
-
-        public GradesViewModel ViewModel { get; private set; }
-        public Note()
+        public Acasa()
         {
             InitializeComponent();
-            ViewModel = new GradesViewModel(); 
-            this.DataContext = ViewModel;
         }
-
-        public void ReceiveEmail(string email)
-        {
-            ViewModel.SetEmail(email);
-        }
-
     }
 }

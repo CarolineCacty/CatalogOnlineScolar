@@ -149,7 +149,7 @@
 
                         <TextBlock Text="Adresă" Style="{StaticResource text}" Margin="50 0 0 0" />
                         <uc:MyTextBox 
-                            x:Name="tb_adresa_elev" Hint="Jud.DB,comuna,sat,stradă,număr" Text="{Binding AdresaElev, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            x:Name="tb_adresa_elev" Hint="Jud._context,comuna,sat,stradă,număr" Text="{Binding AdresaElev, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <TextBlock Text="Clasă" Style="{StaticResource text}" Margin="50 0 0 0"/>
                         <uc:MyTextBox 

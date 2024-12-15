@@ -9,9 +9,11 @@ using System.Security;
 using System.Linq;
 using CatalogScolarOnline.Model;
 using CatalogScolarOnline.Views;
+using System;
 
 namespace CatalogScolarOnline.ViewModel
 {
+
     public class LoginViewModel : INotifyPropertyChanged
     {
         private string _email;
@@ -122,6 +124,13 @@ namespace CatalogScolarOnline.ViewModel
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.ReceiveEmail(_email);
                 mainWindow.Show();
+
+                using (OnlineSchoolCatalogDataContext context = new OnlineSchoolCatalogDataContext())
+                {
+                    var user = context.Utilizatoris.FirstOrDefault(u => u.Email == Email && u.Parola == Password);
+                    Session.UtilizatorID = user.UtilizatorID;
+                    Session.Email = user.Email;
+                }
 
                 if (currentWindow != null)
                 {

@@ -27,7 +27,7 @@ namespace CatalogScolarOnline.ViewModel
                 if (_email != value)
                 {
                     _email = value;
-                    OnPropertyChanged(); // Notifică UI-ul că proprietatea s-a schimbat.
+                    OnPropertyChanged(); 
                 }
             }
          }
@@ -41,7 +41,7 @@ namespace CatalogScolarOnline.ViewModel
                 if (_name != value)
                 {
                     _name = value;
-                    OnPropertyChanged(); // Notifică UI-ul că proprietatea s-a schimbat.
+                    OnPropertyChanged(); 
                 }
             }
         }
@@ -52,27 +52,66 @@ namespace CatalogScolarOnline.ViewModel
 
         public ICommand CloseCommand { get; }
         public ICommand LoginWindow { get; }
-
         public ICommand NavigateToNotesCommand { get; }
+        public ICommand ShowOrarCommand {  get; }
+        public ICommand ShowAbsenteCommand { get; }
+        public ICommand ShowMyProfileCommand { get; }
         public MainWindowViewModel()
         {
+            
             CloseCommand = new RelayCommand(CloseApplication);
             LoginWindow = new RelayCommand(LoginWindowShow);
             NavigateToNotesCommand = new RelayCommand(NavigateToNotes);
-
+            ShowOrarCommand = new RelayCommand(ShowOrar);
+            ShowAbsenteCommand = new RelayCommand(ShowAbsente);
+            ShowMyProfileCommand = new RelayCommand(ShowMyProfile);
         }
         private void NavigateToNotes(object parameter)
         {
             var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
             if (mainWindow != null)
             {
-                // Navighează la pagina Note
                 var notePage = new Views.Note();
                 notePage.ReceiveEmail(_email);
                 
                 mainWindow.MainFrame.Navigate(notePage);
             }
         }
+
+        private void ShowOrar(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var orarPage = new Views.OrarPage();
+                
+
+                mainWindow.MainFrame.Navigate(orarPage);
+            }
+        }
+
+        private void ShowAbsente(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var absentePage = new Views.Absente();
+
+
+                mainWindow.MainFrame.Navigate(absentePage);
+            }
+        }
+
+        private void ShowMyProfile(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var myProfilePage = new Views.ProfilulMeu();
+                mainWindow.MainFrame.Navigate(myProfilePage);
+            }
+        }
+
         public void SetEmail(string email)
         {
             this._email = email;
