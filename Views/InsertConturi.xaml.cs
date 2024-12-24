@@ -16,14 +16,14 @@ using CatalogScolarOnline.ViewModel;
 
 namespace CatalogScolarOnline.Views
 {
-    public partial class Absente : Page
+    public partial class InsertConturi : Page
     {
-        public AbsenteViewModel absenteViewModel { get; set; }
-        public Absente()
+        public InsertConturiViewModel insertConturiViewModel { get; set; }
+        public InsertConturi()
         {
             InitializeComponent();
-            absenteViewModel = new AbsenteViewModel();
-            this.DataContext = absenteViewModel;
+            insertConturiViewModel = new InsertConturiViewModel();
+            this.DataContext = insertConturiViewModel;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CatalogScolarOnline.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -57,15 +58,30 @@ namespace CatalogScolarOnline.Model
 
         public int GetElevID(string email)
         {
-            var elevID =
+            if(Session.GetRol() == 0)
+            {
+                var elevID =
                 (from user in _context.Utilizatoris
                  join e in _context.Elevis on user.UtilizatorID equals e.UtilizatorID
                  where user.Email == email
                  select e.ElevID).FirstOrDefault();
 
-            StudentID = Convert.ToInt32(elevID);
-            return StudentID;
+                StudentID = Convert.ToInt32(elevID);
+                return StudentID;
+            }
+            else if(Session.GetRol() == 1)
+            {
+                var elevID =
+                (from user in _context.Utilizatoris
+                 join p in _context.Parintis on user.UtilizatorID equals p.UtilizatorID
+                 join e in _context.Elevis on p.ParinteID equals e.ParinteID
+                 where user.Email == email
+                 select e.ElevID).FirstOrDefault();
 
+                StudentID = Convert.ToInt32(elevID);
+                return StudentID;
+            }
+            return StudentID;
         }
     }
 }

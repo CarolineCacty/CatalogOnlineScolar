@@ -16,8 +16,9 @@ using System.Windows.Shapes;
 using CatalogScolarOnline.Model;
 using CatalogScolarOnline.ViewModel;
 using CatalogScolarOnline.Views;
+using CatalogScolarOnline.Utilities;
 
-namespace CatalogScolarOnline
+namespace CatalogScolarOnline.Views
 {
     public partial class MainWindow : Window
     {
@@ -35,9 +36,23 @@ namespace CatalogScolarOnline
             }
         }
 
+        public MainWindow(string email)
+        {
+            InitializeComponent();
+            ViewModel = new MainWindowViewModel(email);
+            this.DataContext = ViewModel;
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var acasaPage = new Views.Acasa();
+                mainWindow.MainFrame.Navigate(acasaPage);
+            }
+        }
+
         public void ReceiveEmail(string email)
         {
             ViewModel.SetEmail(email);
+            Session.Email = email;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -62,7 +77,7 @@ namespace CatalogScolarOnline
                 }
             }
         }
-        private void Note_Button_Click(object sender, RoutedEventArgs e)
+        private void Acasa_Button_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new Acasa());
         }

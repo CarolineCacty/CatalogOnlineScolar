@@ -1,0 +1,45 @@
+﻿<Page x:Class="CatalogScolarOnline.Views.InsertMaterie"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:CatalogScolarOnline.Views"
+        xmlns:ViewModel="clr-namespace:CatalogScolarOnline.ViewModel"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:uc="clr-namespace:CatalogScolarOnline.UserControls"
+        mc:Ignorable="d" 
+        d:DesignHeight="450" d:DesignWidth="800"
+      Title="InsertMaterie">
+
+    <Page.DataContext>
+        <ViewModel:InsertMaterieViewModel/>
+    </Page.DataContext>
+
+    <Grid Background="#F2F4F7" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Introducere Materie" FontSize="24" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="10"/>
+
+        <Border  Grid.Row="1" Padding="20" Background="#6A5ACD">
+            <Grid Name="grid_insert_clase">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Nume Materie" HorizontalAlignment="Left" Margin="20 14 0 0" Style="{StaticResource text}"/>
+                <uc:MyTextBox Grid.Row="0" HorizontalAlignment="Left" Margin="130 0 0 0" x:Name="tb_materie" Hint="Informatică" Text="{Binding NumeMaterie, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Button Name="btn_Save" Grid.Row="1" Width="100" HorizontalAlignment="Right"
+                Content="Save" Margin="0 0 400 0" 
+                Style="{StaticResource buttonMainGreen}"
+                Command="{Binding InsertMaterieCommand}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

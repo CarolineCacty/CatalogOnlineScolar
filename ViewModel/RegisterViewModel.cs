@@ -102,8 +102,6 @@ namespace CatalogScolarOnline.ViewModel
             set { _dataNasterii = value; OnPropertyChanged(); }
         }
 
-
-
         //Comune
         private UserRepository userRepository = new UserRepository();
 
@@ -139,7 +137,22 @@ namespace CatalogScolarOnline.ViewModel
 
         private Visibility _stackProfesorVisibility = Visibility.Collapsed;
         private Visibility _stackElevVisibility = Visibility.Collapsed;
-        private Visibility _stackParinteVisibility = Visibility.Collapsed;
+        private Visibility _stackParinteVisibility = Visibility.Collapsed;  
+        private Visibility _stackAdminVisibility = Visibility.Collapsed;  
+        private Visibility _notAdmin = Visibility.Collapsed;
+
+        public Visibility NotAdmin
+        {
+            get { return _notAdmin; }
+            set
+            {
+                if (_notAdmin != value)
+                {
+                    _notAdmin = value;
+                    OnPropertyChanged(nameof(NotAdmin));
+                }
+            }
+        }
 
         public Visibility StackProfesorVisibility
         {
@@ -179,6 +192,18 @@ namespace CatalogScolarOnline.ViewModel
                 }
             }
         }
+        public Visibility StackAdminVisibility
+        {
+            get { return _stackAdminVisibility; }
+            set
+            {
+                if (_stackAdminVisibility != value)
+                {
+                    _stackAdminVisibility = value;
+                    OnPropertyChanged(nameof(StackAdminVisibility));
+                }
+            }
+        }
 
 
         private bool _isProfesorVisible;
@@ -214,15 +239,28 @@ namespace CatalogScolarOnline.ViewModel
             }
         }
 
+        private bool _isAdminVisible;
+        public bool IsAdminVisible
+        {
+            get => _isAdminVisible;
+            set
+            {
+                _isAdminVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
         private void UpdateVisibility()
         {
             IsProfesorVisible = SelectedRole == "System.Windows.Controls.ComboBoxItem: Profesor";
             IsElevVisible = SelectedRole == "System.Windows.Controls.ComboBoxItem: Elev";
             IsParinteVisible = SelectedRole == "System.Windows.Controls.ComboBoxItem: Părinte";
+            IsAdminVisible = SelectedRole == "System.Windows.Controls.ComboBoxItem: Admin";
 
-            if (IsProfesorVisible) { StackProfesorVisibility = Visibility.Visible; StackElevVisibility = Visibility.Collapsed; StackParinteVisibility = Visibility.Collapsed; }
-            if (IsElevVisible) { StackElevVisibility = Visibility.Visible; StackProfesorVisibility = Visibility.Collapsed; StackParinteVisibility = Visibility.Collapsed;  }
-            if (IsParinteVisible){ StackParinteVisibility = Visibility.Visible; StackProfesorVisibility = Visibility.Collapsed; StackElevVisibility = Visibility.Collapsed; }
+            if (IsProfesorVisible) { NotAdmin = Visibility.Visible; StackAdminVisibility = Visibility.Collapsed; StackProfesorVisibility = Visibility.Visible; StackElevVisibility = Visibility.Collapsed; StackParinteVisibility = Visibility.Collapsed; }
+            if (IsElevVisible) { NotAdmin = Visibility.Visible; StackAdminVisibility = Visibility.Collapsed; StackElevVisibility = Visibility.Visible; StackProfesorVisibility = Visibility.Collapsed; StackParinteVisibility = Visibility.Collapsed;  }
+            if (IsParinteVisible){ NotAdmin = Visibility.Visible; StackAdminVisibility = Visibility.Collapsed; StackParinteVisibility = Visibility.Visible; StackProfesorVisibility = Visibility.Collapsed; StackElevVisibility = Visibility.Collapsed; }
+            if (IsAdminVisible) { NotAdmin = Visibility.Collapsed; StackAdminVisibility = Visibility.Visible; StackParinteVisibility = Visibility.Collapsed; StackProfesorVisibility = Visibility.Collapsed; StackElevVisibility = Visibility.Collapsed; }
         }
 
         public string RegistrationMessage
@@ -314,7 +352,7 @@ namespace CatalogScolarOnline.ViewModel
 
         private void ExecuteRegister(object parameter)
         {
-            int roleCode = SelectedRole == "System.Windows.Controls.ComboBoxItem: Profesor" ? 2 : SelectedRole == "System.Windows.Controls.ComboBoxItem: Elev" ? 0 : 1;
+            int roleCode = SelectedRole == "System.Windows.Controls.ComboBoxItem: Profesor" ? 2 : SelectedRole == "System.Windows.Controls.ComboBoxItem: Elev" ? 0 : SelectedRole == "System.Windows.Controls.ComboBoxItem: Părinte" ? 1 : 3;
             bool userRegistered = userRepository.RegisterUser(Email, Password, roleCode);
             if (!userRegistered)
             {
@@ -366,8 +404,6 @@ namespace CatalogScolarOnline.ViewModel
                             okRegistration = false;
                         }
                     }
-               
-                    
             }
 
             if(okRegistration) RegistrationMessage = "Înregistrarea a avut succes!";

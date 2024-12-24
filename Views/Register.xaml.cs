@@ -36,7 +36,12 @@ namespace CatalogScolarOnline.Views
 
         private void grid_register_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-                this.DragMove();
+           this.DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

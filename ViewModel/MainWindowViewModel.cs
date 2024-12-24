@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.RightsManagement;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using CatalogScolarOnline.Model;
@@ -46,6 +41,35 @@ namespace CatalogScolarOnline.ViewModel
             }
         }
 
+        private Visibility _noteVisibility = Visibility.Visible;
+        private Visibility _absenteVisibility = Visibility.Visible;
+
+        public Visibility NoteVisibility
+        {
+            get { return _noteVisibility; }
+            set
+            {
+                if (_noteVisibility != value)
+                {
+                    _noteVisibility = value;
+                    OnPropertyChanged(nameof(NoteVisibility));
+                }
+            }
+        }
+
+        public Visibility AbsenteVisibility
+        {
+            get { return _absenteVisibility; }
+            set
+            {
+                if (_absenteVisibility != value)
+                {
+                    _absenteVisibility = value;
+                    OnPropertyChanged(nameof(AbsenteVisibility));
+                }
+            }
+        }
+
         private ObservableCollection<Grades> _grades;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -58,7 +82,23 @@ namespace CatalogScolarOnline.ViewModel
         public ICommand ShowMyProfileCommand { get; }
         public MainWindowViewModel()
         {
-            
+            CloseCommand = new RelayCommand(CloseApplication);
+            LoginWindow = new RelayCommand(LoginWindowShow);
+            NavigateToNotesCommand = new RelayCommand(NavigateToNotes);
+            ShowOrarCommand = new RelayCommand(ShowOrar);
+            ShowAbsenteCommand = new RelayCommand(ShowAbsente);
+            ShowMyProfileCommand = new RelayCommand(ShowMyProfile);
+
+        }
+
+        public MainWindowViewModel(string email)
+        {
+            int rol = Session.GetRol(email);
+            if (rol == 2)
+            {
+                _noteVisibility = Visibility.Collapsed;
+                _absenteVisibility = Visibility.Collapsed;
+            }
             CloseCommand = new RelayCommand(CloseApplication);
             LoginWindow = new RelayCommand(LoginWindowShow);
             NavigateToNotesCommand = new RelayCommand(NavigateToNotes);
@@ -85,7 +125,6 @@ namespace CatalogScolarOnline.ViewModel
             {
                 var orarPage = new Views.OrarPage();
                 
-
                 mainWindow.MainFrame.Navigate(orarPage);
             }
         }
@@ -116,7 +155,7 @@ namespace CatalogScolarOnline.ViewModel
         {
             this._email = email;
             Email = email;
-            Name = students.GetName(this._email);
+            //Name = students.GetName(this._email);
         }
         private void CloseApplication(object parameter)
         {

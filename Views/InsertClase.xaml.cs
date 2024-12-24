@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CatalogScolarOnline.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CatalogScolarOnline.ViewModel;
 
 namespace CatalogScolarOnline.Views
 {
-    public partial class Absente : Page
+    public partial class InsertClase : Page
     {
-        public AbsenteViewModel absenteViewModel { get; set; }
-        public Absente()
+        public InsertClaseViewModel insertClaseViewModel;
+        public InsertClase()
         {
             InitializeComponent();
-            absenteViewModel = new AbsenteViewModel();
-            this.DataContext = absenteViewModel;
+            insertClaseViewModel = new InsertClaseViewModel();
+            this.DataContext = insertClaseViewModel;
         }
     }
 }

@@ -33,11 +33,11 @@ namespace CatalogScolarOnline.Model
             var userRol = users.getUserRol(_email);
             string nume = "";
 
-            if (userRol == 1)
+            if (userRol == 0)
             {
                 var userID = users.getUserID(_email);
 
-                var user = _context.Elevis.First(u => u.UtilizatorID == userID);
+                var user = _context.Elevis.FirstOrDefault(u => u.UtilizatorID == userID);
 
                 if (user == null)
                     throw new InvalidOperationException("Utilizatorul nu a fost găsit.");
