@@ -23,16 +23,31 @@ namespace CatalogScolarOnline.Model
 
         public string LoadClasaElevului()
         {
-            var clasaElevului = (from elev in _context.Elevis
-                                 join utilizator in _context.Utilizatoris
-                                 on elev.UtilizatorID equals utilizator.UtilizatorID
-                                 where utilizator.UtilizatorID == Session.UtilizatorID
-                                 select elev.ClasaID).FirstOrDefault();
+            int Rol = Session.GetRol();
+
+            string clasa="";
+
+            if (Rol == 0)
+            {
+                clasa = (from elev in _context.Elevis
+                                     join utilizator in _context.Utilizatoris
+                                     on elev.UtilizatorID equals utilizator.UtilizatorID
+                                     where utilizator.UtilizatorID == Session.UtilizatorID
+                                     select elev.ClasaID).FirstOrDefault();
+            }
+            else if (Rol == 1)
+            {
+                clasa = (from parinte in _context.Parintis
+                         join utilizator in _context.Utilizatoris on parinte.UtilizatorID equals utilizator.UtilizatorID
+                         join elev in _context.Elevis on parinte.ParinteID equals elev.ParinteID
+                         where utilizator.UtilizatorID == Session.UtilizatorID
+                         select elev.ClasaID).FirstOrDefault();
+            }
 
             if(Session.ClasaID == null)
-                Session.ClasaID = clasaElevului;
+                Session.ClasaID = clasa;
 
-            return clasaElevului;
+            return clasa;
         }
 
     }

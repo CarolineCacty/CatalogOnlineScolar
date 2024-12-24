@@ -72,7 +72,7 @@ namespace CatalogScolarOnline.Model
     #endregion
 		
 		public OnlineSchoolCatalogDataContext() : 
-				base(global::CatalogScolarOnline.Properties.Settings.Default.Online_School_CatalogConnectionString, mappingSource)
+				base(global::CatalogScolarOnline.Properties.Settings.Default.Online_School_CatalogConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -730,7 +730,6 @@ namespace CatalogScolarOnline.Model
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Predare")]
 	public partial class Predare : INotifyPropertyChanging, INotifyPropertyChanged
 	{
-		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _PredareID;

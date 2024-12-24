@@ -5,7 +5,7 @@
         xmlns:vm="clr-namespace:CatalogScolarOnline.ViewModel"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:uc="clr-namespace:CatalogScolarOnline.UserControls"
-        xmlns:local="clr-namespace:CatalogScolarOnline"
+        xmlns:local="clr-namespace:CatalogScolarOnline.Views"
         xmlns:util="clr-namespace:CatalogScolarOnline.Utilities"
         AllowsTransparency="True"
         ResizeMode="CanResize"
@@ -68,7 +68,7 @@
                 <Image Name="close" Source="/Images/close.png" Width="25" Margin="0 0 0 0" Style="{StaticResource iconApp}"/>
             </Button>
             <!--<Image Name="minimize" Source="/Images/minimize.png" Width="25" Margin="0 0 30 0" Style="{StaticResource iconApp}" />-->
-            <Button Command="{Binding MinimizeCommand}" Background="#6A5ACD" BorderThickness="0" HorizontalAlignment="Left"  VerticalAlignment="Top"
+            <Button Click="Button_Click" Background="#6A5ACD" BorderThickness="0" HorizontalAlignment="Left"  VerticalAlignment="Top"
         Width="28" Margin="0 0 0 0">
                 <Image Name="minimize" Source="/Images/minimize.png" Width="25" Margin="0 0 0 0" Style="{StaticResource iconApp}"/>
             </Button>
@@ -90,6 +90,7 @@
                         <ComboBoxItem Content="Profesor" />
                         <ComboBoxItem Content="Elev" />
                         <ComboBoxItem Content="Părinte" />
+                        <ComboBoxItem Content="Admin" />
                     </ComboBox>
 
                 </Grid>
@@ -170,8 +171,18 @@
                         <uc:MyTextBox x:Name="tb_telefon" Hint="0730123456" Text="{Binding Telefon, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
+                    <!--Secțiunea pentru Admin-->
+
+                    <StackPanel Grid.Column="0" x:Name="adminFields"  Visibility="{Binding StackAdminVisibility}">
+                        <TextBlock  Text="Email" Style="{StaticResource text}"/>
+                        <uc:MyTextBox x:Name="tb_admin_email" Hint="admin@school.com" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        
+                        <TextBlock Text="Parola" Style="{StaticResource text}"/>
+                        <uc:MyTextBox x:Name="tb_parola_admin" Hint="Nume Prenume" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
                     <!--Secțiunea comună-->
-                    <StackPanel Grid.Column="1">
+                    <StackPanel Grid.Column="1" Visibility="{Binding NotAdmin}">
                         <TextBlock  Grid.Row="0" Text="LastName" Style="{StaticResource text}"/>
                         <uc:MyTextBox x:Name="tb_lastName" Grid.Column="1" Grid.Row="0" Hint="Heasca" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 

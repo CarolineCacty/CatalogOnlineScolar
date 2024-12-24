@@ -33,5 +33,16 @@ namespace CatalogScolarOnline.Properties {
                 return ((string)(this["Online_School_CatalogConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=Online_School_Catalog;Integrated Security=True;Encr" +
+            "ypt=True;TrustServerCertificate=True")]
+        public string Online_School_CatalogConnectionString1 {
+            get {
+                return ((string)(this["Online_School_CatalogConnectionString1"]));
+            }
+        }
     }
 }

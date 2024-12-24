@@ -36,8 +36,13 @@
                 <DropShadowEffect Color="#888888" BlurRadius="10" ShadowDepth="4"/>
             </Border.Effect>
 
-            <Grid>
+            <Grid >
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -47,16 +52,16 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,10">
-                    <TextBlock Text="Nume:" 
-                               FontWeight="SemiBold"
-                               FontSize="16"
-                               Width="150"
-                               Foreground="#3E3E3E"/>
-                    <TextBlock Text="{Binding Nume}" 
+                    <TextBlock 
+                                   Text="Nume:" 
+                                   FontWeight="SemiBold"
+                                   FontSize="16"
+                                   Width="150"
+                                   Foreground="#3E3E3E"/>
+                    <TextBlock Text="{Binding Nume}"
                                FontSize="16" 
                                Foreground="#2C2C2C"/>
                 </StackPanel>
-
 
                 <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10">
                     <TextBlock Text="Prenume:" 
@@ -70,7 +75,7 @@
                 </StackPanel>
 
 
-                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10">
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10" Visibility="{Binding ClasaVisibility}">
                     <TextBlock Text="Clasa:" 
                                FontWeight="SemiBold"
                                FontSize="16"
@@ -81,7 +86,7 @@
                                Foreground="#2C2C2C"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,10">
+                <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,10" Visibility="{Binding DiriginteVisibility}">
                     <TextBlock Text="Diriginte:" 
                                FontWeight="SemiBold"
                                FontSize="16"
@@ -93,7 +98,7 @@
                 </StackPanel>
 
 
-                <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,10">
+                <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,10" Visibility="{Binding SpecializareVisibility}">
                     <TextBlock Text="Specializare:" 
                                FontWeight="SemiBold"
                                FontSize="16"
@@ -114,6 +119,62 @@
                                FontSize="16" 
                                Foreground="#2C2C2C"/>
                 </StackPanel>
+
+                <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="0,10" Visibility="{Binding AdresaVisibility}">
+                    <TextBlock Text="Adresa:" 
+                               FontWeight="SemiBold"
+                               FontSize="16"
+                               Width="150"
+                               Foreground="#3E3E3E"/>
+                    <TextBlock Text="{Binding Adresa}" 
+                               FontSize="16" 
+                               Foreground="#2C2C2C"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="0,10" Visibility="{Binding CopilVisibility}">
+                    <TextBlock Text="Copil/Copii:" 
+                               FontWeight="SemiBold"
+                               FontSize="16"
+                               Width="150"
+                               Foreground="#3E3E3E"/>
+                    <TextBlock Text="{Binding Copil}" 
+               FontSize="16" 
+               Foreground="#2C2C2C"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="0,10" Visibility="{Binding TelefonVisibility}">
+                    <TextBlock Text="Telefon:" 
+                                FontWeight="SemiBold"
+                                FontSize="16"
+                                Width="150"
+                                Foreground="#3E3E3E"/>      
+                    <TextBlock Text="{Binding Telefon}" 
+                                FontSize="16" 
+                                Foreground="#2C2C2C"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="9" Orientation="Horizontal" Margin="0,10" Visibility="{Binding GradVisibility}">
+                    <TextBlock Text="Grad Didactic:" 
+                FontWeight="SemiBold"
+                FontSize="16"
+                Width="150"
+                Foreground="#3E3E3E"/>
+                    <TextBlock Text="{Binding Grad}" 
+                FontSize="16" 
+                Foreground="#2C2C2C"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="10" Orientation="Horizontal" Margin="0,10" Visibility="{Binding VechimeVisibility}">
+                    <TextBlock Text="Vechime:" 
+                FontWeight="SemiBold"
+                FontSize="16"
+                Width="150"
+                Foreground="#3E3E3E"/>
+                    <TextBlock Text="{Binding Vechime}" 
+                FontSize="16" 
+                Foreground="#2C2C2C"/>
+                </StackPanel>
+
             </Grid>
         </Border>
     </Grid>

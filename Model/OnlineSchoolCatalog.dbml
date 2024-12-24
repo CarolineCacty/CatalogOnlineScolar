@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Online_School_Catalog" Class="OnlineSchoolCatalogDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Online_School_Catalog;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="CatalogScolarOnline.Properties.Settings" SettingsPropertyName="Online_School_CatalogConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Online_School_Catalog;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="CatalogScolarOnline.Properties.Settings" SettingsPropertyName="Online_School_CatalogConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Utilizatori" Member="Utilizatoris">
     <Type Name="Utilizatori">
       <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

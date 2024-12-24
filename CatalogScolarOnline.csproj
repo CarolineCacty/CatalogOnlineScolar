@@ -179,17 +179,32 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\AbsenteModel.cs" />
+    <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\Grades.cs" />
+    <Compile Include="Model\InsertClaseModel.cs" />
+    <Compile Include="Model\InsertConturiModel.cs" />
+    <Compile Include="Model\InsertMaterieModel.cs" />
+    <Compile Include="Model\InsertPredareModel.cs" />
     <Compile Include="Model\Orar.cs" />
     <Compile Include="Model\OrarRow.cs" />
     <Compile Include="Model\ProfilulMeuModel.cs" />
     <Compile Include="Model\Students.cs" />
     <Compile Include="Model\Accounts.cs" />
     <Compile Include="Model\Users.cs" />
+    <Compile Include="Model\OnlineSchoolCatalog.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnlineSchoolCatalog.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Session.cs" />
     <Compile Include="ViewModel\AbsenteViewModel.cs" />
+    <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\GradesViewModel.cs" />
+    <Compile Include="ViewModel\InsertClaseViewModel.cs" />
+    <Compile Include="ViewModel\InsertConturiViewModel.cs" />
+    <Compile Include="ViewModel\InsertMaterieViewModel.cs" />
+    <Compile Include="ViewModel\InsertPredareViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\OrarViewModel.cs" />
     <Compile Include="ViewModel\ProfilulMeuViewModel.cs" />
@@ -199,15 +214,25 @@
     <Compile Include="Views\Acasa.xaml.cs">
       <DependentUpon>Acasa.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InsertClase.xaml.cs">
+      <DependentUpon>InsertClase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InsertConturi.xaml.cs">
+      <DependentUpon>InsertConturi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InsertMaterie.xaml.cs">
+      <DependentUpon>InsertMaterie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InsertPredare.xaml.cs">
+      <DependentUpon>InsertPredare.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\UserRepository.cs" />
-    <Compile Include="Model\OnlineSchoolCatalog.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineSchoolCatalog.dbml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\MyTextBox.xaml.cs">
       <DependentUpon>MyTextBox.xaml</DependentUpon>
     </Compile>
@@ -240,6 +265,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Acasa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InsertClase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InsertConturi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InsertMaterie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InsertPredare.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

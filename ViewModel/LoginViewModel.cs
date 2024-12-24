@@ -4,12 +4,9 @@ using System.Windows;
 using CatalogScolarOnline.Utilities;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
-using Microsoft.Xaml.Behaviors.Media;
-using System.Security;
 using System.Linq;
 using CatalogScolarOnline.Model;
 using CatalogScolarOnline.Views;
-using System;
 
 namespace CatalogScolarOnline.ViewModel
 {
@@ -101,6 +98,7 @@ namespace CatalogScolarOnline.ViewModel
             CloseCommand = new RelayCommand(CloseApplication);
             OpenRegisterWindow = new RelayCommand(OpenRegister);
             SignInCommand = new RelayCommand(ExecuteSignIn);
+
         }
 
         private void ExecuteSignIn(object parameter)
@@ -121,15 +119,24 @@ namespace CatalogScolarOnline.ViewModel
                 LoginError = string.Empty;
                 var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.ReceiveEmail(_email);
-                mainWindow.Show();
-
                 using (OnlineSchoolCatalogDataContext context = new OnlineSchoolCatalogDataContext())
                 {
                     var user = context.Utilizatoris.FirstOrDefault(u => u.Email == Email && u.Parola == Password);
                     Session.UtilizatorID = user.UtilizatorID;
                     Session.Email = user.Email;
+                }
+
+                int rol = Session.GetRol();
+                if(rol != 3)
+                {
+                    MainWindow mainWindow = new MainWindow(_email);
+                    mainWindow.ReceiveEmail(_email);
+                    mainWindow.Show();
+                }
+                else
+                {
+                    AdminWindow adminWindow = new AdminWindow();
+                    adminWindow.Show();
                 }
 
                 if (currentWindow != null)

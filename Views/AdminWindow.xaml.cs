@@ -1,7 +1,7 @@
-﻿using System;
+﻿using CatalogScolarOnline.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,48 +11,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CatalogScolarOnline.Model;
-using CatalogScolarOnline.ViewModel;
-using CatalogScolarOnline.Views;
-using CatalogScolarOnline.Utilities;
 
 namespace CatalogScolarOnline.Views
 {
-    public partial class MainWindow : Window
+    public partial class AdminWindow : Window
     {
-        public MainWindowViewModel ViewModel { get; private set; }
-        public MainWindow()
+        public AdminViewModel ViewModel { get; private set; }
+        public AdminWindow()
         {
             InitializeComponent();
-            ViewModel = new MainWindowViewModel();
+            ViewModel = new AdminViewModel();
             this.DataContext = ViewModel;
-            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            if (mainWindow != null)
+            var adminWindow = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+            if (adminWindow != null)
             {
                 var acasaPage = new Views.Acasa();
-                mainWindow.MainFrame.Navigate(acasaPage);
+                adminWindow.MainFrame.Navigate(acasaPage);
             }
-        }
-
-        public MainWindow(string email)
-        {
-            InitializeComponent();
-            ViewModel = new MainWindowViewModel(email);
-            this.DataContext = ViewModel;
-            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            if (mainWindow != null)
-            {
-                var acasaPage = new Views.Acasa();
-                mainWindow.MainFrame.Navigate(acasaPage);
-            }
-        }
-
-        public void ReceiveEmail(string email)
-        {
-            ViewModel.SetEmail(email);
-            Session.Email = email;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -77,10 +53,10 @@ namespace CatalogScolarOnline.Views
                 }
             }
         }
+
         private void Acasa_Button_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new Acasa());
         }
-
     }
 }
