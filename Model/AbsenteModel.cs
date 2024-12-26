@@ -90,8 +90,20 @@ namespace CatalogScolarOnline.Model
                     (from a in _context.Absentes
                      join pr in _context.Predares on a.PredareID equals pr.PredareID
                      join m in _context.Materiis on pr.MaterieID equals m.MaterieID
-                     select m.Nume_materie).FirstOrDefault(); 
+                     select m.Nume_materie).FirstOrDefault();
 
+                Motivata = item.Motivata;
+
+
+                string motivat;
+                if (Motivata == true)
+                {
+                    motivat = "DA";
+                }
+                else
+                {
+                    motivat = "NU";
+                }
                 Absente.Add(
                     new AbsenteModel
                     {
@@ -101,7 +113,7 @@ namespace CatalogScolarOnline.Model
                         PredareID = item.PredareID,
                         ElevID = item.ElevID,
                         Materie = element,
-                        _motivataAsString = Motivata == true ? "DA" : "NU"
+                        MotivataAsString = motivat
                     });
             }
 

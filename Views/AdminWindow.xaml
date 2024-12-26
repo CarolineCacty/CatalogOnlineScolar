@@ -88,14 +88,28 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButon}">
+                            <Button Style="{StaticResource menuButon}" Command="{Binding NavigateToInsertNoteCommand}" >
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
-                                    <TextBlock Text="Setări"/>
+                                    <TextBlock Text="Introducere Note"/>
                                 </StackPanel>
                             </Button>
 
-                            <Separator Height="70" Opacity="0"/>
+                            <Button Style="{StaticResource menuButon}" Command="{Binding NavigateToInsertAbsenteCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <TextBlock Text="Introducere Absențe"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource menuButon}" Command="{Binding NavigateToInsertOrarCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <TextBlock Text="Introducere Orar"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Separator Height="30" Opacity="0"/>
 
                             <Button Style="{StaticResource menuButon}" Command="{Binding LoginWindow}">
                                 <StackPanel Orientation="Horizontal">

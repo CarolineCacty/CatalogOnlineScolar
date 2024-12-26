@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Input;
 
@@ -18,13 +17,64 @@ namespace CatalogScolarOnline.ViewModel
         public ICommand NavigateToInsertClaseCommand { get; set; }
         public ICommand NavigateToInsertMaterieCommand { get; set; }
         public ICommand NavigateToInsertPredareCommand { get; set; }
+        public ICommand NavigateToInsertNoteCommand { get; set; }
+        public ICommand NavigateToInsertAbsenteCommand { get; set; }
+        public ICommand NavigateToInsertOrarCommand { get; set; }
+
+
+        public ICommand LoginWindow { get; }
         public AdminViewModel()
         {
+            LoginWindow = new RelayCommand(LoginWindowShow);
             NavigateToInsertContCommand = new RelayCommand(NavigateInsertCont);
             CloseCommand = new RelayCommand(CloseApplication);
             NavigateToInsertClaseCommand = new RelayCommand(NavigateToInsertClase);
             NavigateToInsertMaterieCommand = new RelayCommand(NavigateToInsertMaterie);
             NavigateToInsertPredareCommand = new RelayCommand(NavigateToInsertPredare);
+            NavigateToInsertNoteCommand = new RelayCommand(NavigateToInsertNote);
+            NavigateToInsertAbsenteCommand = new RelayCommand(NavigateToInsertAbsente);
+            NavigateToInsertOrarCommand = new RelayCommand(NavigateToInsertOrar);
+        }
+
+        public void NavigateToInsertOrar(object parameter)
+        {
+            var adminWindow = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+            if (adminWindow != null)
+            {
+                var insertOrarPage = new Views.InsertOrar();
+                adminWindow.MainFrame.Navigate(insertOrarPage);
+            }
+        }
+        private void NavigateToInsertAbsente(object parameter)
+        {
+            var adminWindow = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+            if (adminWindow != null)
+            {
+                var insertAbsentePage = new Views.InsertAbsente();
+                adminWindow.MainFrame.Navigate(insertAbsentePage);
+            }
+        }
+        private void NavigateToInsertNote(object parameter)
+        {
+            var adminWindow = Application.Current.Windows.OfType<AdminWindow>().FirstOrDefault();
+            if (adminWindow != null)
+            {
+                var insertNotePage = new Views.InsertNote();
+                adminWindow.MainFrame.Navigate(insertNotePage);
+            }
+        }
+
+        private void LoginWindowShow(object parameter)
+        {
+            var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            Login login = new Login();
+            login.Show();
+
+            if (currentWindow != null)
+            {
+                currentWindow.Close();
+            }
         }
 
         public void NavigateToInsertPredare(object sender)

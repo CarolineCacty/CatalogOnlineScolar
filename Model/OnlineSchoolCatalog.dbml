@@ -109,6 +109,7 @@
       <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Elevi_Note" Member="Notes" ThisKey="ElevID" OtherKey="ElevID" Type="Note" />
       <Association Name="Elevi_Absente" Member="Absentes" ThisKey="ElevID" OtherKey="ElevID" Type="Absente" />
+      <Association Name="Elevi_RapoarteEvaluare" Member="RapoarteEvaluares" ThisKey="ElevID" OtherKey="ElevID" Type="RapoarteEvaluare" />
       <Association Name="Parinti_Elevi" Member="Parinti" ThisKey="ParinteID" OtherKey="ParinteID" Type="Parinti" IsForeignKey="true" />
       <Association Name="Utilizatori_Elevi" Member="Utilizatori" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
       <Association Name="Clase_Elevi" Member="Clase" ThisKey="ClasaID" OtherKey="ClasaID" Type="Clase" IsForeignKey="true" />
@@ -142,6 +143,19 @@
       <Column Name="PredareID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Elevi_Absente" Member="Elevi" ThisKey="ElevID" OtherKey="ElevID" Type="Elevi" IsForeignKey="true" />
       <Association Name="Predare_Absente" Member="Predare" ThisKey="PredareID" OtherKey="PredareID" Type="Predare" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RapoarteEvaluare" Member="RapoarteEvaluares">
+    <Type Name="RapoarteEvaluare">
+      <Column Name="RaportID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ElevID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MediaGenerala" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="AbsenteMotivate" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AbsenteNemotivate" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comportament" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descriere" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DataGenerare" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Elevi_RapoarteEvaluare" Member="Elevi" ThisKey="ElevID" OtherKey="ElevID" Type="Elevi" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

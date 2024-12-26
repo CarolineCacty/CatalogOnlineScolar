@@ -92,10 +92,19 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButon}">
+                            <Button Style="{StaticResource menuButon}" Command="{Binding ShowRaportEvaluareCommand}"
+                                    Visibility="{Binding VizualizareRaportVisibility}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
-                                    <TextBlock Text="Setări"/>
+                                    <TextBlock Text="Vizualizare Raport Evaluare"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource menuButon}" Visibility="{Binding GenerareRaportVisibility}"
+                                    Command="{Binding ShowGenerateRaportEvaluareCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <TextBlock Text="Generare Raport Evaluare"/>
                                 </StackPanel>
                             </Button>
 

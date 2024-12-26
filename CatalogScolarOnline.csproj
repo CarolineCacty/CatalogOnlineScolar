@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.Framework.3.2.0\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
     </Reference>
@@ -152,12 +155,39 @@
     <Reference Include="MahApps.Metro.IconPacks.Zondicons, Version=5.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
       <HintPath>packages\MahApps.Metro.IconPacks.Zondicons.5.1.0\lib\net47\MahApps.Metro.IconPacks.Zondicons.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.135\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=28.1462.36.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Compression.Base.28.1.36\lib\net462\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=28.1462.36.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.DocIO.Wpf.28.1.36\lib\net462\Syncfusion.DocIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=28.1462.36.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Licensing.28.1.36\lib\net462\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=28.1462.36.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.OfficeChart.Base.28.1.36\lib\net462\Syncfusion.OfficeChart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChartToImageConverter.Wpf, Version=28.1462.36.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.WPF.28.1.36\lib\net462\Syncfusion.OfficeChartToImageConverter.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.WPF, Version=28.1462.36.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.SfChart.WPF.28.1.36\lib\net462\Syncfusion.SfChart.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=22.1460.34.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.XlsIO.AspNet.22.1.34\lib\net46\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
@@ -180,10 +210,14 @@
     </ApplicationDefinition>
     <Compile Include="Model\AbsenteModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\GenerareRaportModel.cs" />
     <Compile Include="Model\Grades.cs" />
+    <Compile Include="Model\InsertAbsenteModel.cs" />
     <Compile Include="Model\InsertClaseModel.cs" />
     <Compile Include="Model\InsertConturiModel.cs" />
     <Compile Include="Model\InsertMaterieModel.cs" />
+    <Compile Include="Model\InsertNoteModel.cs" />
+    <Compile Include="Model\InsertOrarModel.cs" />
     <Compile Include="Model\InsertPredareModel.cs" />
     <Compile Include="Model\Orar.cs" />
     <Compile Include="Model\OrarRow.cs" />
@@ -196,18 +230,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OnlineSchoolCatalog.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Model\VizualizareRaportModel.cs" />
     <Compile Include="Utilities\Session.cs" />
     <Compile Include="ViewModel\AbsenteViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\GenerareRaportViewModel.cs" />
     <Compile Include="ViewModel\GradesViewModel.cs" />
+    <Compile Include="ViewModel\InsertAbsenteViewModel.cs" />
     <Compile Include="ViewModel\InsertClaseViewModel.cs" />
     <Compile Include="ViewModel\InsertConturiViewModel.cs" />
     <Compile Include="ViewModel\InsertMaterieViewModel.cs" />
+    <Compile Include="ViewModel\InsertNoteViewModel.cs" />
+    <Compile Include="ViewModel\InsertOrarViewModel.cs" />
     <Compile Include="ViewModel\InsertPredareViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\OrarViewModel.cs" />
     <Compile Include="ViewModel\ProfilulMeuViewModel.cs" />
+    <Compile Include="ViewModel\VizualizareRaportViewModel.cs" />
     <Compile Include="Views\Absente.xaml.cs">
       <DependentUpon>Absente.xaml</DependentUpon>
     </Compile>
@@ -217,6 +257,12 @@
     <Compile Include="Views\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GenerareRaport.xaml.cs">
+      <DependentUpon>GenerareRaport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InsertAbsente.xaml.cs">
+      <DependentUpon>InsertAbsente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InsertClase.xaml.cs">
       <DependentUpon>InsertClase.xaml</DependentUpon>
     </Compile>
@@ -225,6 +271,12 @@
     </Compile>
     <Compile Include="Views\InsertMaterie.xaml.cs">
       <DependentUpon>InsertMaterie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InsertNote.xaml.cs">
+      <DependentUpon>InsertNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InsertOrar.xaml.cs">
+      <DependentUpon>InsertOrar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\InsertPredare.xaml.cs">
       <DependentUpon>InsertPredare.xaml</DependentUpon>
@@ -260,6 +312,9 @@
     <Compile Include="Views\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\VizualizareRaport.xaml.cs">
+      <DependentUpon>VizualizareRaport.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\Absente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -272,6 +327,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\GenerareRaport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InsertAbsente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\InsertClase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,6 +344,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\InsertMaterie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InsertNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InsertOrar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -313,6 +384,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VizualizareRaport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

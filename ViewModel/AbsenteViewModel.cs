@@ -73,7 +73,6 @@ namespace CatalogScolarOnline.ViewModel
         public AbsenteViewModel()
         {
             absente_list = (new AbsenteModel()).GetAbsenteListByElevID(Session.GetElevId());
-            
         }
     }
 }

@@ -44,6 +44,33 @@ namespace CatalogScolarOnline.ViewModel
         private Visibility _noteVisibility = Visibility.Visible;
         private Visibility _absenteVisibility = Visibility.Visible;
 
+        private Visibility _vizualizareRaportVisibility = Visibility.Collapsed;
+        private Visibility _generareRaportVisibility = Visibility.Collapsed;
+        public Visibility VizualizareRaportVisibility
+        {
+            get { return _vizualizareRaportVisibility; }
+            set
+            {
+                if (_vizualizareRaportVisibility != value)
+                {
+                    _vizualizareRaportVisibility = value;
+                    OnPropertyChanged(nameof(VizualizareRaportVisibility));
+                }
+            }
+        }
+
+        public Visibility GenerareRaportVisibility
+        {
+            get { return _generareRaportVisibility; }
+            set
+            {
+                if (_generareRaportVisibility != value)
+                {
+                    _generareRaportVisibility = value;
+                    OnPropertyChanged(nameof(GenerareRaportVisibility));
+                }
+            }
+        }
         public Visibility NoteVisibility
         {
             get { return _noteVisibility; }
@@ -72,6 +99,20 @@ namespace CatalogScolarOnline.ViewModel
 
         private ObservableCollection<Grades> _grades;
 
+        private RaportEvaluare raportEvaluare;
+        public RaportEvaluare RaportEvaluare
+        {
+            get { return raportEvaluare; }
+            set
+            {
+                if (raportEvaluare != value)
+                {
+                    raportEvaluare = value;
+                    OnPropertyChanged(nameof(RaportEvaluare));
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand CloseCommand { get; }
@@ -80,6 +121,10 @@ namespace CatalogScolarOnline.ViewModel
         public ICommand ShowOrarCommand {  get; }
         public ICommand ShowAbsenteCommand { get; }
         public ICommand ShowMyProfileCommand { get; }
+
+        public ICommand ShowRaportEvaluareCommand { get; }
+        public ICommand ShowGenerateRaportEvaluareCommand { get; }
+
         public MainWindowViewModel()
         {
             CloseCommand = new RelayCommand(CloseApplication);
@@ -88,7 +133,8 @@ namespace CatalogScolarOnline.ViewModel
             ShowOrarCommand = new RelayCommand(ShowOrar);
             ShowAbsenteCommand = new RelayCommand(ShowAbsente);
             ShowMyProfileCommand = new RelayCommand(ShowMyProfile);
-
+            ShowRaportEvaluareCommand = new RelayCommand(ShowRaportEvaluare);
+            ShowGenerateRaportEvaluareCommand = new RelayCommand(ShowGenerateRaportEvaluare);
         }
 
         public MainWindowViewModel(string email)
@@ -98,14 +144,45 @@ namespace CatalogScolarOnline.ViewModel
             {
                 _noteVisibility = Visibility.Collapsed;
                 _absenteVisibility = Visibility.Collapsed;
+                _generareRaportVisibility = Visibility.Visible;
             }
+            else if(rol == 0 || rol == 1)
+            {
+                _vizualizareRaportVisibility = Visibility.Visible;
+            }
+
             CloseCommand = new RelayCommand(CloseApplication);
             LoginWindow = new RelayCommand(LoginWindowShow);
             NavigateToNotesCommand = new RelayCommand(NavigateToNotes);
             ShowOrarCommand = new RelayCommand(ShowOrar);
             ShowAbsenteCommand = new RelayCommand(ShowAbsente);
             ShowMyProfileCommand = new RelayCommand(ShowMyProfile);
+            ShowRaportEvaluareCommand = new RelayCommand(ShowRaportEvaluare);
+            ShowGenerateRaportEvaluareCommand = new RelayCommand(ShowGenerateRaportEvaluare);
         }
+
+        private void ShowGenerateRaportEvaluare(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var generarePage = new Views.GenerareRaport();
+                mainWindow.MainFrame.Navigate(generarePage);
+            }
+        }
+
+
+        public void ShowRaportEvaluare(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                raportEvaluare = (new VizualizareRaportModel()).GetRaportEvaluare(Session.GetElevId());
+                var vizualizarePage = new Views.VizualizareRaport(raportEvaluare);
+                mainWindow.MainFrame.Navigate(vizualizarePage);
+            }
+        }
+
         private void NavigateToNotes(object parameter)
         {
             var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();

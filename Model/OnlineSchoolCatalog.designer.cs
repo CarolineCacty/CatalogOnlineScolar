@@ -69,6 +69,9 @@ namespace CatalogScolarOnline.Model
     partial void InsertAbsente(Absente instance);
     partial void UpdateAbsente(Absente instance);
     partial void DeleteAbsente(Absente instance);
+    partial void InsertRapoarteEvaluare(RapoarteEvaluare instance);
+    partial void UpdateRapoarteEvaluare(RapoarteEvaluare instance);
+    partial void DeleteRapoarteEvaluare(RapoarteEvaluare instance);
     #endregion
 		
 		public OnlineSchoolCatalogDataContext() : 
@@ -202,6 +205,14 @@ namespace CatalogScolarOnline.Model
 			get
 			{
 				return this.GetTable<Absente>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RapoarteEvaluare> RapoarteEvaluares
+		{
+			get
+			{
+				return this.GetTable<RapoarteEvaluare>();
 			}
 		}
 	}
@@ -730,6 +741,7 @@ namespace CatalogScolarOnline.Model
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Predare")]
 	public partial class Predare : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _PredareID;
@@ -2272,6 +2284,8 @@ namespace CatalogScolarOnline.Model
 		
 		private EntitySet<Absente> _Absentes;
 		
+		private EntitySet<RapoarteEvaluare> _RapoarteEvaluares;
+		
 		private EntityRef<Parinti> _Parinti;
 		
 		private EntityRef<Utilizatori> _Utilizatori;
@@ -2304,6 +2318,7 @@ namespace CatalogScolarOnline.Model
 		{
 			this._Notes = new EntitySet<Note>(new Action<Note>(this.attach_Notes), new Action<Note>(this.detach_Notes));
 			this._Absentes = new EntitySet<Absente>(new Action<Absente>(this.attach_Absentes), new Action<Absente>(this.detach_Absentes));
+			this._RapoarteEvaluares = new EntitySet<RapoarteEvaluare>(new Action<RapoarteEvaluare>(this.attach_RapoarteEvaluares), new Action<RapoarteEvaluare>(this.detach_RapoarteEvaluares));
 			this._Parinti = default(EntityRef<Parinti>);
 			this._Utilizatori = default(EntityRef<Utilizatori>);
 			this._Clase = default(EntityRef<Clase>);
@@ -2508,6 +2523,19 @@ namespace CatalogScolarOnline.Model
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_RapoarteEvaluare", Storage="_RapoarteEvaluares", ThisKey="ElevID", OtherKey="ElevID")]
+		public EntitySet<RapoarteEvaluare> RapoarteEvaluares
+		{
+			get
+			{
+				return this._RapoarteEvaluares;
+			}
+			set
+			{
+				this._RapoarteEvaluares.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Elevi", Storage="_Parinti", ThisKey="ParinteID", OtherKey="ParinteID", IsForeignKey=true)]
 		public Parinti Parinti
 		{
@@ -2649,6 +2677,18 @@ namespace CatalogScolarOnline.Model
 		}
 		
 		private void detach_Absentes(Absente entity)
+		{
+			this.SendPropertyChanging();
+			entity.Elevi = null;
+		}
+		
+		private void attach_RapoarteEvaluares(RapoarteEvaluare entity)
+		{
+			this.SendPropertyChanging();
+			entity.Elevi = this;
+		}
+		
+		private void detach_RapoarteEvaluares(RapoarteEvaluare entity)
 		{
 			this.SendPropertyChanging();
 			entity.Elevi = null;
@@ -3239,6 +3279,277 @@ namespace CatalogScolarOnline.Model
 						this._PredareID = default(int);
 					}
 					this.SendPropertyChanged("Predare");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RapoarteEvaluare")]
+	public partial class RapoarteEvaluare : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RaportID;
+		
+		private int _ElevID;
+		
+		private double _MediaGenerala;
+		
+		private int _AbsenteMotivate;
+		
+		private int _AbsenteNemotivate;
+		
+		private string _Comportament;
+		
+		private string _Descriere;
+		
+		private System.DateTime _DataGenerare;
+		
+		private EntityRef<Elevi> _Elevi;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRaportIDChanging(int value);
+    partial void OnRaportIDChanged();
+    partial void OnElevIDChanging(int value);
+    partial void OnElevIDChanged();
+    partial void OnMediaGeneralaChanging(double value);
+    partial void OnMediaGeneralaChanged();
+    partial void OnAbsenteMotivateChanging(int value);
+    partial void OnAbsenteMotivateChanged();
+    partial void OnAbsenteNemotivateChanging(int value);
+    partial void OnAbsenteNemotivateChanged();
+    partial void OnComportamentChanging(string value);
+    partial void OnComportamentChanged();
+    partial void OnDescriereChanging(string value);
+    partial void OnDescriereChanged();
+    partial void OnDataGenerareChanging(System.DateTime value);
+    partial void OnDataGenerareChanged();
+    #endregion
+		
+		public RapoarteEvaluare()
+		{
+			this._Elevi = default(EntityRef<Elevi>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RaportID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RaportID
+		{
+			get
+			{
+				return this._RaportID;
+			}
+			set
+			{
+				if ((this._RaportID != value))
+				{
+					this.OnRaportIDChanging(value);
+					this.SendPropertyChanging();
+					this._RaportID = value;
+					this.SendPropertyChanged("RaportID");
+					this.OnRaportIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ElevID", DbType="Int NOT NULL")]
+		public int ElevID
+		{
+			get
+			{
+				return this._ElevID;
+			}
+			set
+			{
+				if ((this._ElevID != value))
+				{
+					if (this._Elevi.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnElevIDChanging(value);
+					this.SendPropertyChanging();
+					this._ElevID = value;
+					this.SendPropertyChanged("ElevID");
+					this.OnElevIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MediaGenerala", DbType="Float NOT NULL")]
+		public double MediaGenerala
+		{
+			get
+			{
+				return this._MediaGenerala;
+			}
+			set
+			{
+				if ((this._MediaGenerala != value))
+				{
+					this.OnMediaGeneralaChanging(value);
+					this.SendPropertyChanging();
+					this._MediaGenerala = value;
+					this.SendPropertyChanged("MediaGenerala");
+					this.OnMediaGeneralaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AbsenteMotivate", DbType="Int NOT NULL")]
+		public int AbsenteMotivate
+		{
+			get
+			{
+				return this._AbsenteMotivate;
+			}
+			set
+			{
+				if ((this._AbsenteMotivate != value))
+				{
+					this.OnAbsenteMotivateChanging(value);
+					this.SendPropertyChanging();
+					this._AbsenteMotivate = value;
+					this.SendPropertyChanged("AbsenteMotivate");
+					this.OnAbsenteMotivateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AbsenteNemotivate", DbType="Int NOT NULL")]
+		public int AbsenteNemotivate
+		{
+			get
+			{
+				return this._AbsenteNemotivate;
+			}
+			set
+			{
+				if ((this._AbsenteNemotivate != value))
+				{
+					this.OnAbsenteNemotivateChanging(value);
+					this.SendPropertyChanging();
+					this._AbsenteNemotivate = value;
+					this.SendPropertyChanged("AbsenteNemotivate");
+					this.OnAbsenteNemotivateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comportament", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Comportament
+		{
+			get
+			{
+				return this._Comportament;
+			}
+			set
+			{
+				if ((this._Comportament != value))
+				{
+					this.OnComportamentChanging(value);
+					this.SendPropertyChanging();
+					this._Comportament = value;
+					this.SendPropertyChanged("Comportament");
+					this.OnComportamentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descriere", DbType="NVarChar(MAX)")]
+		public string Descriere
+		{
+			get
+			{
+				return this._Descriere;
+			}
+			set
+			{
+				if ((this._Descriere != value))
+				{
+					this.OnDescriereChanging(value);
+					this.SendPropertyChanging();
+					this._Descriere = value;
+					this.SendPropertyChanged("Descriere");
+					this.OnDescriereChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataGenerare", DbType="DateTime NOT NULL")]
+		public System.DateTime DataGenerare
+		{
+			get
+			{
+				return this._DataGenerare;
+			}
+			set
+			{
+				if ((this._DataGenerare != value))
+				{
+					this.OnDataGenerareChanging(value);
+					this.SendPropertyChanging();
+					this._DataGenerare = value;
+					this.SendPropertyChanged("DataGenerare");
+					this.OnDataGenerareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Elevi_RapoarteEvaluare", Storage="_Elevi", ThisKey="ElevID", OtherKey="ElevID", IsForeignKey=true)]
+		public Elevi Elevi
+		{
+			get
+			{
+				return this._Elevi.Entity;
+			}
+			set
+			{
+				Elevi previousValue = this._Elevi.Entity;
+				if (((previousValue != value) 
+							|| (this._Elevi.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Elevi.Entity = null;
+						previousValue.RapoarteEvaluares.Remove(this);
+					}
+					this._Elevi.Entity = value;
+					if ((value != null))
+					{
+						value.RapoarteEvaluares.Add(this);
+						this._ElevID = value.ElevID;
+					}
+					else
+					{
+						this._ElevID = default(int);
+					}
+					this.SendPropertyChanged("Elevi");
 				}
 			}
 		}
