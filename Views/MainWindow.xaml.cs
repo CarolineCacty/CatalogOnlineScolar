@@ -17,6 +17,8 @@ using CatalogScolarOnline.Model;
 using CatalogScolarOnline.ViewModel;
 using CatalogScolarOnline.Views;
 using CatalogScolarOnline.Utilities;
+using Hardcodet.Wpf;
+using Flattinger.UI.ToastMessage.Controls;
 
 namespace CatalogScolarOnline.Views
 {
@@ -47,6 +49,7 @@ namespace CatalogScolarOnline.Views
                 var acasaPage = new Views.Acasa();
                 mainWindow.MainFrame.Navigate(acasaPage);
             }
+
         }
 
         public void ReceiveEmail(string email)

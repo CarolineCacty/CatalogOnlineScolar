@@ -9,6 +9,7 @@
     xmlns:uc="clr-namespace:CatalogScolarOnline.UserControls"
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800"
+      
       Title="InsertNote">
 
     <Page.DataContext>

@@ -45,9 +45,6 @@ namespace CatalogScolarOnline.Model
     partial void InsertOrarClase(OrarClase instance);
     partial void UpdateOrarClase(OrarClase instance);
     partial void DeleteOrarClase(OrarClase instance);
-    partial void InsertNotificari(Notificari instance);
-    partial void UpdateNotificari(Notificari instance);
-    partial void DeleteNotificari(Notificari instance);
     partial void InsertNote(Note instance);
     partial void UpdateNote(Note instance);
     partial void DeleteNote(Note instance);
@@ -72,6 +69,9 @@ namespace CatalogScolarOnline.Model
     partial void InsertRapoarteEvaluare(RapoarteEvaluare instance);
     partial void UpdateRapoarteEvaluare(RapoarteEvaluare instance);
     partial void DeleteRapoarteEvaluare(RapoarteEvaluare instance);
+    partial void InsertNotificari(Notificari instance);
+    partial void UpdateNotificari(Notificari instance);
+    partial void DeleteNotificari(Notificari instance);
     #endregion
 		
 		public OnlineSchoolCatalogDataContext() : 
@@ -144,14 +144,6 @@ namespace CatalogScolarOnline.Model
 			}
 		}
 		
-		public System.Data.Linq.Table<Notificari> Notificaris
-		{
-			get
-			{
-				return this.GetTable<Notificari>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Note> Notes
 		{
 			get
@@ -213,6 +205,14 @@ namespace CatalogScolarOnline.Model
 			get
 			{
 				return this.GetTable<RapoarteEvaluare>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Notificari> Notificaris
+		{
+			get
+			{
+				return this.GetTable<Notificari>();
 			}
 		}
 	}
@@ -1095,9 +1095,9 @@ namespace CatalogScolarOnline.Model
 		
 		private int _UtilizatorID;
 		
-		private EntitySet<Notificari> _Notificaris;
-		
 		private EntitySet<Elevi> _Elevis;
+		
+		private EntitySet<Notificari> _Notificaris;
 		
 		private EntityRef<Utilizatori> _Utilizatori;
 		
@@ -1119,8 +1119,8 @@ namespace CatalogScolarOnline.Model
 		
 		public Parinti()
 		{
-			this._Notificaris = new EntitySet<Notificari>(new Action<Notificari>(this.attach_Notificaris), new Action<Notificari>(this.detach_Notificaris));
 			this._Elevis = new EntitySet<Elevi>(new Action<Elevi>(this.attach_Elevis), new Action<Elevi>(this.detach_Elevis));
+			this._Notificaris = new EntitySet<Notificari>(new Action<Notificari>(this.attach_Notificaris), new Action<Notificari>(this.detach_Notificaris));
 			this._Utilizatori = default(EntityRef<Utilizatori>);
 			OnCreated();
 		}
@@ -1229,19 +1229,6 @@ namespace CatalogScolarOnline.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Notificari", Storage="_Notificaris", ThisKey="ParinteID", OtherKey="ParinteID")]
-		public EntitySet<Notificari> Notificaris
-		{
-			get
-			{
-				return this._Notificaris;
-			}
-			set
-			{
-				this._Notificaris.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Elevi", Storage="_Elevis", ThisKey="ParinteID", OtherKey="ParinteID")]
 		public EntitySet<Elevi> Elevis
 		{
@@ -1252,6 +1239,19 @@ namespace CatalogScolarOnline.Model
 			set
 			{
 				this._Elevis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Notificari", Storage="_Notificaris", ThisKey="ParinteID", OtherKey="ParinteID")]
+		public EntitySet<Notificari> Notificaris
+		{
+			get
+			{
+				return this._Notificaris;
+			}
+			set
+			{
+				this._Notificaris.Assign(value);
 			}
 		}
 		
@@ -1309,18 +1309,6 @@ namespace CatalogScolarOnline.Model
 			}
 		}
 		
-		private void attach_Notificaris(Notificari entity)
-		{
-			this.SendPropertyChanging();
-			entity.Parinti = this;
-		}
-		
-		private void detach_Notificaris(Notificari entity)
-		{
-			this.SendPropertyChanging();
-			entity.Parinti = null;
-		}
-		
 		private void attach_Elevis(Elevi entity)
 		{
 			this.SendPropertyChanging();
@@ -1328,6 +1316,18 @@ namespace CatalogScolarOnline.Model
 		}
 		
 		private void detach_Elevis(Elevi entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parinti = null;
+		}
+		
+		private void attach_Notificaris(Notificari entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parinti = this;
+		}
+		
+		private void detach_Notificaris(Notificari entity)
 		{
 			this.SendPropertyChanging();
 			entity.Parinti = null;
@@ -1566,181 +1566,6 @@ namespace CatalogScolarOnline.Model
 						this._ClasaID = default(string);
 					}
 					this.SendPropertyChanged("Clase");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Notificari")]
-	public partial class Notificari : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _NotificareID;
-		
-		private System.DateTime _Data_Notificare;
-		
-		private string _Mesaj;
-		
-		private int _ParinteID;
-		
-		private EntityRef<Parinti> _Parinti;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnNotificareIDChanging(int value);
-    partial void OnNotificareIDChanged();
-    partial void OnData_NotificareChanging(System.DateTime value);
-    partial void OnData_NotificareChanged();
-    partial void OnMesajChanging(string value);
-    partial void OnMesajChanged();
-    partial void OnParinteIDChanging(int value);
-    partial void OnParinteIDChanged();
-    #endregion
-		
-		public Notificari()
-		{
-			this._Parinti = default(EntityRef<Parinti>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NotificareID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int NotificareID
-		{
-			get
-			{
-				return this._NotificareID;
-			}
-			set
-			{
-				if ((this._NotificareID != value))
-				{
-					this.OnNotificareIDChanging(value);
-					this.SendPropertyChanging();
-					this._NotificareID = value;
-					this.SendPropertyChanged("NotificareID");
-					this.OnNotificareIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_Notificare", DbType="Date NOT NULL")]
-		public System.DateTime Data_Notificare
-		{
-			get
-			{
-				return this._Data_Notificare;
-			}
-			set
-			{
-				if ((this._Data_Notificare != value))
-				{
-					this.OnData_NotificareChanging(value);
-					this.SendPropertyChanging();
-					this._Data_Notificare = value;
-					this.SendPropertyChanged("Data_Notificare");
-					this.OnData_NotificareChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mesaj", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string Mesaj
-		{
-			get
-			{
-				return this._Mesaj;
-			}
-			set
-			{
-				if ((this._Mesaj != value))
-				{
-					this.OnMesajChanging(value);
-					this.SendPropertyChanging();
-					this._Mesaj = value;
-					this.SendPropertyChanged("Mesaj");
-					this.OnMesajChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParinteID", DbType="Int NOT NULL")]
-		public int ParinteID
-		{
-			get
-			{
-				return this._ParinteID;
-			}
-			set
-			{
-				if ((this._ParinteID != value))
-				{
-					if (this._Parinti.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnParinteIDChanging(value);
-					this.SendPropertyChanging();
-					this._ParinteID = value;
-					this.SendPropertyChanged("ParinteID");
-					this.OnParinteIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Notificari", Storage="_Parinti", ThisKey="ParinteID", OtherKey="ParinteID", IsForeignKey=true)]
-		public Parinti Parinti
-		{
-			get
-			{
-				return this._Parinti.Entity;
-			}
-			set
-			{
-				Parinti previousValue = this._Parinti.Entity;
-				if (((previousValue != value) 
-							|| (this._Parinti.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Parinti.Entity = null;
-						previousValue.Notificaris.Remove(this);
-					}
-					this._Parinti.Entity = value;
-					if ((value != null))
-					{
-						value.Notificaris.Add(this);
-						this._ParinteID = value.ParinteID;
-					}
-					else
-					{
-						this._ParinteID = default(int);
-					}
-					this.SendPropertyChanged("Parinti");
 				}
 			}
 		}
@@ -3550,6 +3375,205 @@ namespace CatalogScolarOnline.Model
 						this._ElevID = default(int);
 					}
 					this.SendPropertyChanged("Elevi");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Notificari")]
+	public partial class Notificari : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _NotificareID;
+		
+		private System.DateTime _Data_Notificare;
+		
+		private string _Mesaj;
+		
+		private bool _EsteCitita;
+		
+		private int _ParinteID;
+		
+		private EntityRef<Parinti> _Parinti;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNotificareIDChanging(int value);
+    partial void OnNotificareIDChanged();
+    partial void OnData_NotificareChanging(System.DateTime value);
+    partial void OnData_NotificareChanged();
+    partial void OnMesajChanging(string value);
+    partial void OnMesajChanged();
+    partial void OnEsteCititaChanging(bool value);
+    partial void OnEsteCititaChanged();
+    partial void OnParinteIDChanging(int value);
+    partial void OnParinteIDChanged();
+    #endregion
+		
+		public Notificari()
+		{
+			this._Parinti = default(EntityRef<Parinti>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NotificareID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int NotificareID
+		{
+			get
+			{
+				return this._NotificareID;
+			}
+			set
+			{
+				if ((this._NotificareID != value))
+				{
+					this.OnNotificareIDChanging(value);
+					this.SendPropertyChanging();
+					this._NotificareID = value;
+					this.SendPropertyChanged("NotificareID");
+					this.OnNotificareIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_Notificare", DbType="Date NOT NULL")]
+		public System.DateTime Data_Notificare
+		{
+			get
+			{
+				return this._Data_Notificare;
+			}
+			set
+			{
+				if ((this._Data_Notificare != value))
+				{
+					this.OnData_NotificareChanging(value);
+					this.SendPropertyChanging();
+					this._Data_Notificare = value;
+					this.SendPropertyChanged("Data_Notificare");
+					this.OnData_NotificareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mesaj", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string Mesaj
+		{
+			get
+			{
+				return this._Mesaj;
+			}
+			set
+			{
+				if ((this._Mesaj != value))
+				{
+					this.OnMesajChanging(value);
+					this.SendPropertyChanging();
+					this._Mesaj = value;
+					this.SendPropertyChanged("Mesaj");
+					this.OnMesajChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EsteCitita", DbType="Bit NOT NULL")]
+		public bool EsteCitita
+		{
+			get
+			{
+				return this._EsteCitita;
+			}
+			set
+			{
+				if ((this._EsteCitita != value))
+				{
+					this.OnEsteCititaChanging(value);
+					this.SendPropertyChanging();
+					this._EsteCitita = value;
+					this.SendPropertyChanged("EsteCitita");
+					this.OnEsteCititaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParinteID", DbType="Int NOT NULL")]
+		public int ParinteID
+		{
+			get
+			{
+				return this._ParinteID;
+			}
+			set
+			{
+				if ((this._ParinteID != value))
+				{
+					if (this._Parinti.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnParinteIDChanging(value);
+					this.SendPropertyChanging();
+					this._ParinteID = value;
+					this.SendPropertyChanged("ParinteID");
+					this.OnParinteIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parinti_Notificari", Storage="_Parinti", ThisKey="ParinteID", OtherKey="ParinteID", IsForeignKey=true)]
+		public Parinti Parinti
+		{
+			get
+			{
+				return this._Parinti.Entity;
+			}
+			set
+			{
+				Parinti previousValue = this._Parinti.Entity;
+				if (((previousValue != value) 
+							|| (this._Parinti.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Parinti.Entity = null;
+						previousValue.Notificaris.Remove(this);
+					}
+					this._Parinti.Entity = value;
+					if ((value != null))
+					{
+						value.Notificaris.Add(this);
+						this._ParinteID = value.ParinteID;
+					}
+					else
+					{
+						this._ParinteID = default(int);
+					}
+					this.SendPropertyChanged("Parinti");
 				}
 			}
 		}

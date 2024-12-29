@@ -8,6 +8,8 @@
         xmlns:local="clr-namespace:CatalogScolarOnline.Utilities" 
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" 
         xmlns:viewmodel="clr-namespace:CatalogScolarOnline.ViewModel" 
+        xmlns:toast="clr-namespace:Flattinger.UI.ToastMessage.Controls;assembly=Flattinger.UI.ToastMessage"
+        xmlns:util="clr-namespace:CatalogScolarOnline.Utilities"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
   
@@ -26,16 +28,21 @@
                 <ColumnDefinition Width="27" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="1">
+          
+
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
+
+                <!--<Button Content="Send" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding SendTestNotification}"/>
+                <toast:NotificationContainer x:Name="notificationContainer" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>-->
+
                 <Button Margin="20 10 0 20" Style="{StaticResource topButon}">
                     <iconPacks:PackIconMaterial Kind="Menu" Width="16" Height="15" />
                 </Button>
-
 
                 <Border Grid.Row="1" Background="#6A5ACD" CornerRadius="0 50 0 0" >
                     <DockPanel>
@@ -107,6 +114,22 @@
                                     <TextBlock Text="Generare Raport Evaluare"/>
                                 </StackPanel>
                             </Button>
+
+                            <Button Style="{StaticResource menuButon}" Visibility="{Binding NotificariVisibility}"
+                                    Command="{Binding ShowNotificariCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <TextBlock Text="Notificări" Margin="5,0,0,0"/>
+                                    <Border Background="Red" CornerRadius="10" Margin="5,0,0,0" 
+                                            Visibility="{Binding NrNotificariVisibility}">
+                                        <TextBlock Text="{Binding NumarNotificari}" Foreground="White" 
+                                                    FontWeight="Bold" Padding="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </StackPanel>
+
+                            </Button>
+
+
 
                             <Separator Height="70" Opacity="0"/>
 

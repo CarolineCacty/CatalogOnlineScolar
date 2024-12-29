@@ -10,7 +10,7 @@ namespace CatalogScolarOnline.Model
 {
     public class InsertAbsenteModel : BaseModel
     {
-        public void InsertAbsenta(int motivata,DateTime data,int elevID,int predareID)
+        public void InsertAbsenta(int motivata,DateTime data,int elevID,int predareID, string NumePrenume)
         {
             try
             {
@@ -25,6 +25,13 @@ namespace CatalogScolarOnline.Model
                 Context.SubmitChanges();
                 string mesaj = "Insertie Absenta " + " a fost realizată cu succes!";
                 MessageBox.Show(mesaj, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // adaug notificare cu privire la absenta noua
+
+                string motivataString = motivata == 1 ? "MOTIVATĂ" : "NEMOTIVATĂ";
+                string Mesaj = NumePrenume + $" are absență {motivataString} la materia {(new NotificariModel()).GetMaterie(predareID)}!";
+                (new NotificariModel()).InsertNotificare(DateTime.Now, Mesaj, (new NotificariModel()).GetParinteID(elevID));
+
             }
             catch (Exception ex)
             {

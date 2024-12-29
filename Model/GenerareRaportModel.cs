@@ -113,6 +113,11 @@ namespace CatalogScolarOnline.Model
 
                     MessageBox.Show("Raportul a fost creat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+
+                // adaug notificare cu privire la raportul de evaluare nou
+
+                string Mesaj = $"Raport de evaluare NOU!";
+                (new NotificariModel()).InsertNotificare(DateTime.Now, Mesaj, (new NotificariModel()).GetParinteID(elevID));
             }
             catch (Exception ex)
             {

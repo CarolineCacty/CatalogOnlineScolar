@@ -46,8 +46,8 @@
       <Column Name="Prenume_parinte" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Numar_telefon" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="UtilizatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Parinti_Notificari" Member="Notificaris" ThisKey="ParinteID" OtherKey="ParinteID" Type="Notificari" />
       <Association Name="Parinti_Elevi" Member="Elevis" ThisKey="ParinteID" OtherKey="ParinteID" Type="Elevi" />
+      <Association Name="Parinti_Notificari" Member="Notificaris" ThisKey="ParinteID" OtherKey="ParinteID" Type="Notificari" />
       <Association Name="Utilizatori_Parinti" Member="Utilizatori" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
     </Type>
   </Table>
@@ -60,15 +60,6 @@
       <Association Name="Predare_OrarClase" Member="Predare" ThisKey="PredareID" OtherKey="PredareID" Type="Predare" IsForeignKey="true" />
       <Association Name="IntervaleOre_OrarClase" Member="IntervaleOre" ThisKey="IntervalID" OtherKey="IntervalID" Type="IntervaleOre" IsForeignKey="true" />
       <Association Name="Clase_OrarClase" Member="Clase" ThisKey="ClasaID" OtherKey="ClasaID" Type="Clase" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Notificari" Member="Notificaris">
-    <Type Name="Notificari">
-      <Column Name="NotificareID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Data_Notificare" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Mesaj" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="ParinteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Parinti_Notificari" Member="Parinti" ThisKey="ParinteID" OtherKey="ParinteID" Type="Parinti" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Note" Member="Notes">
@@ -156,6 +147,16 @@
       <Column Name="Descriere" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DataGenerare" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="Elevi_RapoarteEvaluare" Member="Elevi" ThisKey="ElevID" OtherKey="ElevID" Type="Elevi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Notificari" Member="Notificaris">
+    <Type Name="Notificari">
+      <Column Name="NotificareID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Data_Notificare" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Mesaj" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="EsteCitita" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ParinteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Parinti_Notificari" Member="Parinti" ThisKey="ParinteID" OtherKey="ParinteID" Type="Parinti" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

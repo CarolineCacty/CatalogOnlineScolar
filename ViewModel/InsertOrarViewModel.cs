@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CatalogScolarOnline.ViewModel
@@ -79,6 +80,11 @@ namespace CatalogScolarOnline.ViewModel
 
         private void InsertOrar(object parameter)
         {
+            if (_profesorSelectat == null || _clasaID == null || _ziSaptamana == null || _oraSelectata == null)
+            {
+                MessageBox.Show($"Nu pot exista câmpuri goale", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _profesorID = (new InsertNoteModel()).GetProfID(_profesorSelectat);
             _materieID = (new InsertNoteModel()).GetMaterieID(_profesorID, _clasaID);
             _predareID = (new InsertNoteModel()).GetPredareID(_profesorID, _materieID, _clasaID);

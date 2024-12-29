@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace CatalogScolarOnline.ViewModel
@@ -104,12 +105,18 @@ namespace CatalogScolarOnline.ViewModel
 
         private void InsertAbsenta(object parameter)
         {
+            if (_profesorSelectat == null || _elevSelectat == null || _clasaID == null || _dataAbsenta == null)
+            {
+                MessageBox.Show($"Nu pot exista câmpuri goale", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             _profesorID = (new InsertNoteModel()).GetProfID(_profesorSelectat);
             _elevID = (new InsertNoteModel()).GetElevID(_elevSelectat);
             _materieID = (new InsertNoteModel()).GetMaterieID(_profesorID, _clasaID);
             _predareID = (new InsertNoteModel()).GetPredareID(_profesorID, _materieID, _clasaID);
 
-            (new InsertAbsenteModel()).InsertAbsenta(_motivata,_dataAbsenta,_elevID,_predareID);
+            (new InsertAbsenteModel()).InsertAbsenta(_motivata,_dataAbsenta,_elevID,_predareID,_elevSelectat);
         }
     }
 }

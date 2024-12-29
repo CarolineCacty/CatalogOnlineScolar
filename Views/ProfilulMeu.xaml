@@ -173,6 +173,9 @@
                     <TextBlock Text="{Binding Vechime}" 
                 FontSize="16" 
                 Foreground="#2C2C2C"/>
+                    
+                    
+                    
                 </StackPanel>
 
             </Grid>

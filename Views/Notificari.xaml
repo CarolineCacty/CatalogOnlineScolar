@@ -1,0 +1,65 @@
+﻿<Page x:Class="CatalogScolarOnline.Views.Notificari"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CatalogScolarOnline.Views"
+      xmlns:ViewModel="clr-namespace:CatalogScolarOnline.ViewModel"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:uc="clr-namespace:CatalogScolarOnline.UserControls"
+      mc:Ignorable="d" 
+      Loaded="NotificariView_Loaded"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Notificari">
+
+    <Grid Background="#F2F4F7" >
+
+        <TextBlock Text="Notificări" FontSize="24" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="10"/>
+
+        <DataGrid x:Name="NotificariDataGrid"
+          AutoGenerateColumns="False"
+          Margin="20 50 20 0"
+          Background="White"
+          RowBackground="#E3E6F0"
+          AlternatingRowBackground="#F8FAFC"
+          HorizontalGridLinesBrush="#D1D5DB"
+          VerticalGridLinesBrush="#D1D5DB"
+          HeadersVisibility="Column"
+          ColumnHeaderHeight="40"
+          RowHeight="35"
+          ItemsSource="{Binding NotificariList}">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding NotEsteCitita}" Value="True">
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding NotEsteCitita}" Value="False">
+                            <Setter Property="Foreground" Value="Gray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+
+
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#6A5ACD"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Este Citită" Binding="{Binding EsteCitita}"  Width="85" />
+                <DataGridTextColumn Header="Data Notificare" Binding="{Binding DataNotificare}" Width="170" FontSize="14"/>
+                <DataGridTextColumn Header="Mesaj" Binding="{Binding Mesaj}" Width="*" FontSize="14"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

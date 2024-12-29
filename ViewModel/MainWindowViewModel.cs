@@ -7,6 +7,13 @@ using System.Windows.Input;
 using CatalogScolarOnline.Model;
 using CatalogScolarOnline.Utilities;
 using CatalogScolarOnline.Views;
+using Flattinger.UI.ToastMessage;
+using Flattinger.Core.MVVM;
+using Flattinger.UI.ToastMessage.Controls;
+using Flattinger.Core.Interface.ToastMessage;
+using System.Threading;
+using System;
+
 
 namespace CatalogScolarOnline.ViewModel
 {
@@ -27,7 +34,8 @@ namespace CatalogScolarOnline.ViewModel
             }
          }
         public string _name { get; set; }
-       
+
+        
         public string Name
         {
             get { return _name; }
@@ -46,6 +54,22 @@ namespace CatalogScolarOnline.ViewModel
 
         private Visibility _vizualizareRaportVisibility = Visibility.Collapsed;
         private Visibility _generareRaportVisibility = Visibility.Collapsed;
+        private Visibility _notificaritVisibility = Visibility.Collapsed;
+
+        private Visibility _nrNotificariVisibility = Visibility.Visible;
+
+        public Visibility NrNotificariVisibility
+        {
+            get { return _nrNotificariVisibility; }
+            set
+            {
+                if (_nrNotificariVisibility != value)
+                {
+                    _nrNotificariVisibility = value;
+                    OnPropertyChanged(nameof(NrNotificariVisibility));
+                }
+            }
+        }
         public Visibility VizualizareRaportVisibility
         {
             get { return _vizualizareRaportVisibility; }
@@ -97,6 +121,19 @@ namespace CatalogScolarOnline.ViewModel
             }
         }
 
+        public Visibility NotificariVisibility
+        {
+            get { return _notificaritVisibility; }
+            set
+            {
+                if (_notificaritVisibility != value)
+                {
+                    _notificaritVisibility = value;
+                    OnPropertyChanged(nameof(NotificariVisibility));
+                }
+            }
+        }
+
         private ObservableCollection<Grades> _grades;
 
         private RaportEvaluare raportEvaluare;
@@ -115,6 +152,27 @@ namespace CatalogScolarOnline.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private  int _numarNotificari;
+        public  int NumarNotificari
+        {
+            get => _numarNotificari;
+            set
+            {
+                if (_numarNotificari != value)
+                {
+                    _numarNotificari = value;
+                    OnPropertyChanged(nameof(NumarNotificari));
+                }
+            }
+        }
+
+        public void SetNumarNotificari(int nr)
+        {
+            NumarNotificari = nr;
+        }
+        private readonly Timer _notificariTimer;
+
+        //private ToastProvider _toastProvider;
         public ICommand CloseCommand { get; }
         public ICommand LoginWindow { get; }
         public ICommand NavigateToNotesCommand { get; }
@@ -125,18 +183,43 @@ namespace CatalogScolarOnline.ViewModel
         public ICommand ShowRaportEvaluareCommand { get; }
         public ICommand ShowGenerateRaportEvaluareCommand { get; }
 
+        //public ICommand SendTestNotification { get; set; }
+        public ICommand ShowNotificariCommand { get; set; }
+
         public MainWindowViewModel()
         {
-            CloseCommand = new RelayCommand(CloseApplication);
-            LoginWindow = new RelayCommand(LoginWindowShow);
-            NavigateToNotesCommand = new RelayCommand(NavigateToNotes);
-            ShowOrarCommand = new RelayCommand(ShowOrar);
-            ShowAbsenteCommand = new RelayCommand(ShowAbsente);
-            ShowMyProfileCommand = new RelayCommand(ShowMyProfile);
-            ShowRaportEvaluareCommand = new RelayCommand(ShowRaportEvaluare);
-            ShowGenerateRaportEvaluareCommand = new RelayCommand(ShowGenerateRaportEvaluare);
+            CloseCommand = new CatalogScolarOnline.Utilities.RelayCommand(CloseApplication);
+            LoginWindow = new CatalogScolarOnline.Utilities.RelayCommand(LoginWindowShow);
+            NavigateToNotesCommand = new CatalogScolarOnline.Utilities.RelayCommand(NavigateToNotes);
+            ShowOrarCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowOrar);
+            ShowAbsenteCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowAbsente);
+            ShowMyProfileCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowMyProfile);
+            ShowRaportEvaluareCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowRaportEvaluare);
+            ShowGenerateRaportEvaluareCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowGenerateRaportEvaluare);
+            //SendTestNotification = new Flattinger.Core.MVVM.RelayCommand(parameter => OnSend());
+            ShowNotificariCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowNotificari);
         }
 
+        private void ShowNotificari(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var notificariPage = new Views.Notificari(this);
+                mainWindow.MainFrame.Navigate(notificariPage);
+            } 
+        }
+
+        //public void OnSend()
+        //{
+        //    _toastProvider.NotificationService.AddNotification(Flattinger.Core.Enums.ToastType.WARNING, "Entry not found", "The entry not found in your Database", 5, animationConfig: new AnimationConfig { });
+        //}
+
+        private void VerificaNotificari(object state)
+        {
+            int notificariNoi = (new NotificariModel()).GetNrNotificariNoi();
+            NumarNotificari = notificariNoi;
+        }
         public MainWindowViewModel(string email)
         {
             int rol = Session.GetRol(email);
@@ -149,16 +232,29 @@ namespace CatalogScolarOnline.ViewModel
             else if(rol == 0 || rol == 1)
             {
                 _vizualizareRaportVisibility = Visibility.Visible;
+                if(rol == 1)
+                {
+                    _notificaritVisibility = Visibility.Visible;
+                    _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
+                    NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed; 
+                }
+                else _notificaritVisibility= Visibility.Collapsed;
             }
 
-            CloseCommand = new RelayCommand(CloseApplication);
-            LoginWindow = new RelayCommand(LoginWindowShow);
-            NavigateToNotesCommand = new RelayCommand(NavigateToNotes);
-            ShowOrarCommand = new RelayCommand(ShowOrar);
-            ShowAbsenteCommand = new RelayCommand(ShowAbsente);
-            ShowMyProfileCommand = new RelayCommand(ShowMyProfile);
-            ShowRaportEvaluareCommand = new RelayCommand(ShowRaportEvaluare);
-            ShowGenerateRaportEvaluareCommand = new RelayCommand(ShowGenerateRaportEvaluare);
+            //_notificariTimer = new Timer(VerificaNotificari, null, TimeSpan.Zero, TimeSpan.FromSeconds(1.5));
+
+            //_toastProvider = new ToastProvider(notificationContainer);
+
+            CloseCommand = new CatalogScolarOnline.Utilities.RelayCommand(CloseApplication);
+            LoginWindow = new CatalogScolarOnline.Utilities.RelayCommand(LoginWindowShow);
+            NavigateToNotesCommand = new CatalogScolarOnline.Utilities.RelayCommand(NavigateToNotes);
+            ShowOrarCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowOrar);
+            ShowAbsenteCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowAbsente);
+            ShowMyProfileCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowMyProfile);
+            ShowRaportEvaluareCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowRaportEvaluare);
+            ShowGenerateRaportEvaluareCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowGenerateRaportEvaluare);
+            ShowNotificariCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowNotificari);
+            //SendTestNotification = new Flattinger.Core.MVVM.RelayCommand(parameter => OnSend());
         }
 
         private void ShowGenerateRaportEvaluare(object parameter)
@@ -181,6 +277,8 @@ namespace CatalogScolarOnline.ViewModel
                 var vizualizarePage = new Views.VizualizareRaport(raportEvaluare);
                 mainWindow.MainFrame.Navigate(vizualizarePage);
             }
+            _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
+            NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void NavigateToNotes(object parameter)
@@ -193,6 +291,8 @@ namespace CatalogScolarOnline.ViewModel
                 
                 mainWindow.MainFrame.Navigate(notePage);
             }
+            _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
+            NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void ShowOrar(object parameter)
@@ -204,6 +304,8 @@ namespace CatalogScolarOnline.ViewModel
                 
                 mainWindow.MainFrame.Navigate(orarPage);
             }
+            _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
+            NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void ShowAbsente(object parameter)
@@ -216,6 +318,8 @@ namespace CatalogScolarOnline.ViewModel
 
                 mainWindow.MainFrame.Navigate(absentePage);
             }
+            _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
+            NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void ShowMyProfile(object parameter)
@@ -226,6 +330,8 @@ namespace CatalogScolarOnline.ViewModel
                 var myProfilePage = new Views.ProfilulMeu();
                 mainWindow.MainFrame.Navigate(myProfilePage);
             }
+            _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
+            NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public void SetEmail(string email)

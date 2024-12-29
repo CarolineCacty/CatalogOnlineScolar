@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using CatalogScolarOnline.Model;
 using CatalogScolarOnline.Views;
+using Flattinger.UI.ToastMessage.Controls;
 
 namespace CatalogScolarOnline.ViewModel
 {

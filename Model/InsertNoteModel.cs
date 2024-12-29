@@ -12,7 +12,7 @@ namespace CatalogScolarOnline.Model
 {
     public class InsertNoteModel : BaseModel
     {
-        public void InsertNota(int nota,DateTime data,int elevID,int predareID)
+        public void InsertNota(int nota,DateTime data,int elevID,int predareID,string NumePrenume)
         {
             try
             {
@@ -31,6 +31,13 @@ namespace CatalogScolarOnline.Model
                 Context.SubmitChanges();
                 string mesaj = "Insertia Notei " + nota.ToString() + " a fost realizată cu succes!";
                 MessageBox.Show(mesaj, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // adaug notificare cu privire la nota noua
+
+                string Mesaj = NumePrenume + $" a obținut nota {Nota.Nota.ToString()} la materia {(new NotificariModel()).GetMaterie(predareID)}!";
+                (new NotificariModel()).InsertNotificare(DateTime.Now, Mesaj, (new NotificariModel()).GetParinteID(elevID));
+
+
             }
             catch (Exception ex) 
             {
@@ -117,6 +124,7 @@ namespace CatalogScolarOnline.Model
 
         public int GetProfID(string profesor)
         {
+  
             var parts = profesor.Split(' ');
             if (parts.Length < 2)
             {
