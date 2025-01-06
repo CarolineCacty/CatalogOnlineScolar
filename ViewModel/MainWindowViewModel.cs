@@ -57,7 +57,21 @@ namespace CatalogScolarOnline.ViewModel
         private Visibility _notificaritVisibility = Visibility.Collapsed;
 
         private Visibility _nrNotificariVisibility = Visibility.Visible;
+        private Visibility _chatVisibility = Visibility.Visible;
 
+        
+        public Visibility ChatVisibility
+        {
+            get { return _chatVisibility; }
+            set
+            {
+                if (_chatVisibility != value)
+                {
+                    _chatVisibility = value;
+                    OnPropertyChanged(nameof(ChatVisibility));
+                }
+            }
+        }
         public Visibility NrNotificariVisibility
         {
             get { return _nrNotificariVisibility; }
@@ -186,6 +200,13 @@ namespace CatalogScolarOnline.ViewModel
         //public ICommand SendTestNotification { get; set; }
         public ICommand ShowNotificariCommand { get; set; }
 
+        public ICommand ShowChatCommand { get; set; }
+
+        private void VerificaNotificari(object state)
+        {
+            int notificariNoi = (new NotificariModel()).GetNrNotificariNoi();
+            NumarNotificari = notificariNoi;
+        }
         public MainWindowViewModel()
         {
             CloseCommand = new CatalogScolarOnline.Utilities.RelayCommand(CloseApplication);
@@ -198,28 +219,17 @@ namespace CatalogScolarOnline.ViewModel
             ShowGenerateRaportEvaluareCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowGenerateRaportEvaluare);
             //SendTestNotification = new Flattinger.Core.MVVM.RelayCommand(parameter => OnSend());
             ShowNotificariCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowNotificari);
+            ShowChatCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowChat);
         }
 
-        private void ShowNotificari(object parameter)
-        {
-            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            if (mainWindow != null)
-            {
-                var notificariPage = new Views.Notificari(this);
-                mainWindow.MainFrame.Navigate(notificariPage);
-            } 
-        }
+        
 
         //public void OnSend()
         //{
         //    _toastProvider.NotificationService.AddNotification(Flattinger.Core.Enums.ToastType.WARNING, "Entry not found", "The entry not found in your Database", 5, animationConfig: new AnimationConfig { });
         //}
 
-        private void VerificaNotificari(object state)
-        {
-            int notificariNoi = (new NotificariModel()).GetNrNotificariNoi();
-            NumarNotificari = notificariNoi;
-        }
+        
         public MainWindowViewModel(string email)
         {
             int rol = Session.GetRol(email);
@@ -228,6 +238,7 @@ namespace CatalogScolarOnline.ViewModel
                 _noteVisibility = Visibility.Collapsed;
                 _absenteVisibility = Visibility.Collapsed;
                 _generareRaportVisibility = Visibility.Visible;
+                _chatVisibility = Visibility.Visible;
             }
             else if(rol == 0 || rol == 1)
             {
@@ -236,7 +247,8 @@ namespace CatalogScolarOnline.ViewModel
                 {
                     _notificaritVisibility = Visibility.Visible;
                     _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
-                    NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed; 
+                    NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed;
+                    _chatVisibility = Visibility.Visible;
                 }
                 else _notificaritVisibility= Visibility.Collapsed;
             }
@@ -255,8 +267,27 @@ namespace CatalogScolarOnline.ViewModel
             ShowGenerateRaportEvaluareCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowGenerateRaportEvaluare);
             ShowNotificariCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowNotificari);
             //SendTestNotification = new Flattinger.Core.MVVM.RelayCommand(parameter => OnSend());
+            ShowChatCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowChat);
         }
 
+        private void ShowChat(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var chatPage = new Views.Chat();
+                mainWindow.MainFrame.Navigate(chatPage);
+            }
+        }
+        private void ShowNotificari(object parameter)
+        {
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            if (mainWindow != null)
+            {
+                var notificariPage = new Views.Notificari(this);
+                mainWindow.MainFrame.Navigate(notificariPage);
+            }
+        }
         private void ShowGenerateRaportEvaluare(object parameter)
         {
             var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();

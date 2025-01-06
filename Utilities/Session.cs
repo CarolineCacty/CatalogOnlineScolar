@@ -80,6 +80,7 @@ namespace CatalogScolarOnline.Utilities
             return rol;
         }
 
+        
 
         public static int GetProfesorId()
         {
@@ -90,6 +91,20 @@ namespace CatalogScolarOnline.Utilities
                  select p.ProfesorID).FirstOrDefault();
 
             return profesorId;
+        }
+
+        public static string GetClasaID()
+        {
+            string clasaID;
+            if(Session.GetRol(Email) == 2)
+                clasaID = _context.Clases.Where(c => c.Diriginte == Session.GetProfesorId()).Select(c => c.ClasaID).FirstOrDefault().ToString();
+            else clasaID = _context.Elevis.Where(e => e.ParinteID == Session.GetParinteID()).Select(e => e.ClasaID).FirstOrDefault().ToString();
+            return clasaID;
+        }
+
+        public static int GetParinteID()
+        {
+            return _context.Parintis.Where( p => p.UtilizatorID == Session.UtilizatorID).Select(p=>p.ParinteID).FirstOrDefault();
         }
     }
 }

@@ -30,10 +30,9 @@ namespace CatalogScolarOnline.Model
         {
             ObservableCollection<Grades> grades = new ObservableCollection<Grades>();
 
-            // Presupunem că _context.grades este colecția ce conține notele din baza de date
             var studentGrades = _context.Notes.Where(g => g.ElevID == studentID);
 
-            foreach (var item in studentGrades)
+            foreach (var item in studentGrades.AsEnumerable().Reverse())
             {
                 string materie =
                     (from n in _context.Notes

@@ -234,6 +234,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\AbsenteModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\ChatModel.cs" />
     <Compile Include="Model\GenerareRaportModel.cs" />
     <Compile Include="Model\Grades.cs" />
     <Compile Include="Model\InsertAbsenteModel.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="ViewModel\AbsenteViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ChatViewModel.cs" />
     <Compile Include="ViewModel\GenerareRaportViewModel.cs" />
     <Compile Include="ViewModel\GradesViewModel.cs" />
     <Compile Include="ViewModel\InsertAbsenteViewModel.cs" />
@@ -282,6 +284,9 @@
     </Compile>
     <Compile Include="Views\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GenerareRaport.xaml.cs">
       <DependentUpon>GenerareRaport.xaml</DependentUpon>
@@ -353,6 +358,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Chat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

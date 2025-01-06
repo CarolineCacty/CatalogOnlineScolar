@@ -130,8 +130,16 @@
                             </Button>
 
 
+                            <Button Style="{StaticResource menuButon}" Visibility="{Binding ChatVisibility}"
+                                     Command="{Binding ShowChatCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <TextBlock Text="Chat"/>
+                                </StackPanel>
+                            </Button>
 
-                            <Separator Height="70" Opacity="0"/>
+
+                            <Separator Height="10" Opacity="0"/>
 
                             <Button Style="{StaticResource menuButon}" Command="{Binding LoginWindow}">
                                 <StackPanel Orientation="Horizontal">

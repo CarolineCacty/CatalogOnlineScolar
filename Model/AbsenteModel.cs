@@ -83,7 +83,7 @@ namespace CatalogScolarOnline.Model
             if (list == null)
                 throw new ArgumentNullException("Nu exista elevul respectiv!\n");
 
-            foreach (var item in list)
+            foreach (var item in list.AsEnumerable().Reverse())
             {
 
                 string element =

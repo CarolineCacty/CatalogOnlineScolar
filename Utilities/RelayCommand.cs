@@ -10,7 +10,7 @@ namespace CatalogScolarOnline.Utilities
 
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            _execute = execute;
             _canExecute = canExecute;
         }
 
@@ -24,10 +24,7 @@ namespace CatalogScolarOnline.Utilities
             _execute(parameter);
         }
 
-        public event EventHandler CanExecuteChanged
-        {
-            add => CommandManager.RequerySuggested += value;
-            remove => CommandManager.RequerySuggested -= value;
-        }
+        public event EventHandler CanExecuteChanged;
     }
+
 }

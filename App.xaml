@@ -6,6 +6,7 @@
             xmlns:util="clr-namespace:CatalogScolarOnline.Utilities"
              StartupUri="Views/Login.xaml">
     <Application.Resources>
+
         <util:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
         
         <Style x:Key="imgClose" TargetType="Image">
