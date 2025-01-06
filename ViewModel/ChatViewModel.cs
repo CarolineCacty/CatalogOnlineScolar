@@ -153,29 +153,35 @@ namespace CatalogScolarOnline.ViewModel
                 EsteCitit = false
             };
 
-            _catalogDataContext.Mesajes.InsertOnSubmit(mesajNou);
-            _catalogDataContext.SubmitChanges();
+            try
+            {
+                _catalogDataContext.Mesajes.InsertOnSubmit(mesajNou);
+                _catalogDataContext.SubmitChanges();
+
+                var chatModelMesaj = new ChatModel
+                {
+                    DataTrimitere = mesajNou.DataTrimitere,
+                    EsteCitit = mesajNou.EsteCitit,
+                    Continut = mesajNou.Continut,
+                    ExpeditorID = UtilizatorCurentID,
+                    DestinatarID = mesajNou.DestinatarID
+                };
 
 
-            var chatModelMesaj = new ChatModel
-            { 
-                DataTrimitere = mesajNou.DataTrimitere,
-                EsteCitit = mesajNou.EsteCitit,
-                Continut = mesajNou.Continut,
-                ExpeditorID= UtilizatorCurentID,
-                DestinatarID = mesajNou.DestinatarID
-            };
+                Mesaje.Add(chatModelMesaj);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"A apărut o eroare la trimiterea mesajului: {ex.Message}", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
 
 
-            Mesaje.Add(chatModelMesaj);
+            
             MesajCurent = string.Empty;
 
             Mesaje = (new ChatModel()).GetMesaje(_destinatarID, Session.GetClasaID());
         }
 
-        private bool CanTrimiteMesaj(object parameter)
-        {
-            return !string.IsNullOrWhiteSpace(MesajCurent);
-        }
     }
 }
