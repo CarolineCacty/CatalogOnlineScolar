@@ -109,7 +109,7 @@ namespace CatalogScolarOnline.ViewModel
                         {
                             IntervalOrar = $"{interval.Ora_inceput:hh\\:mm} - {interval.Ora_sfarsit:hh\\:mm}",
                             orar.Zi_saptamana,
-                            MaterieProfesor = $"{materie.Nume_materie} - {profesor.Nume} {profesor.Prenume}"
+                            MaterieProfesor = $"{materie.Nume_materie} - {predare.ClasaID}"
                         };
 
             var orarGrouped = query

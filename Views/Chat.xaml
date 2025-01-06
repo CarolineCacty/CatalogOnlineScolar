@@ -1,0 +1,93 @@
+﻿<Page x:Class="CatalogScolarOnline.Views.Chat"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CatalogScolarOnline.Views"
+      xmlns:ViewModel="clr-namespace:CatalogScolarOnline.ViewModel" 
+      xmlns:uc="clr-namespace:CatalogScolarOnline.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="Chat">
+
+    <Page.DataContext>
+        <ViewModel:ChatViewModel/>
+    </Page.DataContext>
+
+    <Grid Background="#F2F4F7" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Chat" FontSize="24" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="10"/>
+
+        <Border  Grid.Row="1" Padding="20" Background="#6A5ACD">
+            <Grid Name="grid_chat" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="280"/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Visibility="{Binding ProfesorGridVisibility}" Text="Părinte" HorizontalAlignment="Left" Margin="20 14 0 0" Style="{StaticResource text}"/>
+                <ComboBox Grid.Row="0" Visibility="{Binding ProfesorGridVisibility}" x:Name="cb_parinte" HorizontalAlignment="Left" Width="200" Margin="90 0 0 0" Height="25"
+                SelectedItem="{Binding ParinteSelectat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                ItemsSource="{Binding ListaParinti, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                 
+                </ComboBox>
+
+                <TextBlock Grid.Row="0" Visibility="{Binding ParinteGridVisibillity}" Text="{Binding Diriginte}" HorizontalAlignment="Left" Margin="20 14 0 0" Style="{StaticResource text}"/>
+                
+                <TextBlock Grid.Row="1" Text="Listă Mesaje" HorizontalAlignment="Left" Margin="20 14 0 0" Style="{StaticResource text}"/>
+                <ListView ItemsSource="{Binding Mesaje}" Grid.Row="2">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Background" Value="White" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding EsteDeLaDiriginte}" Value="false">
+                                    <Setter Property="Background" Value="LightSeaGreen" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding EsteDeLaDiriginte}" Value="true">
+                                    <Setter Property="Background" Value="LightBlue" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Margin="5">
+                                <TextBlock Text="{Binding Expeditor}" Foreground="DarkViolet" FontSize="12"/>
+                                <TextBlock Text="{Binding Continut}" />
+                                <TextBlock Text="{Binding DataTrimitere, StringFormat=hh:mm dd/MM/yyyy}" FontSize="10" Foreground="Gray" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="5">
+                    <TextBox HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Foreground="Black"
+                            Grid.Row="3" AcceptsReturn="True" Width="500" Height="80" HorizontalAlignment="Left" Margin="10 0 0 0"  Text="{Binding MesajCurent, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+
+                <Button Name="btn_Send" Grid.Row="3" Width="100" HorizontalAlignment="Right"
+                    Content="Trimite" Margin="0 0 300 0" 
+                    Style="{StaticResource buttonMainGreen}"
+                    Command="{Binding TrimiteMesajCommand}"/>
+
+                <TextBlock Grid.Row="3" HorizontalAlignment="Left" Text="{Binding Mesaje.Count, StringFormat='Număr mesaje: {0}'}" Width="100"/>
+
+            </Grid>
+            
+            
+            
+        </Border>
+
+
+    </Grid>
+</Page>

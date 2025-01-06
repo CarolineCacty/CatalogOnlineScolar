@@ -72,6 +72,9 @@ namespace CatalogScolarOnline.Model
     partial void InsertNotificari(Notificari instance);
     partial void UpdateNotificari(Notificari instance);
     partial void DeleteNotificari(Notificari instance);
+    partial void InsertMesaje(Mesaje instance);
+    partial void UpdateMesaje(Mesaje instance);
+    partial void DeleteMesaje(Mesaje instance);
     #endregion
 		
 		public OnlineSchoolCatalogDataContext() : 
@@ -215,6 +218,14 @@ namespace CatalogScolarOnline.Model
 				return this.GetTable<Notificari>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Mesaje> Mesajes
+		{
+			get
+			{
+				return this.GetTable<Mesaje>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Utilizatori")]
@@ -239,6 +250,10 @@ namespace CatalogScolarOnline.Model
 		
 		private EntitySet<Elevi> _Elevis;
 		
+		private EntitySet<Mesaje> _Mesajes;
+		
+		private EntitySet<Mesaje> _Mesajes1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -260,6 +275,8 @@ namespace CatalogScolarOnline.Model
 			this._Profesoris = new EntitySet<Profesori>(new Action<Profesori>(this.attach_Profesoris), new Action<Profesori>(this.detach_Profesoris));
 			this._Parintis = new EntitySet<Parinti>(new Action<Parinti>(this.attach_Parintis), new Action<Parinti>(this.detach_Parintis));
 			this._Elevis = new EntitySet<Elevi>(new Action<Elevi>(this.attach_Elevis), new Action<Elevi>(this.detach_Elevis));
+			this._Mesajes = new EntitySet<Mesaje>(new Action<Mesaje>(this.attach_Mesajes), new Action<Mesaje>(this.detach_Mesajes));
+			this._Mesajes1 = new EntitySet<Mesaje>(new Action<Mesaje>(this.attach_Mesajes1), new Action<Mesaje>(this.detach_Mesajes1));
 			OnCreated();
 		}
 		
@@ -402,6 +419,32 @@ namespace CatalogScolarOnline.Model
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Mesaje", Storage="_Mesajes", ThisKey="UtilizatorID", OtherKey="DestinatarID")]
+		public EntitySet<Mesaje> Mesajes
+		{
+			get
+			{
+				return this._Mesajes;
+			}
+			set
+			{
+				this._Mesajes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Mesaje1", Storage="_Mesajes1", ThisKey="UtilizatorID", OtherKey="ExpeditorID")]
+		public EntitySet<Mesaje> Mesajes1
+		{
+			get
+			{
+				return this._Mesajes1;
+			}
+			set
+			{
+				this._Mesajes1.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -456,6 +499,30 @@ namespace CatalogScolarOnline.Model
 		{
 			this.SendPropertyChanging();
 			entity.Utilizatori = null;
+		}
+		
+		private void attach_Mesajes(Mesaje entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori = this;
+		}
+		
+		private void detach_Mesajes(Mesaje entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori = null;
+		}
+		
+		private void attach_Mesajes1(Mesaje entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori1 = this;
+		}
+		
+		private void detach_Mesajes1(Mesaje entity)
+		{
+			this.SendPropertyChanging();
+			entity.Utilizatori1 = null;
 		}
 	}
 	
@@ -3574,6 +3641,270 @@ namespace CatalogScolarOnline.Model
 						this._ParinteID = default(int);
 					}
 					this.SendPropertyChanged("Parinti");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Mesaje")]
+	public partial class Mesaje : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MesajID;
+		
+		private System.DateTime _DataTrimitere;
+		
+		private string _Continut;
+		
+		private int _ExpeditorID;
+		
+		private int _DestinatarID;
+		
+		private bool _EsteCitit;
+		
+		private EntityRef<Utilizatori> _Utilizatori;
+		
+		private EntityRef<Utilizatori> _Utilizatori1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMesajIDChanging(int value);
+    partial void OnMesajIDChanged();
+    partial void OnDataTrimitereChanging(System.DateTime value);
+    partial void OnDataTrimitereChanged();
+    partial void OnContinutChanging(string value);
+    partial void OnContinutChanged();
+    partial void OnExpeditorIDChanging(int value);
+    partial void OnExpeditorIDChanged();
+    partial void OnDestinatarIDChanging(int value);
+    partial void OnDestinatarIDChanged();
+    partial void OnEsteCititChanging(bool value);
+    partial void OnEsteCititChanged();
+    #endregion
+		
+		public Mesaje()
+		{
+			this._Utilizatori = default(EntityRef<Utilizatori>);
+			this._Utilizatori1 = default(EntityRef<Utilizatori>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MesajID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MesajID
+		{
+			get
+			{
+				return this._MesajID;
+			}
+			set
+			{
+				if ((this._MesajID != value))
+				{
+					this.OnMesajIDChanging(value);
+					this.SendPropertyChanging();
+					this._MesajID = value;
+					this.SendPropertyChanged("MesajID");
+					this.OnMesajIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataTrimitere", DbType="DateTime NOT NULL")]
+		public System.DateTime DataTrimitere
+		{
+			get
+			{
+				return this._DataTrimitere;
+			}
+			set
+			{
+				if ((this._DataTrimitere != value))
+				{
+					this.OnDataTrimitereChanging(value);
+					this.SendPropertyChanging();
+					this._DataTrimitere = value;
+					this.SendPropertyChanged("DataTrimitere");
+					this.OnDataTrimitereChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Continut", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Continut
+		{
+			get
+			{
+				return this._Continut;
+			}
+			set
+			{
+				if ((this._Continut != value))
+				{
+					this.OnContinutChanging(value);
+					this.SendPropertyChanging();
+					this._Continut = value;
+					this.SendPropertyChanged("Continut");
+					this.OnContinutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpeditorID", DbType="Int NOT NULL")]
+		public int ExpeditorID
+		{
+			get
+			{
+				return this._ExpeditorID;
+			}
+			set
+			{
+				if ((this._ExpeditorID != value))
+				{
+					if (this._Utilizatori1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnExpeditorIDChanging(value);
+					this.SendPropertyChanging();
+					this._ExpeditorID = value;
+					this.SendPropertyChanged("ExpeditorID");
+					this.OnExpeditorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DestinatarID", DbType="Int NOT NULL")]
+		public int DestinatarID
+		{
+			get
+			{
+				return this._DestinatarID;
+			}
+			set
+			{
+				if ((this._DestinatarID != value))
+				{
+					if (this._Utilizatori.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDestinatarIDChanging(value);
+					this.SendPropertyChanging();
+					this._DestinatarID = value;
+					this.SendPropertyChanged("DestinatarID");
+					this.OnDestinatarIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EsteCitit", DbType="Bit NOT NULL")]
+		public bool EsteCitit
+		{
+			get
+			{
+				return this._EsteCitit;
+			}
+			set
+			{
+				if ((this._EsteCitit != value))
+				{
+					this.OnEsteCititChanging(value);
+					this.SendPropertyChanging();
+					this._EsteCitit = value;
+					this.SendPropertyChanged("EsteCitit");
+					this.OnEsteCititChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Mesaje", Storage="_Utilizatori", ThisKey="DestinatarID", OtherKey="UtilizatorID", IsForeignKey=true)]
+		public Utilizatori Utilizatori
+		{
+			get
+			{
+				return this._Utilizatori.Entity;
+			}
+			set
+			{
+				Utilizatori previousValue = this._Utilizatori.Entity;
+				if (((previousValue != value) 
+							|| (this._Utilizatori.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Utilizatori.Entity = null;
+						previousValue.Mesajes.Remove(this);
+					}
+					this._Utilizatori.Entity = value;
+					if ((value != null))
+					{
+						value.Mesajes.Add(this);
+						this._DestinatarID = value.UtilizatorID;
+					}
+					else
+					{
+						this._DestinatarID = default(int);
+					}
+					this.SendPropertyChanged("Utilizatori");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Utilizatori_Mesaje1", Storage="_Utilizatori1", ThisKey="ExpeditorID", OtherKey="UtilizatorID", IsForeignKey=true)]
+		public Utilizatori Utilizatori1
+		{
+			get
+			{
+				return this._Utilizatori1.Entity;
+			}
+			set
+			{
+				Utilizatori previousValue = this._Utilizatori1.Entity;
+				if (((previousValue != value) 
+							|| (this._Utilizatori1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Utilizatori1.Entity = null;
+						previousValue.Mesajes1.Remove(this);
+					}
+					this._Utilizatori1.Entity = value;
+					if ((value != null))
+					{
+						value.Mesajes1.Add(this);
+						this._ExpeditorID = value.UtilizatorID;
+					}
+					else
+					{
+						this._ExpeditorID = default(int);
+					}
+					this.SendPropertyChanged("Utilizatori1");
 				}
 			}
 		}

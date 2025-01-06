@@ -10,6 +10,8 @@
       <Association Name="Utilizatori_Profesori" Member="Profesoris" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Profesori" />
       <Association Name="Utilizatori_Parinti" Member="Parintis" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Parinti" />
       <Association Name="Utilizatori_Elevi" Member="Elevis" ThisKey="UtilizatorID" OtherKey="UtilizatorID" Type="Elevi" />
+      <Association Name="Utilizatori_Mesaje" Member="Mesajes" ThisKey="UtilizatorID" OtherKey="DestinatarID" Type="Mesaje" />
+      <Association Name="Utilizatori_Mesaje1" Member="Mesajes1" ThisKey="UtilizatorID" OtherKey="ExpeditorID" Type="Mesaje" />
     </Type>
   </Table>
   <Table Name="dbo.Profesori" Member="Profesoris">
@@ -157,6 +159,18 @@
       <Column Name="EsteCitita" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="ParinteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Parinti_Notificari" Member="Parinti" ThisKey="ParinteID" OtherKey="ParinteID" Type="Parinti" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mesaje" Member="Mesajes">
+    <Type Name="Mesaje">
+      <Column Name="MesajID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DataTrimitere" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Continut" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ExpeditorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DestinatarID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EsteCitit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Utilizatori_Mesaje" Member="Utilizatori" ThisKey="DestinatarID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
+      <Association Name="Utilizatori_Mesaje1" Member="Utilizatori1" ThisKey="ExpeditorID" OtherKey="UtilizatorID" Type="Utilizatori" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
