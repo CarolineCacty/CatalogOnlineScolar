@@ -56,8 +56,8 @@ namespace CatalogScolarOnline.ViewModel
         private Visibility _generareRaportVisibility = Visibility.Collapsed;
         private Visibility _notificaritVisibility = Visibility.Collapsed;
 
-        private Visibility _nrNotificariVisibility = Visibility.Visible;
-        private Visibility _chatVisibility = Visibility.Visible;
+        private Visibility _nrNotificariVisibility = Visibility.Collapsed;
+        private Visibility _chatVisibility = Visibility.Collapsed;
 
         
         public Visibility ChatVisibility

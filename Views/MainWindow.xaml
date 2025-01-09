@@ -102,7 +102,7 @@
                             <Button Style="{StaticResource menuButon}" Command="{Binding ShowRaportEvaluareCommand}"
                                     Visibility="{Binding VizualizareRaportVisibility}">
                                 <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <iconPacks:PackIconMaterial Kind="FileChart" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Vizualizare Raport Evaluare"/>
                                 </StackPanel>
                             </Button>
@@ -110,15 +110,15 @@
                             <Button Style="{StaticResource menuButon}" Visibility="{Binding GenerareRaportVisibility}"
                                     Command="{Binding ShowGenerateRaportEvaluareCommand}">
                                 <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <iconPacks:PackIconMaterial Kind="ChartLine" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Generare Raport Evaluare"/>
                                 </StackPanel>
-                            </Button>
+                            </Button> 
 
                             <Button Style="{StaticResource menuButon}" Visibility="{Binding NotificariVisibility}"
                                     Command="{Binding ShowNotificariCommand}">
                                 <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <iconPacks:PackIconMaterial Kind="BellRing" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Notificări" Margin="5,0,0,0"/>
                                     <Border Background="Red" CornerRadius="10" Margin="5,0,0,0" 
                                             Visibility="{Binding NrNotificariVisibility}">
@@ -133,7 +133,7 @@
                             <Button Style="{StaticResource menuButon}" Visibility="{Binding ChatVisibility}"
                                      Command="{Binding ShowChatCommand}">
                                 <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <iconPacks:PackIconMaterial Kind="ChatAlert" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Chat"/>
                                 </StackPanel>
                             </Button>

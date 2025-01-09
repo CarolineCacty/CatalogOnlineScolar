@@ -16,6 +16,9 @@ namespace CatalogScolarOnline.Model
                 where r.ElevID == elevID
                 select r).FirstOrDefault();
 
+            if(rapoarteEvaluare==null)
+                return null;
+
             RaportEvaluare raportEvaluare = new RaportEvaluare()
             {
                 Nume = Context.Elevis.Where(e => e.ElevID == rapoarteEvaluare.ElevID).Select(e => e.Nume + " " + e.Prenume).FirstOrDefault(),

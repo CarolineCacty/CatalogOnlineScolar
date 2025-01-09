@@ -83,28 +83,28 @@
 
                             <Button Style="{StaticResource menuButon}" Command="{Binding NavigateToInsertPredareCommand}">
                                 <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="CalendarAlert" Style="{StaticResource menuButtonIcon}" />
+                                    <iconPacks:PackIconMaterial Kind="PlusBox" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Introducere Predare"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Style="{StaticResource menuButon}" Command="{Binding NavigateToInsertNoteCommand}" >
                                 <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <iconPacks:PackIconMaterial Kind="Pencil" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Introducere Note"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Style="{StaticResource menuButon}" Command="{Binding NavigateToInsertAbsenteCommand}" >
                                 <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <iconPacks:PackIconMaterial Kind="AccountOff" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Introducere Absențe"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Style="{StaticResource menuButon}" Command="{Binding NavigateToInsertOrarCommand}" >
                                 <StackPanel Orientation="Horizontal">
-                                    <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
+                                    <iconPacks:PackIconMaterial Kind="Calendar" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Introducere Orar"/>
                                 </StackPanel>
                             </Button>

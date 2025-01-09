@@ -84,6 +84,7 @@ namespace CatalogScolarOnline.ViewModel
 
         public void InitRaport(RaportEvaluare raport)
         {
+            if (raport == null) return;
             _nume = raport.Nume;
             _mediaGenerala = raport.MediaGenerala;
             _absenteMotivate = raport.AbsenteMotivate;
