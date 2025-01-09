@@ -66,10 +66,10 @@ namespace CatalogScolarOnline
         {
             MainFrame.Navigate(new Acasa());
         }
-        private void Note_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new Note());
-        }
+        //private void Note_Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainFrame.Navigate(new Note());
+        //}
 
     }
 }

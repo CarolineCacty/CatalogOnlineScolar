@@ -87,12 +87,12 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButon}">
+                            <!--<Button Style="{StaticResource menuButon}">
                                 <StackPanel Orientation="Horizontal">
                                     <iconPacks:PackIconMaterial Kind="Cog" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Setări"/>
                                 </StackPanel>
-                            </Button>
+                            </Button>-->
 
                             <Separator Height="70" Opacity="0"/>
 
