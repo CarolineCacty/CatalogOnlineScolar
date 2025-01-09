@@ -124,7 +124,7 @@ namespace CatalogScolarOnline.ViewModel
             {
                 _parinteGridVisibillity = Visibility.Visible;
                 _diriginte = (new ChatModel()).GetDiriginteByClasaID(Session.GetClasaID());
-                _destinatarID = (new ChatModel()).GetDiriginteID(Session.GetClasaID());
+                _destinatarID = (new ChatModel()).GetUserIDByDiriginiteID(Session.GetClasaID());
                 Mesaje = (new ChatModel()).GetMesaje(_destinatarID, Session.GetClasaID());
             }
             else if(rol == 2)

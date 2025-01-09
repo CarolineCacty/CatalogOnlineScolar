@@ -51,9 +51,9 @@ namespace CatalogScolarOnline.Model
             List<Mesaje> list = new List<Mesaje>();
 
             if(rol == 2)
-                list = Context.Mesajes.Where(m => m.DestinatarID == destinatarID || m.DestinatarID == Session.UtilizatorID).ToList();
+                list = Context.Mesajes.Where(m => (m.DestinatarID == destinatarID || m.DestinatarID == Session.UtilizatorID) && (m.ExpeditorID == Session.UtilizatorID || m.ExpeditorID == destinatarID )).ToList();
             else 
-                list = Context.Mesajes.Where(m => m.DestinatarID == GetDiriginteID(clasaID) || m.DestinatarID == Session.UtilizatorID).ToList();
+                list = Context.Mesajes.Where(m => (m.DestinatarID == GetUserIDByDiriginiteID(clasaID) || m.DestinatarID == Session.UtilizatorID) && m.ExpeditorID == Session.UtilizatorID || m.ExpeditorID == destinatarID ).ToList();
 
             foreach (var item in list)
             {
@@ -103,6 +103,12 @@ namespace CatalogScolarOnline.Model
         {
             int diriginteID = Context.Clases.Where(c => c.ClasaID == clasaID).Select(c => c.Diriginte).FirstOrDefault();
             return diriginteID;
+        }
+
+        internal int GetUserIDByDiriginiteID(string clasaID)
+        {
+            int diriginteID = GetDiriginteID(clasaID);
+            return Context.Profesoris.Where(p => p.ProfesorID == diriginteID).Select(p => p.UtilizatorID).FirstOrDefault();
         }
 
         public int GetRolByExpeditorID(int expeditorID)
