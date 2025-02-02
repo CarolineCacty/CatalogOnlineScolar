@@ -25,24 +25,29 @@ namespace CatalogScolarOnline.Model
         public List<string> GetParintiList()
         {
             List<string> parinteList = new List<string>();
-            var list =
-                (from e in Context.Elevis
-                 where e.ClasaID == Session.GetClasaID()
-                 select e.ParinteID);
+
+            string clasaID = Session.GetClasaID();
+
+            var list = Context.Elevis
+                             .Where(e => e.ClasaID == clasaID)
+                             .Select(e => e.ParinteID)
+                             .ToList();
 
             foreach (int item in list)
             {
-                string itemStr =
-                    (from p in Context.Parintis
-                     where p.ParinteID == item
-                     select p.Nume_parinte + " " + p.Prenume_parinte).FirstOrDefault();
+                string itemStr = Context.Parintis
+                                        .Where(p => p.ParinteID == item)
+                                        .Select(p => p.Nume_parinte + " " + p.Prenume_parinte)
+                                        .FirstOrDefault();
                 parinteList.Add(itemStr);
             }
 
             return parinteList;
         }
 
-        public ObservableCollection<ChatModel> GetMesaje(int destinatarID,string clasaID)
+
+
+        public ObservableCollection<ChatModel> GetMesaje(int destinatarID, string clasaID)
         {
             ObservableCollection<ChatModel> Mesaje = new ObservableCollection<ChatModel>();
 
@@ -50,30 +55,43 @@ namespace CatalogScolarOnline.Model
 
             List<Mesaje> list = new List<Mesaje>();
 
-            if(rol == 2)
-                list = Context.Mesajes.Where(m => (m.DestinatarID == destinatarID || m.DestinatarID == Session.UtilizatorID) && (m.ExpeditorID == Session.UtilizatorID || m.ExpeditorID == destinatarID )).ToList();
-            else 
-                list = Context.Mesajes.Where(m => (m.DestinatarID == GetUserIDByDiriginiteID(clasaID) || m.DestinatarID == Session.UtilizatorID) && m.ExpeditorID == Session.UtilizatorID || m.ExpeditorID == destinatarID ).ToList();
+            //  Obținem UserID-ul dirigintei înainte de interogare
+            int userIDDiriginte = GetUserIDByDiriginiteID(clasaID);
+
+            if (rol == 2)
+            {
+                list = Context.Mesajes
+                    .Where(m => (m.DestinatarID == destinatarID || m.DestinatarID == Session.UtilizatorID)
+                                && (m.ExpeditorID == Session.UtilizatorID || m.ExpeditorID == destinatarID))
+                    .ToList();
+            }
+            else
+            {
+                list = Context.Mesajes
+                    .Where(m => (m.DestinatarID == userIDDiriginte || m.DestinatarID == Session.UtilizatorID)
+                                && (m.ExpeditorID == Session.UtilizatorID || m.ExpeditorID == destinatarID))
+                    .ToList();
+            }
 
             foreach (var item in list)
             {
                 bool ok = GetRolByExpeditorID(item.ExpeditorID) == 1 ? false : true;
-                Mesaje.Add(
-                    new ChatModel
-                    {
-                        MesajID = item.MesajID,
-                        DataTrimitere = item.DataTrimitere,
-                        Continut = item.Continut,
-                        ExpeditorID = item.ExpeditorID,
-                        DestinatarID = item.DestinatarID,
-                        EsteCitit = item.EsteCitit,
-                        EsteDeLaDiriginte = ok,
-                        Expeditor = GetExpeditorName(item.ExpeditorID),
-                    });
+                Mesaje.Add(new ChatModel
+                {
+                    MesajID = item.MesajID,
+                    DataTrimitere = item.DataTrimitere,
+                    Continut = item.Continut,
+                    ExpeditorID = item.ExpeditorID,
+                    DestinatarID = item.DestinatarID,
+                    EsteCitit = item.EsteCitit,
+                    EsteDeLaDiriginte = ok,
+                    Expeditor = GetExpeditorName(item.ExpeditorID),
+                });
             }
 
-            return Mesaje;  
+            return Mesaje;
         }
+
 
         internal int GetDestinatarIDByParinteSelectat(string parinteSelectat)
         {
@@ -108,8 +126,14 @@ namespace CatalogScolarOnline.Model
         internal int GetUserIDByDiriginiteID(string clasaID)
         {
             int diriginteID = GetDiriginteID(clasaID);
-            return Context.Profesoris.Where(p => p.ProfesorID == diriginteID).Select(p => p.UtilizatorID).FirstOrDefault();
+
+            return Context.Profesoris
+                          .Where(p => p.ProfesorID == diriginteID)
+                          .Select(p => p.UtilizatorID)
+                          .FirstOrDefault();
         }
+
+
 
         public int GetRolByExpeditorID(int expeditorID)
         {

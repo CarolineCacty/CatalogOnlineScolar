@@ -12,10 +12,10 @@ namespace CatalogScolarOnline.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private readonly OnlineSchoolCatalogDataContext _context;
+        private readonly Online_School_CatalogEntities _context;
         public InsertConturiModel()
         {
-            _context = new OnlineSchoolCatalogDataContext();
+            _context = new Online_School_CatalogEntities();
         }
         public void InsertCont(string email,int rol)
         {
@@ -26,8 +26,8 @@ namespace CatalogScolarOnline.Model
                     Email = email,
                     Rol = rol
                 };
-                _context.Conturis.InsertOnSubmit(conturi);
-                _context.SubmitChanges();
+                _context.Conturis.Add(conturi);
+                _context.SaveChanges();
                 MessageBox.Show("Insertia Contului a fost realizata cu succes!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex) 

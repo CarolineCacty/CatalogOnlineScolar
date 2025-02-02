@@ -15,7 +15,7 @@ namespace CatalogScolarOnline.Model
         {
             bool valid;
 
-            using (OnlineSchoolCatalogDataContext context = new OnlineSchoolCatalogDataContext())
+            using (Online_School_CatalogEntities context = new Online_School_CatalogEntities())
             {
                 var user = context.Utilizatoris.FirstOrDefault(u => u.Email == Email && u.Parola == Password);
                 if (user != null)
@@ -32,7 +32,7 @@ namespace CatalogScolarOnline.Model
 
         public bool RegisterUser(string email, string password, int rol)
         {
-            using (OnlineSchoolCatalogDataContext context = new OnlineSchoolCatalogDataContext())
+            using (Online_School_CatalogEntities context = new Online_School_CatalogEntities())
             {
                 if (context.Utilizatoris.Any(u => u.Email == email))
                 {
@@ -50,12 +50,12 @@ namespace CatalogScolarOnline.Model
                     Parola = password,
                     Rol = rol
                 };
-                context.Utilizatoris.InsertOnSubmit(newUser);
-                context.SubmitChanges();
+                context.Utilizatoris.Add(newUser);
+                context.SaveChanges();
                 return true;
             }
         }
-        public void InsertProfesor(OnlineSchoolCatalogDataContext context, int userId, string LastName, string FirstName, string GradDidactic)
+        public void InsertProfesor(Online_School_CatalogEntities context, int userId, string LastName, string FirstName, string GradDidactic)
         {
             var profesor = new Profesori
             {
@@ -65,11 +65,11 @@ namespace CatalogScolarOnline.Model
                 Grad = GradDidactic
             };
 
-            context.Profesoris.InsertOnSubmit(profesor);
-            context.SubmitChanges();
+            context.Profesoris.Add(profesor);
+            context.SaveChanges();
         }
 
-        public bool InsertElev(OnlineSchoolCatalogDataContext context, int userId, string ClasaID, string NumeParinte, string PrenumeParinte,string LastName, string FirstName, string Adresa, DateTime DataNasterii)
+        public bool InsertElev(Online_School_CatalogEntities context, int userId, string ClasaID, string NumeParinte, string PrenumeParinte,string LastName, string FirstName, string Adresa, DateTime DataNasterii)
         {
             try
             {
@@ -94,8 +94,8 @@ namespace CatalogScolarOnline.Model
                     ParinteID = ParinteID
                 };
 
-                context.Elevis.InsertOnSubmit(elev);
-                context.SubmitChanges();
+                context.Elevis.Add(elev);
+                context.SaveChanges();
                 MessageBox.Show("Elevul a fost adăugat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
                 return true;
             }
@@ -129,7 +129,7 @@ namespace CatalogScolarOnline.Model
             }
         }
 
-        public bool InsertParinte(OnlineSchoolCatalogDataContext context, int userId, string LastName, string FirstName, string Telefon)
+        public bool InsertParinte(Online_School_CatalogEntities context, int userId, string LastName, string FirstName, string Telefon)
         {
             try
             {
@@ -140,8 +140,8 @@ namespace CatalogScolarOnline.Model
                     Prenume_parinte = FirstName,
                     Numar_telefon = Telefon
                 };
-                context.Parintis.InsertOnSubmit(parinte);
-                context.SubmitChanges();
+                context.Parintis.Add(parinte);
+                context.SaveChanges();
                 return true;
             }
 

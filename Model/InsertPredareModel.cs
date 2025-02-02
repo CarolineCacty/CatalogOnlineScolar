@@ -11,10 +11,10 @@ namespace CatalogScolarOnline.Model
 {
     public class InsertPredareModel : BaseModel
     {
-        private readonly OnlineSchoolCatalogDataContext _context;
+        private readonly Online_School_CatalogEntities _context;
         public InsertPredareModel()
         {
-            _context = new OnlineSchoolCatalogDataContext();
+            _context = new Online_School_CatalogEntities();
         }
 
        
@@ -39,9 +39,9 @@ namespace CatalogScolarOnline.Model
                     MaterieID = materieID,
                     ClasaID = clasaID,
                 };
-                _context.Predares.InsertOnSubmit(pr);
+                _context.Predares.Add(pr);
 
-                _context.SubmitChanges();
+                _context.SaveChanges();
                     
                 string mesaj = "Insertia Predarii" + " a fost realizata cu succes!";
                 MessageBox.Show(mesaj, "Information", MessageBoxButton.OK, MessageBoxImage.Information);

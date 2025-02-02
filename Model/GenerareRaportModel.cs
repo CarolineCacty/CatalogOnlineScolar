@@ -15,9 +15,17 @@ namespace CatalogScolarOnline.Model
     {
         public string GetClasaID(int diriginte)
         {
-            var clasa = Context.Clases.Where(c => c.Diriginte == diriginte).FirstOrDefault();
+            var clasa = Context.Clases.FirstOrDefault(c => c.Diriginte == diriginte);
+
+            if (clasa == null)
+            {
+                MessageBox.Show("Dirigintele nu are o clasă asociată!", "Eroare", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null; 
+            }
+
             return clasa.ClasaID;
         }
+
 
         public RaportEvaluare GenerareRaport(string elevSelectat, string clasaID, int elevID, string comportament, string descriere)
         {
@@ -91,7 +99,7 @@ namespace CatalogScolarOnline.Model
                     raportExistent.Descriere = raportEvaluare.Descriere;
                     raportExistent.DataGenerare = raportEvaluare.DataGenerare;
 
-                    Context.SubmitChanges();
+                    Context.SaveChanges();
 
                     MessageBox.Show("Raportul a fost actualizat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -108,8 +116,8 @@ namespace CatalogScolarOnline.Model
                         DataGenerare = raportEvaluare.DataGenerare
                     };
 
-                    Context.RapoarteEvaluares.InsertOnSubmit(raportNou);
-                    Context.SubmitChanges();
+                    Context.RapoarteEvaluares.Add(raportNou);
+                    Context.SaveChanges();
 
                     MessageBox.Show("Raportul a fost creat cu succes!", "Succes", MessageBoxButton.OK, MessageBoxImage.Information);
                 }

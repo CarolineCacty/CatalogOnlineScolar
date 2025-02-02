@@ -16,11 +16,11 @@ namespace CatalogScolarOnline.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private readonly OnlineSchoolCatalogDataContext _context;
+        private readonly Online_School_CatalogEntities _context;
 
         public Users()
         {
-            _context = new OnlineSchoolCatalogDataContext();
+            _context = new Online_School_CatalogEntities();
         }
         public int getUserID(string _email)
         {

@@ -13,10 +13,10 @@ namespace CatalogScolarOnline.Model
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private readonly OnlineSchoolCatalogDataContext _context;
+        private readonly Online_School_CatalogEntities _context;
         public InsertClaseModel()
         {
-            _context = new OnlineSchoolCatalogDataContext();
+            _context = new Online_School_CatalogEntities();
         }
 
         public void InsertClasa(string email,string clasaID,string specializare,int anScolar)
@@ -38,8 +38,8 @@ namespace CatalogScolarOnline.Model
                     
                 };
 
-                _context.Clases.InsertOnSubmit(clase);
-                _context.SubmitChanges();
+                _context.Clases.Add(clase);
+                _context.SaveChanges();
                 string mesaj = "Insertia Clasei " + clasaID + " a fost realizata cu succes!";
                 MessageBox.Show(mesaj, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }

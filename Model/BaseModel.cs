@@ -14,7 +14,7 @@ namespace CatalogScolarOnline.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public OnlineSchoolCatalogDataContext Context { get; set; }
-        public BaseModel() { Context = new OnlineSchoolCatalogDataContext(); }
+        public Online_School_CatalogEntities Context { get; set; }
+        public BaseModel() { Context = new Online_School_CatalogEntities(); }
     }
 }

@@ -42,26 +42,28 @@ namespace CatalogScolarOnline.ViewModel
             }
         }
 
-        private readonly OnlineSchoolCatalogDataContext Context = new OnlineSchoolCatalogDataContext();
+        private readonly Online_School_CatalogEntities Context = new Online_School_CatalogEntities();
 
         public void MarcheazaNotificarileCaCitite()
         {
-            List<Notificari> notificariNecitite = Context.Notificaris.Where(n => n.EsteCitita == false && n.ParinteID == (new NotificariModel()).GetParinteID(Session.GetElevId())).ToList();
+
+            int parinteID = (new NotificariModel()).GetParinteID(Session.GetElevId());
+
+
+            List<Notificari> notificariNecitite = Context.Notificaris
+                .Where(n => n.EsteCitita == false && n.ParinteID == parinteID)
+                .ToList();
 
             if (notificariNecitite.Any())
             {
+                foreach (var notificare in notificariNecitite)
+                {
+                    notificare.EsteCitita = true;
+                }
 
-                    foreach (var notificare in notificariNecitite)
-                    {
-                        var notificareDb = Context.Notificaris.FirstOrDefault(n => n.NotificareID == notificare.NotificareID);
-                        if (notificareDb != null)
-                        {
-                            notificareDb.EsteCitita = true;
-                        }
-                    }
-
-                Context.SubmitChanges();
+                Context.SaveChanges();
             }
         }
+
     }
 }

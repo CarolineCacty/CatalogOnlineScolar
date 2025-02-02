@@ -19,8 +19,8 @@ namespace CatalogScolarOnline.Model
                     Nume_materie = numeMaterie
             
                 };
-                Context.Materiis.InsertOnSubmit(materie);
-                Context.SubmitChanges();
+                Context.Materiis.Add(materie);
+                Context.SaveChanges();
                 string mesaj = "Insertia Materiei " + numeMaterie + " a fost realizata cu succes!";
                 MessageBox.Show(mesaj, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }

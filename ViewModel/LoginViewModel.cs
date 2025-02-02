@@ -120,7 +120,7 @@ namespace CatalogScolarOnline.ViewModel
                 LoginError = string.Empty;
                 var currentWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
-                using (OnlineSchoolCatalogDataContext context = new OnlineSchoolCatalogDataContext())
+                using (Online_School_CatalogEntities context = new Online_School_CatalogEntities())
                 {
                     var user = context.Utilizatoris.FirstOrDefault(u => u.Email == Email && u.Parola == Password);
                     Session.UtilizatorID = user.UtilizatorID;

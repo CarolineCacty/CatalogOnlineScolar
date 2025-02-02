@@ -27,8 +27,8 @@ namespace CatalogScolarOnline.Model
                     ElevID = elevID,
                     PredareID = predareID
                 };
-                Context.Notes.InsertOnSubmit(Nota);
-                Context.SubmitChanges();
+                Context.Notes.Add(Nota);
+                Context.SaveChanges();
                 string mesaj = "Insertia Notei " + nota.ToString() + " a fost realizată cu succes!";
                 MessageBox.Show(mesaj, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 

@@ -1,0 +1,1252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Online_School_CatalogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Absente">
+          <Key>
+            <PropertyRef Name="AbsentaID" />
+          </Key>
+          <Property Name="AbsentaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_absenta" Type="date" Nullable="false" />
+          <Property Name="Motivata" Type="bit" Nullable="false" />
+          <Property Name="ElevID" Type="int" Nullable="false" />
+          <Property Name="PredareID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="ClasaID" />
+          </Key>
+          <Property Name="ClasaID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="An_scolar" Type="int" Nullable="false" />
+          <Property Name="Specializare" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diriginte" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Conturi">
+          <Key>
+            <PropertyRef Name="ContID" />
+          </Key>
+          <Property Name="ContID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Rol" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Elevi">
+          <Key>
+            <PropertyRef Name="ElevID" />
+          </Key>
+          <Property Name="ElevID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data_nasterii" Type="date" Nullable="false" />
+          <Property Name="Adresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ClasaID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ParinteID" Type="int" Nullable="false" />
+          <Property Name="UtilizatorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IntervaleOre">
+          <Key>
+            <PropertyRef Name="IntervalID" />
+          </Key>
+          <Property Name="IntervalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ora_inceput" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Ora_sfarsit" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materii">
+          <Key>
+            <PropertyRef Name="MaterieID" />
+          </Key>
+          <Property Name="MaterieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume_materie" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesaje">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataTrimitere" Type="datetime" Nullable="false" />
+          <Property Name="Continut" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ExpeditorID" Type="int" Nullable="false" />
+          <Property Name="DestinatarID" Type="int" Nullable="false" />
+          <Property Name="EsteCitit" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="NotaID" />
+          </Key>
+          <Property Name="NotaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nota" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="DataNota" Type="date" Nullable="false" />
+          <Property Name="ElevID" Type="int" Nullable="false" />
+          <Property Name="PredareID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notificari">
+          <Key>
+            <PropertyRef Name="NotificareID" />
+          </Key>
+          <Property Name="NotificareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_Notificare" Type="date" Nullable="false" />
+          <Property Name="Mesaj" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="EsteCitita" Type="bit" Nullable="false" />
+          <Property Name="ParinteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrarClase">
+          <Key>
+            <PropertyRef Name="ClasaID" />
+            <PropertyRef Name="Zi_saptamana" />
+            <PropertyRef Name="IntervalID" />
+          </Key>
+          <Property Name="ClasaID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Zi_saptamana" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IntervalID" Type="int" Nullable="false" />
+          <Property Name="PredareID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parinti">
+          <Key>
+            <PropertyRef Name="ParinteID" />
+          </Key>
+          <Property Name="ParinteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume_parinte" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenume_parinte" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Numar_telefon" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="UtilizatorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Predare">
+          <Key>
+            <PropertyRef Name="PredareID" />
+          </Key>
+          <Property Name="PredareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfesorID" Type="int" Nullable="false" />
+          <Property Name="MaterieID" Type="int" Nullable="false" />
+          <Property Name="ClasaID" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profesori">
+          <Key>
+            <PropertyRef Name="ProfesorID" />
+          </Key>
+          <Property Name="ProfesorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenume" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Grad" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Vechime" Type="int" />
+          <Property Name="UtilizatorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RapoarteEvaluare">
+          <Key>
+            <PropertyRef Name="RaportID" />
+          </Key>
+          <Property Name="RaportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ElevID" Type="int" Nullable="false" />
+          <Property Name="MediaGenerala" Type="float" Nullable="false" />
+          <Property Name="AbsenteMotivate" Type="int" Nullable="false" />
+          <Property Name="AbsenteNemotivate" Type="int" Nullable="false" />
+          <Property Name="Comportament" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descriere" Type="nvarchar(max)" />
+          <Property Name="DataGenerare" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Utilizatori">
+          <Key>
+            <PropertyRef Name="UtilizatorID" />
+          </Key>
+          <Property Name="UtilizatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parola" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Rol" Type="int" Nullable="false" />
+          <Property Name="ImagineProfil" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK__Absente__ElevID__69C6B1F5">
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="1" />
+          <End Role="Absente" Type="Self.Absente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Elevi">
+              <PropertyRef Name="ElevID" />
+            </Principal>
+            <Dependent Role="Absente">
+              <PropertyRef Name="ElevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Absente__Predare__6ABAD62E">
+          <End Role="Predare" Type="Self.Predare" Multiplicity="1" />
+          <End Role="Absente" Type="Self.Absente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predare">
+              <PropertyRef Name="PredareID" />
+            </Principal>
+            <Dependent Role="Absente">
+              <PropertyRef Name="PredareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clase__Diriginte__57A801BA">
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="1" />
+          <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesori">
+              <PropertyRef Name="ProfesorID" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="Diriginte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Elevi__ClasaID__5A846E65">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="ClasaID" />
+            </Principal>
+            <Dependent Role="Elevi">
+              <PropertyRef Name="ClasaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Elevi__ParinteID__5B78929E">
+          <End Role="Parinti" Type="Self.Parinti" Multiplicity="1" />
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parinti">
+              <PropertyRef Name="ParinteID" />
+            </Principal>
+            <Dependent Role="Elevi">
+              <PropertyRef Name="ParinteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Elevi__Utilizato__5C6CB6D7">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Elevi">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mesaje__Destinat__15702A09">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Mesaje" Type="Self.Mesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Mesaje">
+              <PropertyRef Name="DestinatarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mesaje__Expedito__147C05D0">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Mesaje" Type="Self.Mesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Mesaje">
+              <PropertyRef Name="ExpeditorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Note__ElevID__65F62111">
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="1" />
+          <End Role="Note" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Elevi">
+              <PropertyRef Name="ElevID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="ElevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Note__PredareID__66EA454A">
+          <End Role="Predare" Type="Self.Predare" Multiplicity="1" />
+          <End Role="Note" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predare">
+              <PropertyRef Name="PredareID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="PredareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificar__Parin__00750D23">
+          <End Role="Parinti" Type="Self.Parinti" Multiplicity="1" />
+          <End Role="Notificari" Type="Self.Notificari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parinti">
+              <PropertyRef Name="ParinteID" />
+            </Principal>
+            <Dependent Role="Notificari">
+              <PropertyRef Name="ParinteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrarClase__Clasa__019E3B86">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="OrarClase" Type="Self.OrarClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="ClasaID" />
+            </Principal>
+            <Dependent Role="OrarClase">
+              <PropertyRef Name="ClasaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrarClase__Inter__038683F8">
+          <End Role="IntervaleOre" Type="Self.IntervaleOre" Multiplicity="1" />
+          <End Role="OrarClase" Type="Self.OrarClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntervaleOre">
+              <PropertyRef Name="IntervalID" />
+            </Principal>
+            <Dependent Role="OrarClase">
+              <PropertyRef Name="IntervalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrarClase__Preda__047AA831">
+          <End Role="Predare" Type="Self.Predare" Multiplicity="1" />
+          <End Role="OrarClase" Type="Self.OrarClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predare">
+              <PropertyRef Name="PredareID" />
+            </Principal>
+            <Dependent Role="OrarClase">
+              <PropertyRef Name="PredareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parinti__Utiliza__54CB950F">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Parinti" Type="Self.Parinti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Parinti">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predare__ClasaID__6319B466">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="Predare" Type="Self.Predare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="ClasaID" />
+            </Principal>
+            <Dependent Role="Predare">
+              <PropertyRef Name="ClasaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predare__Materie__6225902D">
+          <End Role="Materii" Type="Self.Materii" Multiplicity="1" />
+          <End Role="Predare" Type="Self.Predare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materii">
+              <PropertyRef Name="MaterieID" />
+            </Principal>
+            <Dependent Role="Predare">
+              <PropertyRef Name="MaterieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predare__Profeso__61316BF4">
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="1" />
+          <End Role="Predare" Type="Self.Predare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesori">
+              <PropertyRef Name="ProfesorID" />
+            </Principal>
+            <Dependent Role="Predare">
+              <PropertyRef Name="ProfesorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Profesori__Utili__44952D46">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Profesori">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RapoarteE__ElevI__64CCF2AE">
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="1" />
+          <End Role="RapoarteEvaluare" Type="Self.RapoarteEvaluare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Elevi">
+              <PropertyRef Name="ElevID" />
+            </Principal>
+            <Dependent Role="RapoarteEvaluare">
+              <PropertyRef Name="ElevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Online_School_CatalogModelStoreContainer">
+          <EntitySet Name="Absente" EntityType="Self.Absente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Conturi" EntityType="Self.Conturi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Elevi" EntityType="Self.Elevi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IntervaleOre" EntityType="Self.IntervaleOre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materii" EntityType="Self.Materii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesaje" EntityType="Self.Mesaje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notificari" EntityType="Self.Notificari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrarClase" EntityType="Self.OrarClase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parinti" EntityType="Self.Parinti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Predare" EntityType="Self.Predare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesori" EntityType="Self.Profesori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RapoarteEvaluare" EntityType="Self.RapoarteEvaluare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizatori" EntityType="Self.Utilizatori" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Absente__ElevID__69C6B1F5" Association="Self.FK__Absente__ElevID__69C6B1F5">
+            <End Role="Elevi" EntitySet="Elevi" />
+            <End Role="Absente" EntitySet="Absente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Absente__Predare__6ABAD62E" Association="Self.FK__Absente__Predare__6ABAD62E">
+            <End Role="Predare" EntitySet="Predare" />
+            <End Role="Absente" EntitySet="Absente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clase__Diriginte__57A801BA" Association="Self.FK__Clase__Diriginte__57A801BA">
+            <End Role="Profesori" EntitySet="Profesori" />
+            <End Role="Clase" EntitySet="Clase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Elevi__ClasaID__5A846E65" Association="Self.FK__Elevi__ClasaID__5A846E65">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Elevi" EntitySet="Elevi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Elevi__ParinteID__5B78929E" Association="Self.FK__Elevi__ParinteID__5B78929E">
+            <End Role="Parinti" EntitySet="Parinti" />
+            <End Role="Elevi" EntitySet="Elevi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Elevi__Utilizato__5C6CB6D7" Association="Self.FK__Elevi__Utilizato__5C6CB6D7">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Elevi" EntitySet="Elevi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mesaje__Destinat__15702A09" Association="Self.FK__Mesaje__Destinat__15702A09">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Mesaje" EntitySet="Mesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mesaje__Expedito__147C05D0" Association="Self.FK__Mesaje__Expedito__147C05D0">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Mesaje" EntitySet="Mesaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Note__ElevID__65F62111" Association="Self.FK__Note__ElevID__65F62111">
+            <End Role="Elevi" EntitySet="Elevi" />
+            <End Role="Note" EntitySet="Note" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Note__PredareID__66EA454A" Association="Self.FK__Note__PredareID__66EA454A">
+            <End Role="Predare" EntitySet="Predare" />
+            <End Role="Note" EntitySet="Note" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificar__Parin__00750D23" Association="Self.FK__Notificar__Parin__00750D23">
+            <End Role="Parinti" EntitySet="Parinti" />
+            <End Role="Notificari" EntitySet="Notificari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrarClase__Clasa__019E3B86" Association="Self.FK__OrarClase__Clasa__019E3B86">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="OrarClase" EntitySet="OrarClase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrarClase__Inter__038683F8" Association="Self.FK__OrarClase__Inter__038683F8">
+            <End Role="IntervaleOre" EntitySet="IntervaleOre" />
+            <End Role="OrarClase" EntitySet="OrarClase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrarClase__Preda__047AA831" Association="Self.FK__OrarClase__Preda__047AA831">
+            <End Role="Predare" EntitySet="Predare" />
+            <End Role="OrarClase" EntitySet="OrarClase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parinti__Utiliza__54CB950F" Association="Self.FK__Parinti__Utiliza__54CB950F">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Parinti" EntitySet="Parinti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predare__ClasaID__6319B466" Association="Self.FK__Predare__ClasaID__6319B466">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Predare" EntitySet="Predare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predare__Materie__6225902D" Association="Self.FK__Predare__Materie__6225902D">
+            <End Role="Materii" EntitySet="Materii" />
+            <End Role="Predare" EntitySet="Predare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predare__Profeso__61316BF4" Association="Self.FK__Predare__Profeso__61316BF4">
+            <End Role="Profesori" EntitySet="Profesori" />
+            <End Role="Predare" EntitySet="Predare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Profesori__Utili__44952D46" Association="Self.FK__Profesori__Utili__44952D46">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Profesori" EntitySet="Profesori" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RapoarteE__ElevI__64CCF2AE" Association="Self.FK__RapoarteE__ElevI__64CCF2AE">
+            <End Role="Elevi" EntitySet="Elevi" />
+            <End Role="RapoarteEvaluare" EntitySet="RapoarteEvaluare" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Online_School_CatalogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Absente">
+          <Key>
+            <PropertyRef Name="AbsentaID" />
+          </Key>
+          <Property Name="AbsentaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_absenta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Motivata" Type="Boolean" Nullable="false" />
+          <Property Name="ElevID" Type="Int32" Nullable="false" />
+          <Property Name="PredareID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Elevi" Relationship="Self.FK__Absente__ElevID__69C6B1F5" FromRole="Absente" ToRole="Elevi" />
+          <NavigationProperty Name="Predare" Relationship="Self.FK__Absente__Predare__6ABAD62E" FromRole="Absente" ToRole="Predare" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="ClasaID" />
+          </Key>
+          <Property Name="ClasaID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="An_scolar" Type="Int32" Nullable="false" />
+          <Property Name="Specializare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Diriginte" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Profesori" Relationship="Self.FK__Clase__Diriginte__57A801BA" FromRole="Clase" ToRole="Profesori" />
+          <NavigationProperty Name="Elevis" Relationship="Self.FK__Elevi__ClasaID__5A846E65" FromRole="Clase" ToRole="Elevi" />
+          <NavigationProperty Name="OrarClases" Relationship="Self.FK__OrarClase__Clasa__019E3B86" FromRole="Clase" ToRole="OrarClase" />
+          <NavigationProperty Name="Predares" Relationship="Self.FK__Predare__ClasaID__6319B466" FromRole="Clase" ToRole="Predare" />
+        </EntityType>
+        <EntityType Name="Conturi">
+          <Key>
+            <PropertyRef Name="ContID" />
+          </Key>
+          <Property Name="ContID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rol" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Elevi">
+          <Key>
+            <PropertyRef Name="ElevID" />
+          </Key>
+          <Property Name="ElevID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data_nasterii" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClasaID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParinteID" Type="Int32" Nullable="false" />
+          <Property Name="UtilizatorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Absentes" Relationship="Self.FK__Absente__ElevID__69C6B1F5" FromRole="Elevi" ToRole="Absente" />
+          <NavigationProperty Name="Clase" Relationship="Self.FK__Elevi__ClasaID__5A846E65" FromRole="Elevi" ToRole="Clase" />
+          <NavigationProperty Name="Parinti" Relationship="Self.FK__Elevi__ParinteID__5B78929E" FromRole="Elevi" ToRole="Parinti" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Elevi__Utilizato__5C6CB6D7" FromRole="Elevi" ToRole="Utilizatori" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK__Note__ElevID__65F62111" FromRole="Elevi" ToRole="Note" />
+          <NavigationProperty Name="RapoarteEvaluares" Relationship="Self.FK__RapoarteE__ElevI__64CCF2AE" FromRole="Elevi" ToRole="RapoarteEvaluare" />
+        </EntityType>
+        <EntityType Name="IntervaleOre">
+          <Key>
+            <PropertyRef Name="IntervalID" />
+          </Key>
+          <Property Name="IntervalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ora_inceput" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Ora_sfarsit" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="OrarClases" Relationship="Self.FK__OrarClase__Inter__038683F8" FromRole="IntervaleOre" ToRole="OrarClase" />
+        </EntityType>
+        <EntityType Name="Materii">
+          <Key>
+            <PropertyRef Name="MaterieID" />
+          </Key>
+          <Property Name="MaterieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume_materie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Predares" Relationship="Self.FK__Predare__Materie__6225902D" FromRole="Materii" ToRole="Predare" />
+        </EntityType>
+        <EntityType Name="Mesaje">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataTrimitere" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Continut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExpeditorID" Type="Int32" Nullable="false" />
+          <Property Name="DestinatarID" Type="Int32" Nullable="false" />
+          <Property Name="EsteCitit" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Mesaje__Destinat__15702A09" FromRole="Mesaje" ToRole="Utilizatori" />
+          <NavigationProperty Name="Utilizatori1" Relationship="Self.FK__Mesaje__Expedito__147C05D0" FromRole="Mesaje" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="NotaID" />
+          </Key>
+          <Property Name="NotaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nota" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="DataNota" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ElevID" Type="Int32" Nullable="false" />
+          <Property Name="PredareID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Elevi" Relationship="Self.FK__Note__ElevID__65F62111" FromRole="Note" ToRole="Elevi" />
+          <NavigationProperty Name="Predare" Relationship="Self.FK__Note__PredareID__66EA454A" FromRole="Note" ToRole="Predare" />
+        </EntityType>
+        <EntityType Name="Notificari">
+          <Key>
+            <PropertyRef Name="NotificareID" />
+          </Key>
+          <Property Name="NotificareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_Notificare" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Mesaj" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EsteCitita" Type="Boolean" Nullable="false" />
+          <Property Name="ParinteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Parinti" Relationship="Self.FK__Notificar__Parin__00750D23" FromRole="Notificari" ToRole="Parinti" />
+        </EntityType>
+        <EntityType Name="OrarClase">
+          <Key>
+            <PropertyRef Name="ClasaID" />
+            <PropertyRef Name="Zi_saptamana" />
+            <PropertyRef Name="IntervalID" />
+          </Key>
+          <Property Name="ClasaID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Zi_saptamana" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IntervalID" Type="Int32" Nullable="false" />
+          <Property Name="PredareID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clase" Relationship="Self.FK__OrarClase__Clasa__019E3B86" FromRole="OrarClase" ToRole="Clase" />
+          <NavigationProperty Name="IntervaleOre" Relationship="Self.FK__OrarClase__Inter__038683F8" FromRole="OrarClase" ToRole="IntervaleOre" />
+          <NavigationProperty Name="Predare" Relationship="Self.FK__OrarClase__Preda__047AA831" FromRole="OrarClase" ToRole="Predare" />
+        </EntityType>
+        <EntityType Name="Parinti">
+          <Key>
+            <PropertyRef Name="ParinteID" />
+          </Key>
+          <Property Name="ParinteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume_parinte" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenume_parinte" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Numar_telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UtilizatorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Elevis" Relationship="Self.FK__Elevi__ParinteID__5B78929E" FromRole="Parinti" ToRole="Elevi" />
+          <NavigationProperty Name="Notificaris" Relationship="Self.FK__Notificar__Parin__00750D23" FromRole="Parinti" ToRole="Notificari" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Parinti__Utiliza__54CB950F" FromRole="Parinti" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Predare">
+          <Key>
+            <PropertyRef Name="PredareID" />
+          </Key>
+          <Property Name="PredareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfesorID" Type="Int32" Nullable="false" />
+          <Property Name="MaterieID" Type="Int32" Nullable="false" />
+          <Property Name="ClasaID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Absentes" Relationship="Self.FK__Absente__Predare__6ABAD62E" FromRole="Predare" ToRole="Absente" />
+          <NavigationProperty Name="Clase" Relationship="Self.FK__Predare__ClasaID__6319B466" FromRole="Predare" ToRole="Clase" />
+          <NavigationProperty Name="Materii" Relationship="Self.FK__Predare__Materie__6225902D" FromRole="Predare" ToRole="Materii" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK__Note__PredareID__66EA454A" FromRole="Predare" ToRole="Note" />
+          <NavigationProperty Name="OrarClases" Relationship="Self.FK__OrarClase__Preda__047AA831" FromRole="Predare" ToRole="OrarClase" />
+          <NavigationProperty Name="Profesori" Relationship="Self.FK__Predare__Profeso__61316BF4" FromRole="Predare" ToRole="Profesori" />
+        </EntityType>
+        <EntityType Name="Profesori">
+          <Key>
+            <PropertyRef Name="ProfesorID" />
+          </Key>
+          <Property Name="ProfesorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Grad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Vechime" Type="Int32" />
+          <Property Name="UtilizatorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clases" Relationship="Self.FK__Clase__Diriginte__57A801BA" FromRole="Profesori" ToRole="Clase" />
+          <NavigationProperty Name="Predares" Relationship="Self.FK__Predare__Profeso__61316BF4" FromRole="Profesori" ToRole="Predare" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Profesori__Utili__44952D46" FromRole="Profesori" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="RapoarteEvaluare">
+          <Key>
+            <PropertyRef Name="RaportID" />
+          </Key>
+          <Property Name="RaportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ElevID" Type="Int32" Nullable="false" />
+          <Property Name="MediaGenerala" Type="Double" Nullable="false" />
+          <Property Name="AbsenteMotivate" Type="Int32" Nullable="false" />
+          <Property Name="AbsenteNemotivate" Type="Int32" Nullable="false" />
+          <Property Name="Comportament" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descriere" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataGenerare" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Elevi" Relationship="Self.FK__RapoarteE__ElevI__64CCF2AE" FromRole="RapoarteEvaluare" ToRole="Elevi" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Utilizatori">
+          <Key>
+            <PropertyRef Name="UtilizatorID" />
+          </Key>
+          <Property Name="UtilizatorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parola" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rol" Type="Int32" Nullable="false" />
+          <Property Name="ImagineProfil" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Elevis" Relationship="Self.FK__Elevi__Utilizato__5C6CB6D7" FromRole="Utilizatori" ToRole="Elevi" />
+          <NavigationProperty Name="Mesajes" Relationship="Self.FK__Mesaje__Destinat__15702A09" FromRole="Utilizatori" ToRole="Mesaje" />
+          <NavigationProperty Name="Mesajes1" Relationship="Self.FK__Mesaje__Expedito__147C05D0" FromRole="Utilizatori" ToRole="Mesaje" />
+          <NavigationProperty Name="Parintis" Relationship="Self.FK__Parinti__Utiliza__54CB950F" FromRole="Utilizatori" ToRole="Parinti" />
+          <NavigationProperty Name="Profesoris" Relationship="Self.FK__Profesori__Utili__44952D46" FromRole="Utilizatori" ToRole="Profesori" />
+        </EntityType>
+        <Association Name="FK__Absente__ElevID__69C6B1F5">
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="1" />
+          <End Role="Absente" Type="Self.Absente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Elevi">
+              <PropertyRef Name="ElevID" />
+            </Principal>
+            <Dependent Role="Absente">
+              <PropertyRef Name="ElevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Absente__Predare__6ABAD62E">
+          <End Role="Predare" Type="Self.Predare" Multiplicity="1" />
+          <End Role="Absente" Type="Self.Absente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predare">
+              <PropertyRef Name="PredareID" />
+            </Principal>
+            <Dependent Role="Absente">
+              <PropertyRef Name="PredareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clase__Diriginte__57A801BA">
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="1" />
+          <End Role="Clase" Type="Self.Clase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesori">
+              <PropertyRef Name="ProfesorID" />
+            </Principal>
+            <Dependent Role="Clase">
+              <PropertyRef Name="Diriginte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Elevi__ClasaID__5A846E65">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="ClasaID" />
+            </Principal>
+            <Dependent Role="Elevi">
+              <PropertyRef Name="ClasaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrarClase__Clasa__019E3B86">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="OrarClase" Type="Self.OrarClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="ClasaID" />
+            </Principal>
+            <Dependent Role="OrarClase">
+              <PropertyRef Name="ClasaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predare__ClasaID__6319B466">
+          <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
+          <End Role="Predare" Type="Self.Predare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clase">
+              <PropertyRef Name="ClasaID" />
+            </Principal>
+            <Dependent Role="Predare">
+              <PropertyRef Name="ClasaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Elevi__ParinteID__5B78929E">
+          <End Role="Parinti" Type="Self.Parinti" Multiplicity="1" />
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parinti">
+              <PropertyRef Name="ParinteID" />
+            </Principal>
+            <Dependent Role="Elevi">
+              <PropertyRef Name="ParinteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Elevi__Utilizato__5C6CB6D7">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Elevi">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Note__ElevID__65F62111">
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="1" />
+          <End Role="Note" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Elevi">
+              <PropertyRef Name="ElevID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="ElevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RapoarteE__ElevI__64CCF2AE">
+          <End Role="Elevi" Type="Self.Elevi" Multiplicity="1" />
+          <End Role="RapoarteEvaluare" Type="Self.RapoarteEvaluare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Elevi">
+              <PropertyRef Name="ElevID" />
+            </Principal>
+            <Dependent Role="RapoarteEvaluare">
+              <PropertyRef Name="ElevID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrarClase__Inter__038683F8">
+          <End Role="IntervaleOre" Type="Self.IntervaleOre" Multiplicity="1" />
+          <End Role="OrarClase" Type="Self.OrarClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntervaleOre">
+              <PropertyRef Name="IntervalID" />
+            </Principal>
+            <Dependent Role="OrarClase">
+              <PropertyRef Name="IntervalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predare__Materie__6225902D">
+          <End Role="Materii" Type="Self.Materii" Multiplicity="1" />
+          <End Role="Predare" Type="Self.Predare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materii">
+              <PropertyRef Name="MaterieID" />
+            </Principal>
+            <Dependent Role="Predare">
+              <PropertyRef Name="MaterieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mesaje__Destinat__15702A09">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Mesaje" Type="Self.Mesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Mesaje">
+              <PropertyRef Name="DestinatarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mesaje__Expedito__147C05D0">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Mesaje" Type="Self.Mesaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Mesaje">
+              <PropertyRef Name="ExpeditorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Note__PredareID__66EA454A">
+          <End Role="Predare" Type="Self.Predare" Multiplicity="1" />
+          <End Role="Note" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predare">
+              <PropertyRef Name="PredareID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="PredareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificar__Parin__00750D23">
+          <End Role="Parinti" Type="Self.Parinti" Multiplicity="1" />
+          <End Role="Notificari" Type="Self.Notificari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parinti">
+              <PropertyRef Name="ParinteID" />
+            </Principal>
+            <Dependent Role="Notificari">
+              <PropertyRef Name="ParinteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrarClase__Preda__047AA831">
+          <End Role="Predare" Type="Self.Predare" Multiplicity="1" />
+          <End Role="OrarClase" Type="Self.OrarClase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predare">
+              <PropertyRef Name="PredareID" />
+            </Principal>
+            <Dependent Role="OrarClase">
+              <PropertyRef Name="PredareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parinti__Utiliza__54CB950F">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Parinti" Type="Self.Parinti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Parinti">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Predare__Profeso__61316BF4">
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="1" />
+          <End Role="Predare" Type="Self.Predare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesori">
+              <PropertyRef Name="ProfesorID" />
+            </Principal>
+            <Dependent Role="Predare">
+              <PropertyRef Name="ProfesorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Profesori__Utili__44952D46">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="1" />
+          <End Role="Profesori" Type="Self.Profesori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UtilizatorID" />
+            </Principal>
+            <Dependent Role="Profesori">
+              <PropertyRef Name="UtilizatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Online_School_CatalogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Absentes" EntityType="Self.Absente" />
+          <EntitySet Name="Clases" EntityType="Self.Clase" />
+          <EntitySet Name="Conturis" EntityType="Self.Conturi" />
+          <EntitySet Name="Elevis" EntityType="Self.Elevi" />
+          <EntitySet Name="IntervaleOres" EntityType="Self.IntervaleOre" />
+          <EntitySet Name="Materiis" EntityType="Self.Materii" />
+          <EntitySet Name="Mesajes" EntityType="Self.Mesaje" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="Notificaris" EntityType="Self.Notificari" />
+          <EntitySet Name="OrarClases" EntityType="Self.OrarClase" />
+          <EntitySet Name="Parintis" EntityType="Self.Parinti" />
+          <EntitySet Name="Predares" EntityType="Self.Predare" />
+          <EntitySet Name="Profesoris" EntityType="Self.Profesori" />
+          <EntitySet Name="RapoarteEvaluares" EntityType="Self.RapoarteEvaluare" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Utilizatoris" EntityType="Self.Utilizatori" />
+          <AssociationSet Name="FK__Absente__ElevID__69C6B1F5" Association="Self.FK__Absente__ElevID__69C6B1F5">
+            <End Role="Elevi" EntitySet="Elevis" />
+            <End Role="Absente" EntitySet="Absentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Absente__Predare__6ABAD62E" Association="Self.FK__Absente__Predare__6ABAD62E">
+            <End Role="Predare" EntitySet="Predares" />
+            <End Role="Absente" EntitySet="Absentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clase__Diriginte__57A801BA" Association="Self.FK__Clase__Diriginte__57A801BA">
+            <End Role="Profesori" EntitySet="Profesoris" />
+            <End Role="Clase" EntitySet="Clases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Elevi__ClasaID__5A846E65" Association="Self.FK__Elevi__ClasaID__5A846E65">
+            <End Role="Clase" EntitySet="Clases" />
+            <End Role="Elevi" EntitySet="Elevis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrarClase__Clasa__019E3B86" Association="Self.FK__OrarClase__Clasa__019E3B86">
+            <End Role="Clase" EntitySet="Clases" />
+            <End Role="OrarClase" EntitySet="OrarClases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predare__ClasaID__6319B466" Association="Self.FK__Predare__ClasaID__6319B466">
+            <End Role="Clase" EntitySet="Clases" />
+            <End Role="Predare" EntitySet="Predares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Elevi__ParinteID__5B78929E" Association="Self.FK__Elevi__ParinteID__5B78929E">
+            <End Role="Parinti" EntitySet="Parintis" />
+            <End Role="Elevi" EntitySet="Elevis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Elevi__Utilizato__5C6CB6D7" Association="Self.FK__Elevi__Utilizato__5C6CB6D7">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Elevi" EntitySet="Elevis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Note__ElevID__65F62111" Association="Self.FK__Note__ElevID__65F62111">
+            <End Role="Elevi" EntitySet="Elevis" />
+            <End Role="Note" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RapoarteE__ElevI__64CCF2AE" Association="Self.FK__RapoarteE__ElevI__64CCF2AE">
+            <End Role="Elevi" EntitySet="Elevis" />
+            <End Role="RapoarteEvaluare" EntitySet="RapoarteEvaluares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrarClase__Inter__038683F8" Association="Self.FK__OrarClase__Inter__038683F8">
+            <End Role="IntervaleOre" EntitySet="IntervaleOres" />
+            <End Role="OrarClase" EntitySet="OrarClases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predare__Materie__6225902D" Association="Self.FK__Predare__Materie__6225902D">
+            <End Role="Materii" EntitySet="Materiis" />
+            <End Role="Predare" EntitySet="Predares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mesaje__Destinat__15702A09" Association="Self.FK__Mesaje__Destinat__15702A09">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Mesaje" EntitySet="Mesajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mesaje__Expedito__147C05D0" Association="Self.FK__Mesaje__Expedito__147C05D0">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Mesaje" EntitySet="Mesajes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Note__PredareID__66EA454A" Association="Self.FK__Note__PredareID__66EA454A">
+            <End Role="Predare" EntitySet="Predares" />
+            <End Role="Note" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificar__Parin__00750D23" Association="Self.FK__Notificar__Parin__00750D23">
+            <End Role="Parinti" EntitySet="Parintis" />
+            <End Role="Notificari" EntitySet="Notificaris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrarClase__Preda__047AA831" Association="Self.FK__OrarClase__Preda__047AA831">
+            <End Role="Predare" EntitySet="Predares" />
+            <End Role="OrarClase" EntitySet="OrarClases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parinti__Utiliza__54CB950F" Association="Self.FK__Parinti__Utiliza__54CB950F">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Parinti" EntitySet="Parintis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Predare__Profeso__61316BF4" Association="Self.FK__Predare__Profeso__61316BF4">
+            <End Role="Profesori" EntitySet="Profesoris" />
+            <End Role="Predare" EntitySet="Predares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Profesori__Utili__44952D46" Association="Self.FK__Profesori__Utili__44952D46">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Profesori" EntitySet="Profesoris" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Online_School_CatalogModelStoreContainer" CdmEntityContainer="Online_School_CatalogEntities">
+          <EntitySetMapping Name="Absentes">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Absente">
+              <MappingFragment StoreEntitySet="Absente">
+                <ScalarProperty Name="AbsentaID" ColumnName="AbsentaID" />
+                <ScalarProperty Name="Data_absenta" ColumnName="Data_absenta" />
+                <ScalarProperty Name="Motivata" ColumnName="Motivata" />
+                <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+                <ScalarProperty Name="PredareID" ColumnName="PredareID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clases">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Clase">
+              <MappingFragment StoreEntitySet="Clase">
+                <ScalarProperty Name="ClasaID" ColumnName="ClasaID" />
+                <ScalarProperty Name="An_scolar" ColumnName="An_scolar" />
+                <ScalarProperty Name="Specializare" ColumnName="Specializare" />
+                <ScalarProperty Name="Diriginte" ColumnName="Diriginte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conturis">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Conturi">
+              <MappingFragment StoreEntitySet="Conturi">
+                <ScalarProperty Name="ContID" ColumnName="ContID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Elevis">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Elevi">
+              <MappingFragment StoreEntitySet="Elevi">
+                <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Data_nasterii" ColumnName="Data_nasterii" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="ClasaID" ColumnName="ClasaID" />
+                <ScalarProperty Name="ParinteID" ColumnName="ParinteID" />
+                <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IntervaleOres">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.IntervaleOre">
+              <MappingFragment StoreEntitySet="IntervaleOre">
+                <ScalarProperty Name="IntervalID" ColumnName="IntervalID" />
+                <ScalarProperty Name="Ora_inceput" ColumnName="Ora_inceput" />
+                <ScalarProperty Name="Ora_sfarsit" ColumnName="Ora_sfarsit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materiis">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Materii">
+              <MappingFragment StoreEntitySet="Materii">
+                <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+                <ScalarProperty Name="Nume_materie" ColumnName="Nume_materie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesajes">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Mesaje">
+              <MappingFragment StoreEntitySet="Mesaje">
+                <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+                <ScalarProperty Name="DataTrimitere" ColumnName="DataTrimitere" />
+                <ScalarProperty Name="Continut" ColumnName="Continut" />
+                <ScalarProperty Name="ExpeditorID" ColumnName="ExpeditorID" />
+                <ScalarProperty Name="DestinatarID" ColumnName="DestinatarID" />
+                <ScalarProperty Name="EsteCitit" ColumnName="EsteCitit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Note">
+              <MappingFragment StoreEntitySet="Note">
+                <ScalarProperty Name="NotaID" ColumnName="NotaID" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="DataNota" ColumnName="DataNota" />
+                <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+                <ScalarProperty Name="PredareID" ColumnName="PredareID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notificaris">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Notificari">
+              <MappingFragment StoreEntitySet="Notificari">
+                <ScalarProperty Name="NotificareID" ColumnName="NotificareID" />
+                <ScalarProperty Name="Data_Notificare" ColumnName="Data_Notificare" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="EsteCitita" ColumnName="EsteCitita" />
+                <ScalarProperty Name="ParinteID" ColumnName="ParinteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrarClases">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.OrarClase">
+              <MappingFragment StoreEntitySet="OrarClase">
+                <ScalarProperty Name="ClasaID" ColumnName="ClasaID" />
+                <ScalarProperty Name="Zi_saptamana" ColumnName="Zi_saptamana" />
+                <ScalarProperty Name="IntervalID" ColumnName="IntervalID" />
+                <ScalarProperty Name="PredareID" ColumnName="PredareID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parintis">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Parinti">
+              <MappingFragment StoreEntitySet="Parinti">
+                <ScalarProperty Name="ParinteID" ColumnName="ParinteID" />
+                <ScalarProperty Name="Nume_parinte" ColumnName="Nume_parinte" />
+                <ScalarProperty Name="Prenume_parinte" ColumnName="Prenume_parinte" />
+                <ScalarProperty Name="Numar_telefon" ColumnName="Numar_telefon" />
+                <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Predares">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Predare">
+              <MappingFragment StoreEntitySet="Predare">
+                <ScalarProperty Name="PredareID" ColumnName="PredareID" />
+                <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+                <ScalarProperty Name="MaterieID" ColumnName="MaterieID" />
+                <ScalarProperty Name="ClasaID" ColumnName="ClasaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesoris">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Profesori">
+              <MappingFragment StoreEntitySet="Profesori">
+                <ScalarProperty Name="ProfesorID" ColumnName="ProfesorID" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Vechime" ColumnName="Vechime" />
+                <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RapoarteEvaluares">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.RapoarteEvaluare">
+              <MappingFragment StoreEntitySet="RapoarteEvaluare">
+                <ScalarProperty Name="RaportID" ColumnName="RaportID" />
+                <ScalarProperty Name="ElevID" ColumnName="ElevID" />
+                <ScalarProperty Name="MediaGenerala" ColumnName="MediaGenerala" />
+                <ScalarProperty Name="AbsenteMotivate" ColumnName="AbsenteMotivate" />
+                <ScalarProperty Name="AbsenteNemotivate" ColumnName="AbsenteNemotivate" />
+                <ScalarProperty Name="Comportament" ColumnName="Comportament" />
+                <ScalarProperty Name="Descriere" ColumnName="Descriere" />
+                <ScalarProperty Name="DataGenerare" ColumnName="DataGenerare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizatoris">
+            <EntityTypeMapping TypeName="Online_School_CatalogModel.Utilizatori">
+              <MappingFragment StoreEntitySet="Utilizatori">
+                <ScalarProperty Name="UtilizatorID" ColumnName="UtilizatorID" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="ImagineProfil" ColumnName="ImagineProfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

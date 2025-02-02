@@ -21,8 +21,8 @@ namespace CatalogScolarOnline.Model
                     ElevID = elevID,
                     PredareID = predareID
                 };
-                Context.Absentes.InsertOnSubmit(absenta);
-                Context.SubmitChanges();
+                Context.Absentes.Add(absenta);
+                Context.SaveChanges();
                 string mesaj = "Insertie Absenta " + " a fost realizată cu succes!";
                 MessageBox.Show(mesaj, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 

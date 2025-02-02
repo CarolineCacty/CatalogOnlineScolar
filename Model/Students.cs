@@ -21,12 +21,12 @@ namespace CatalogScolarOnline.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private readonly OnlineSchoolCatalogDataContext _context;
+        private readonly Online_School_CatalogEntities _context;
 
         private Users users= new Users();
         public Students()
         {
-            _context = new OnlineSchoolCatalogDataContext();
+            _context = new Online_School_CatalogEntities();
         }
         public string GetName(string _email)
         {

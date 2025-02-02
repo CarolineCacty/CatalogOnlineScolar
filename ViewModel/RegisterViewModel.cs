@@ -361,9 +361,9 @@ namespace CatalogScolarOnline.ViewModel
             }
 
             bool okRegistration = true;
-            using (var context = new CatalogScolarOnline.Model.OnlineSchoolCatalogDataContext())
+            using (var context = new CatalogScolarOnline.Model.Online_School_CatalogEntities())
             {
-               //ID-ul noului utilizator pentru inserarea datelor specifice rolului
+
                 var newUser = context.Utilizatoris.FirstOrDefault(u => u.Email == Email);
 
                     if (SelectedRole == "System.Windows.Controls.ComboBoxItem: Profesor")
@@ -374,13 +374,13 @@ namespace CatalogScolarOnline.ViewModel
                     {
                         if(!userRepository.InsertElev(context, newUser.UtilizatorID, ClasaElev, NumeParinte, PrenumeParinte, LastName, FirstName, AdresaElev, DataNasterii))
                         {
-                            using (var newContext = new CatalogScolarOnline.Model.OnlineSchoolCatalogDataContext())
+                            using (var newContext = new CatalogScolarOnline.Model.Online_School_CatalogEntities())
                             {
                                 var userToDelete = newContext.Utilizatoris.FirstOrDefault(u => u.Email == Email);
                                 if (userToDelete != null)
                                 {
-                                    newContext.Utilizatoris.DeleteOnSubmit(userToDelete);
-                                    newContext.SubmitChanges();
+                                    newContext.Utilizatoris.Remove(userToDelete);
+                                    newContext.SaveChanges();
                                     RegistrationMessage = "A aparut o eroare!";
                             }
                             }
@@ -391,13 +391,13 @@ namespace CatalogScolarOnline.ViewModel
                     {
                         if(!userRepository.InsertParinte(context, newUser.UtilizatorID, LastName, FirstName, Telefon))
                         {
-                            using (var newContext = new CatalogScolarOnline.Model.OnlineSchoolCatalogDataContext())
+                            using (var newContext = new CatalogScolarOnline.Model.Online_School_CatalogEntities())
                             {
                                 var userToDelete = newContext.Utilizatoris.FirstOrDefault(u => u.Email == Email);
                                 if (userToDelete != null)
                                 {
-                                    newContext.Utilizatoris.DeleteOnSubmit(userToDelete);
-                                    newContext.SubmitChanges();
+                                    newContext.Utilizatoris.Remove(userToDelete);
+                                    newContext.SaveChanges();
                                     RegistrationMessage = "A aparut o eroare!";
                                 }
                             }

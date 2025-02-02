@@ -67,8 +67,8 @@ namespace CatalogScolarOnline.Model
                     ClasaID = clasaID,
                     IntervalID = intervalID
                 };
-                Context.OrarClases.InsertOnSubmit(orarClase);
-                Context.SubmitChanges();
+                Context.OrarClases.Add(orarClase);
+                Context.SaveChanges();
                 string mesaj = "Insertia înregistrării orar " + " a fost realizată cu succes!";
                 MessageBox.Show(mesaj, "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }

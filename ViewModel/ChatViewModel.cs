@@ -9,11 +9,15 @@ using System.Windows;
 using System.Windows.Input;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
+using System.Windows.Threading; 
+
 
 namespace CatalogScolarOnline.ViewModel
 {
     public class ChatViewModel : BaseViewModel
     {
+        private DispatcherTimer _timer;
+
         private ObservableCollection<ChatModel> _mesaje {  get; set; }
         public ObservableCollection<ChatModel> Mesaje
         {
@@ -25,7 +29,7 @@ namespace CatalogScolarOnline.ViewModel
             }
         }
 
-        private readonly OnlineSchoolCatalogDataContext _catalogDataContext = new OnlineSchoolCatalogDataContext();
+        private readonly Online_School_CatalogEntities _catalogDataContext = new Online_School_CatalogEntities();
 
         private string _mesajCurent;
         public string MesajCurent
@@ -117,17 +121,27 @@ namespace CatalogScolarOnline.ViewModel
 
         public ICommand TrimiteMesajCommand { get; set; }
 
+        private void ActualizeazaMesaje()
+        {
+            var mesajeNoi = (new ChatModel()).GetMesaje(_destinatarID, Session.GetClasaID());
+
+            if (mesajeNoi.Count != Mesaje.Count)
+            {
+                Mesaje = mesajeNoi;
+            }
+        }
+
         public ChatViewModel()
         {
             int rol = Session.GetRol(Session.Email);
-            if(rol == 1)
+            if (rol == 1)
             {
                 _parinteGridVisibillity = Visibility.Visible;
                 _diriginte = (new ChatModel()).GetDiriginteByClasaID(Session.GetClasaID());
                 _destinatarID = (new ChatModel()).GetUserIDByDiriginiteID(Session.GetClasaID());
                 Mesaje = (new ChatModel()).GetMesaje(_destinatarID, Session.GetClasaID());
             }
-            else if(rol == 2)
+            else if (rol == 2)
             {
                 _profesorGridVisibility = Visibility.Visible;
             }
@@ -137,7 +151,14 @@ namespace CatalogScolarOnline.ViewModel
             UtilizatorCurentID = (int)Session.UtilizatorID;
 
             TrimiteMesajCommand = new RelayCommand(TrimiteMesaj);
+
+
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(3); 
+            _timer.Tick += (sender, e) => ActualizeazaMesaje();
+            _timer.Start();
         }
+
 
 
         private void TrimiteMesaj(object parameter)
@@ -155,8 +176,8 @@ namespace CatalogScolarOnline.ViewModel
 
             try
             {
-                _catalogDataContext.Mesajes.InsertOnSubmit(mesajNou);
-                _catalogDataContext.SubmitChanges();
+                _catalogDataContext.Mesajes.Add(mesajNou);
+                _catalogDataContext.SaveChanges();
 
                 var chatModelMesaj = new ChatModel
                 {

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="280b30b45f6843d0a460c6bd6375b0dd" Name="Diagram1">
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Absente" Width="1.5" PointX="12.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Clase" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Conturi" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Elevi" Width="1.5" PointX="7.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.IntervaleOre" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Materii" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Mesaje" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Note" Width="1.5" PointX="15.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Notificari" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.OrarClase" Width="1.5" PointX="7.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Parinti" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Predare" Width="1.5" PointX="10.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Profesori" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.RapoarteEvaluare" Width="1.5" PointX="9.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Online_School_CatalogModel.Utilizatori" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Absente__ElevID__69C6B1F5" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Absente__Predare__6ABAD62E" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Clase__Diriginte__57A801BA" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Elevi__ClasaID__5A846E65" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__OrarClase__Clasa__019E3B86" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Predare__ClasaID__6319B466" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Elevi__ParinteID__5B78929E" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Elevi__Utilizato__5C6CB6D7" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Note__ElevID__65F62111" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__RapoarteE__ElevI__64CCF2AE" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__OrarClase__Inter__038683F8" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Predare__Materie__6225902D" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Mesaje__Destinat__15702A09" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Mesaje__Expedito__147C05D0" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Note__PredareID__66EA454A" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Notificar__Parin__00750D23" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__OrarClase__Preda__047AA831" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Parinti__Utiliza__54CB950F" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Predare__Profeso__61316BF4" ManuallyRouted="false" />
+        <AssociationConnector Association="Online_School_CatalogModel.FK__Profesori__Utili__44952D46" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

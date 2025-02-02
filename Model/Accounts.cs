@@ -14,12 +14,12 @@ namespace CatalogScolarOnline.Model
         public string Enail {  get; set; }
         public int Rol {  get; set; }
 
-        private readonly OnlineSchoolCatalogDataContext _context;
+        private readonly Online_School_CatalogEntities _context;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Accounts()
         {
-            _context = new OnlineSchoolCatalogDataContext();
+            _context = new Online_School_CatalogEntities();
         }
 
         public int getID(string _email)

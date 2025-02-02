@@ -186,7 +186,9 @@ namespace CatalogScolarOnline.ViewModel
         }
         private readonly Timer _notificariTimer;
 
-        //private ToastProvider _toastProvider;
+        private ToastProvider _toastProvider;
+        private NotificationContainer notificationContainer;
+
         public ICommand CloseCommand { get; }
         public ICommand LoginWindow { get; }
         public ICommand NavigateToNotesCommand { get; }
@@ -197,7 +199,7 @@ namespace CatalogScolarOnline.ViewModel
         public ICommand ShowRaportEvaluareCommand { get; }
         public ICommand ShowGenerateRaportEvaluareCommand { get; }
 
-        //public ICommand SendTestNotification { get; set; }
+        public ICommand SendTestNotification { get; set; }
         public ICommand ShowNotificariCommand { get; set; }
 
         public ICommand ShowChatCommand { get; set; }
@@ -222,14 +224,14 @@ namespace CatalogScolarOnline.ViewModel
             ShowChatCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowChat);
         }
 
-        
 
-        //public void OnSend()
-        //{
-        //    _toastProvider.NotificationService.AddNotification(Flattinger.Core.Enums.ToastType.WARNING, "Entry not found", "The entry not found in your Database", 5, animationConfig: new AnimationConfig { });
-        //}
 
-        
+        public void OnSend()
+        {
+            _toastProvider.NotificationService.AddNotification(Flattinger.Core.Enums.ToastType.WARNING, "Entry not found", "The entry not found in your Database", 5, animationConfig: new AnimationConfig { });
+        }
+
+
         public MainWindowViewModel(string email)
         {
             int rol = Session.GetRol(email);
@@ -253,9 +255,9 @@ namespace CatalogScolarOnline.ViewModel
                 else _notificaritVisibility= Visibility.Collapsed;
             }
 
-            //_notificariTimer = new Timer(VerificaNotificari, null, TimeSpan.Zero, TimeSpan.FromSeconds(1.5));
+            _notificariTimer = new Timer(VerificaNotificari, null, TimeSpan.Zero, TimeSpan.FromSeconds(1.5));
 
-            //_toastProvider = new ToastProvider(notificationContainer);
+            _toastProvider = new ToastProvider(notificationContainer);
 
             CloseCommand = new CatalogScolarOnline.Utilities.RelayCommand(CloseApplication);
             LoginWindow = new CatalogScolarOnline.Utilities.RelayCommand(LoginWindowShow);
@@ -266,7 +268,7 @@ namespace CatalogScolarOnline.ViewModel
             ShowRaportEvaluareCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowRaportEvaluare);
             ShowGenerateRaportEvaluareCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowGenerateRaportEvaluare);
             ShowNotificariCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowNotificari);
-            //SendTestNotification = new Flattinger.Core.MVVM.RelayCommand(parameter => OnSend());
+            SendTestNotification = new Flattinger.Core.MVVM.RelayCommand(parameter => OnSend());
             ShowChatCommand = new CatalogScolarOnline.Utilities.RelayCommand(ShowChat);
         }
 
@@ -278,6 +280,8 @@ namespace CatalogScolarOnline.ViewModel
                 var chatPage = new Views.Chat();
                 mainWindow.MainFrame.Navigate(chatPage);
             }
+            _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
+            NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed;
         }
         private void ShowNotificari(object parameter)
         {
@@ -287,6 +291,8 @@ namespace CatalogScolarOnline.ViewModel
                 var notificariPage = new Views.Notificari(this);
                 mainWindow.MainFrame.Navigate(notificariPage);
             }
+            _numarNotificari = (new NotificariModel()).GetNrNotificariNoi();
+            NrNotificariVisibility = _numarNotificari != 0 ? Visibility.Visible : Visibility.Collapsed;
         }
         private void ShowGenerateRaportEvaluare(object parameter)
         {

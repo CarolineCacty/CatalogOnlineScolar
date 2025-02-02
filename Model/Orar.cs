@@ -13,12 +13,12 @@ namespace CatalogScolarOnline.Model
 {
     public class Orar
     {
-        private readonly OnlineSchoolCatalogDataContext _context;
+        private readonly Online_School_CatalogEntities _context;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Orar()
         {
-            _context = new OnlineSchoolCatalogDataContext();
+            _context = new Online_School_CatalogEntities();
         }
 
         public string LoadClasaElevului()

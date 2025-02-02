@@ -17,7 +17,7 @@ namespace CatalogScolarOnline.Utilities
 
         public static int? Rol {  get; set; }
 
-        private static readonly OnlineSchoolCatalogDataContext _context = new OnlineSchoolCatalogDataContext();
+        private static readonly Online_School_CatalogEntities _context = new Online_School_CatalogEntities();
         public static int GetElevId()
         {
             int elevID = 0;
@@ -96,15 +96,36 @@ namespace CatalogScolarOnline.Utilities
         public static string GetClasaID()
         {
             string clasaID;
-            if(Session.GetRol(Email) == 2)
-                clasaID = _context.Clases.Where(c => c.Diriginte == Session.GetProfesorId()).Select(c => c.ClasaID).FirstOrDefault().ToString();
-            else clasaID = _context.Elevis.Where(e => e.ParinteID == Session.GetParinteID()).Select(e => e.ClasaID).FirstOrDefault().ToString();
+            int parinteID = GetParinteID(); // Obținem ParinteID înainte de interogare
+            int profesorID = GetProfesorId(); // Obținem ProfesorID înainte de interogare
+
+            if (Session.GetRol(Email) == 2)
+            {
+                clasaID = _context.Clases
+                    .Where(c => c.Diriginte == profesorID)
+                    .Select(c => c.ClasaID)
+                    .FirstOrDefault();
+            }
+            else
+            {
+                clasaID = _context.Elevis
+                    .Where(e => e.ParinteID == parinteID)
+                    .Select(e => e.ClasaID)
+                    .FirstOrDefault();
+            }
+
             return clasaID;
         }
 
+
+
         public static int GetParinteID()
         {
-            return _context.Parintis.Where( p => p.UtilizatorID == Session.UtilizatorID).Select(p=>p.ParinteID).FirstOrDefault();
+            return _context.Parintis
+                .Where(p => p.UtilizatorID == Session.UtilizatorID)
+                .Select(p => p.ParinteID)
+                .FirstOrDefault();
         }
+
     }
 }

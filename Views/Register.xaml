@@ -123,17 +123,13 @@
 
                     <!--Secțiunea pentru Profesor-->
                     <StackPanel Grid.Column="0" x:Name="profesorFields"  Visibility="{Binding StackProfesorVisibility}">
-                        <TextBlock Text="Materie Predată" Style="{StaticResource text}"/>
-                        <uc:MyTextBox x:Name="tb_materie" Grid.Column="1" Hint="Matematică" Text="{Binding MateriePredata, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
+                       
                         <TextBlock Text="Grad Didactic" Style="{StaticResource text}"/>
                         <uc:MyTextBox x:Name="tb_grad_didactic" Grid.Column="1" Hint="Lector" Text="{Binding GradDidactic, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <TextBlock Text="Vechime(An)" Style="{StaticResource text}"/>
                         <uc:MyTextBox x:Name="tb_vechime" Grid.Column="1" Hint="10" Text="{Binding Vechime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <TextBlock Text="Clasă" Style="{StaticResource text}"/>
-                        <uc:MyTextBox x:Name="tb_clasa_profesor" Grid.Column="1" Hint="9A" Text="{Binding Clasa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     </StackPanel>
 

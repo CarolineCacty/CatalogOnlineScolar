@@ -19,8 +19,8 @@ namespace CatalogScolarOnline.Model
                 ParinteID = parinteID,
                 EsteCitita = false
             };
-            Context.Notificaris.InsertOnSubmit(notificari);
-            Context.SubmitChanges();
+            Context.Notificaris.Add(notificari);
+            Context.SaveChanges();
         }
 
         public int GetParinteID(int elevID)

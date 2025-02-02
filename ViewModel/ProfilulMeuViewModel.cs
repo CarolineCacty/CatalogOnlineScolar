@@ -278,7 +278,7 @@ namespace CatalogScolarOnline.ViewModel
             }
         }
 
-        private readonly OnlineSchoolCatalogDataContext _context;
+        private readonly Online_School_CatalogEntities _context;
 
         private ProfilulMeuModel _profilulMeu;
         public ProfilulMeuModel ProfilulMeu
@@ -295,7 +295,7 @@ namespace CatalogScolarOnline.ViewModel
         }
         public ProfilulMeuViewModel()
         {
-            _context = new OnlineSchoolCatalogDataContext();
+            _context = new Online_School_CatalogEntities();
             int Rol = Session.GetRol();
             switch (Rol)
             {
